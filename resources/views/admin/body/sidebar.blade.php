@@ -110,6 +110,30 @@
                 <span>Regiones</span>
             </a>
         </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('respaldo.index') }}">
+                <i class="bi bi-brush"></i>
+                <span>Respaldo</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('situaciones.index') }}">
+                <i class="bi bi-brush"></i>
+                <span>Situaciones</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('tramites.index') }}">
+                <i class="bi bi-brush"></i>
+                <span>Tramites</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+
     </ul>
 
 </aside>

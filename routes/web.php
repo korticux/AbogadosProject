@@ -15,6 +15,11 @@ use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PeticionesController;
 use App\Http\Controllers\ProcesosController;
 use App\Http\Controllers\RegionesController;
+use App\Http\Controllers\RespaldoController;
+use App\Http\Controllers\SituacionesController;
+use App\Http\Controllers\TramitesController;
+
+
 
 
 /*
@@ -94,6 +99,18 @@ Route::controller(ProcesosController::class)->group(function() {
 
 Route::controller(RegionesController::class)->group(function() {
     Route::get('regiones/index', 'index')->name('regiones.index');
+});
+
+Route::controller(RespaldoController::class)->group(function() {
+    Route::get('respaldo/index', 'index')->name('respaldo.index');
+});
+
+Route::controller(SituacionesController::class)->group(function() {
+    Route::get('situaciones/index', 'index')->name('situaciones.index');
+});
+
+Route::controller(TramitesController::class)->group(function() {
+    Route::get('tramites/index', 'index')->name('tramites.index');
 });
 
 
