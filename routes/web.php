@@ -8,6 +8,7 @@ use App\Http\Controllers\DependenciasController;
 use App\Http\Controllers\EstatusController;
 use App\Http\Controllers\ExpedientesController;
 use App\Http\Controllers\FestivoController;
+use App\Http\Controllers\MunicipiosController;
 
 
 /*
@@ -60,5 +61,10 @@ Route::controller(ExpedientesController::class)->group(function() {
 Route::controller(FestivoController::class)->group(function() {
     Route::get('festivos/index', 'index')->name('festivos.index');
 });
+
+Route::controller(MunicipiosController::class)->group(function() {
+    Route::get('municipios/index', 'index')->name('municipios.index');
+});
+
 
 require __DIR__.'/auth.php';

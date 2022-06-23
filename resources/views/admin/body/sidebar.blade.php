@@ -60,6 +60,13 @@
                 <span>Festivos</span>
             </a>
         </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('municipios.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Municipios</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
     </ul>
 
 </aside>
