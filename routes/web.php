@@ -5,6 +5,7 @@ use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\ActoresController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\DependenciasController;
+use App\Http\Controllers\EstatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,10 @@ Route::controller(CuentasController::class)->group(function() {
 Route::controller(DependenciasController::class)->group(function() {
     Route::get('dependencias/index', 'index')->name('dependencias.index');
 });
+
+Route::controller(EstatusController::class)->group(function() {
+    Route::get('estatus/index', 'index')->name('estatus.index');
+});
+
 
 require __DIR__.'/auth.php';
