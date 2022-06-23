@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadosController;
+use App\Http\Controllers\ActoresController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,12 +20,16 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::controller(EstadosController::class)->group(function() {
     Route::get('estados/index', 'index')->name('estados.index');
     Route::get('estados/post', 'post')->name('estados.post');
     Route::post('estados/store', 'store')->name('estados.store');
+});
+
+Route::controller(ActoresController::class)->group(function() {
+    Route::get('actores/index', 'index')->name('actores.index');
 });
 
 require __DIR__.'/auth.php';

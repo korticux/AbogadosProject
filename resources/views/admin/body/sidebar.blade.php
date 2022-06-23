@@ -18,6 +18,14 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('actores.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Actores</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
     </ul>
 
 </aside>
