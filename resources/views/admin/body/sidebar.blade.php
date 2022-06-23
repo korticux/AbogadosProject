@@ -33,6 +33,13 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('dependencias.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Dependencias</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
     </ul>
 
 </aside>

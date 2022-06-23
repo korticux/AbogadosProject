@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\ActoresController;
 use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\DependenciasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,10 @@ Route::controller(ActoresController::class)->group(function() {
 
 Route::controller(CuentasController::class)->group(function() {
     Route::get('cuentas/index', 'index')->name('cuentas.index');
+});
+
+Route::controller(DependenciasController::class)->group(function() {
+    Route::get('dependencias/index', 'index')->name('dependencias.index');
 });
 
 require __DIR__.'/auth.php';
