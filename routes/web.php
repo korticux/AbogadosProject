@@ -7,6 +7,8 @@ use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\DependenciasController;
 use App\Http\Controllers\EstatusController;
 use App\Http\Controllers\ExpedientesController;
+use App\Http\Controllers\FestivoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +37,8 @@ Route::controller(EstadosController::class)->group(function() {
 
 Route::controller(ActoresController::class)->group(function() {
     Route::get('actores/index', 'index')->name('actores.index');
-    Route::get('estados/post', 'post')->name('actores.post');
-    Route::post('estados/store', 'store')->name('actores.store');
+    Route::get('actores/post', 'post')->name('actores.post');
+    Route::post('actores/store', 'store')->name('actores.store');
 });
 
 Route::controller(CuentasController::class)->group(function() {
@@ -55,5 +57,8 @@ Route::controller(ExpedientesController::class)->group(function() {
     Route::get('expedientes/index', 'index')->name('expedientes.index');
 });
 
+Route::controller(FestivoController::class)->group(function() {
+    Route::get('festivos/index', 'index')->name('festivos.index');
+});
 
 require __DIR__.'/auth.php';

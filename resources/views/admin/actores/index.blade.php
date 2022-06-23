@@ -25,8 +25,8 @@
                             <tbody>
                                 <tr>
                                     <th>{{ $actor->nocliente }}</th>
-                                    <th>{{ $estado->nombre }}</th>
-                                    <th>{{ $estado->correo }}</th>
+                                    <th>{{ $actor->nombre }}</th>
+                                    <th>{{ $actor->correo }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a class="btn  btn-sm btn-outline-dark"><i class="bi bi-pencil-fill"></i></a>

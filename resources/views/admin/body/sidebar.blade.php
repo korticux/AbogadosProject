@@ -54,6 +54,12 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('festivos.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Festivos</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
     </ul>
 
 </aside>
