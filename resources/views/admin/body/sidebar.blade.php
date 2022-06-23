@@ -47,6 +47,13 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('expedientes.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Expedientes</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
     </ul>
 
 </aside>

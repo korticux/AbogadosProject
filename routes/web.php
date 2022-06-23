@@ -6,6 +6,7 @@ use App\Http\Controllers\ActoresController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\DependenciasController;
 use App\Http\Controllers\EstatusController;
+use App\Http\Controllers\ExpedientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,10 @@ Route::controller(DependenciasController::class)->group(function() {
 
 Route::controller(EstatusController::class)->group(function() {
     Route::get('estatus/index', 'index')->name('estatus.index');
+});
+
+Route::controller(ExpedientesController::class)->group(function() {
+    Route::get('expedientes/index', 'index')->name('expedientes.index');
 });
 
 
