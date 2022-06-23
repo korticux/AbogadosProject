@@ -103,6 +103,13 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('regiones.index') }}">
+                <i class="bi bi-brush"></i>
+                <span>Regiones</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
     </ul>
 
 </aside>

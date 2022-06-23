@@ -14,6 +14,7 @@ use App\Http\Controllers\CobranzaController;
 use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PeticionesController;
 use App\Http\Controllers\ProcesosController;
+use App\Http\Controllers\RegionesController;
 
 
 /*
@@ -90,5 +91,10 @@ Route::controller(PeticionesController::class)->group(function() {
 Route::controller(ProcesosController::class)->group(function() {
     Route::get('proceso/index', 'index')->name('proceso.index');
 });
+
+Route::controller(RegionesController::class)->group(function() {
+    Route::get('regiones/index', 'index')->name('regiones.index');
+});
+
 
 require __DIR__.'/auth.php';
