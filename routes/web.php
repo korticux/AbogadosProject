@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\ActoresController;
+use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\DependenciasController;
+use App\Http\Controllers\EstatusController;
+use App\Http\Controllers\ExpedientesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,5 +38,22 @@ Route::controller(ActoresController::class)->group(function() {
     Route::get('estados/post', 'post')->name('actores.post');
     Route::post('estados/store', 'store')->name('actores.store');
 });
+
+Route::controller(CuentasController::class)->group(function() {
+    Route::get('cuentas/index', 'index')->name('cuentas.index');
+});
+
+Route::controller(DependenciasController::class)->group(function() {
+    Route::get('dependencias/index', 'index')->name('dependencias.index');
+});
+
+Route::controller(EstatusController::class)->group(function() {
+    Route::get('estatus/index', 'index')->name('estatus.index');
+});
+
+Route::controller(ExpedientesController::class)->group(function() {
+    Route::get('expedientes/index', 'index')->name('expedientes.index');
+});
+
 
 require __DIR__.'/auth.php';
