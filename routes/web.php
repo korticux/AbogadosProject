@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\ActoresController;
+use App\Http\Controllers\CuentasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,10 @@ Route::controller(EstadosController::class)->group(function() {
 
 Route::controller(ActoresController::class)->group(function() {
     Route::get('actores/index', 'index')->name('actores.index');
+});
+
+Route::controller(CuentasController::class)->group(function() {
+    Route::get('cuentas/index', 'index')->name('cuentas.index');
 });
 
 require __DIR__.'/auth.php';

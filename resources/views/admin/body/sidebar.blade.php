@@ -26,6 +26,13 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('cuentas.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Cuentas</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
     </ul>
 
 </aside>
