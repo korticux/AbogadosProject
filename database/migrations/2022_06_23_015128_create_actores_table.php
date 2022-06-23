@@ -21,12 +21,13 @@ return new class extends Migration
             $table->string("nombre");
             $table->string("curp");
             $table->string("rfc");
-            $table->string("nacimiento");
+            $table->date("nacimiento");
             $table->string("correo");
             $table->string("telefono");
             $table->string("domicilio");
-            $table->string("estado");
-            $table->string("ciudad");
+            $table->unsignedBigInteger("estado_id");
+            $table->foreign("estado_id")->references('id')->on('estados');
+            $table->string("ciudad")->nullable();
             $table->string("comentarios");
             $table->timestamps();
         });

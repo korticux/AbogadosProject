@@ -30,6 +30,8 @@ Route::controller(EstadosController::class)->group(function() {
 
 Route::controller(ActoresController::class)->group(function() {
     Route::get('actores/index', 'index')->name('actores.index');
+    Route::get('estados/post', 'post')->name('actores.post');
+    Route::post('estados/store', 'store')->name('actores.store');
 });
 
 require __DIR__.'/auth.php';

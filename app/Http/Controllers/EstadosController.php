@@ -26,9 +26,9 @@ class EstadosController extends Controller
         ]);
 
         Estados::insert([
-            'Nombre' => $request->Nombre
+            'Nombre' => $request->Nombre,
+            'created_at' => \Carbon\Carbon::now()
         ]);
-
 
         return redirect()->route('estados.index');
     }
