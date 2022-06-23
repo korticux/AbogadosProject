@@ -9,6 +9,11 @@ use App\Http\Controllers\EstatusController;
 use App\Http\Controllers\ExpedientesController;
 use App\Http\Controllers\FestivoController;
 use App\Http\Controllers\MunicipiosController;
+use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\CobranzaController;
+use App\Http\Controllers\PaisesController;
+use App\Http\Controllers\PeticionesController;
+use App\Http\Controllers\ProcesosController;
 
 
 /*
@@ -66,5 +71,24 @@ Route::controller(MunicipiosController::class)->group(function() {
     Route::get('municipios/index', 'index')->name('municipios.index');
 });
 
+Route::controller(NotificacionesController::class)->group(function() {
+    Route::get('notificaciones/index', 'index')->name('notificaciones.index');
+});
+
+Route::controller(CobranzaController::class)->group(function() {
+    Route::get('cobranza/index', 'index')->name('cobranza.index');
+});
+
+Route::controller(PaisesController::class)->group(function() {
+    Route::get('paises/index', 'index')->name('paises.index');
+});
+
+Route::controller(PeticionesController::class)->group(function() {
+    Route::get('peticiones/index', 'index')->name('peticiones.index');
+});
+
+Route::controller(ProcesosController::class)->group(function() {
+    Route::get('proceso/index', 'index')->name('proceso.index');
+});
 
 require __DIR__.'/auth.php';

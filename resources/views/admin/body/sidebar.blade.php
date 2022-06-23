@@ -67,6 +67,42 @@
                 <span>Municipios</span>
             </a>
         </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('notificaciones.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Notificaciones</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('cobranza.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Cobranza</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('paises.index') }}">
+                <i class="bi bi-geo-alt"></i>
+                <span>Paises</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('peticiones.index') }}">
+                <i class="bi bi-brush"></i>
+                <span>Peticiones</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('proceso.index') }}">
+                <i class="bi bi-brush"></i>
+                <span>Proceso</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
     </ul>
 
 </aside>
