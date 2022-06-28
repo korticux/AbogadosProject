@@ -13,6 +13,9 @@
                     <div class="form-floating">
                         <input type="text" name="Nombre" class="form-control" id="floatingName"
                             placeholder="Ingresar Nombre">
+                        @error('Nombre')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                         <label for="Nombre">Nombre del Estado</label>
                     </div>
                 </div>

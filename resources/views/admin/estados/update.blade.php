@@ -2,5 +2,29 @@
 
 
 @section('admin')
-    <h1 class="text-red">Crear Estados</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Crear Estado</h5>
+
+            <!-- Floating Labels Form -->
+            <form class="row g-3" method="POST" action="{{ route('estados.update', $estado->id) }}">
+                @csrf
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="text" name="Nombre" value="{{ $estado->Nombre }}" class="form-control"
+                            id="floatingName" placeholder="Ingresar Nombre">
+                        @error('Nombre')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        <label for="Nombre">Nombre del Estado</label>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ route('estados.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
+                </div>
+            </form><!-- End floating Labels Form -->
+
+        </div>
+    </div>
 @endsection

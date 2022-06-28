@@ -42,75 +42,78 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::controller(EstadosController::class)->group(function() {
-    Route::get('estados/index', 'index')->name('estados.index');
-    Route::get('estados/post', 'post')->name('estados.post');
-    Route::post('estados/store', 'store')->name('estados.store');
+    Route::get('/estados/index', 'index')->name('estados.index');
+    Route::get('/estados/post', 'post')->name('estados.post');
+    Route::get('/estados/edit/{id}', 'edit')->name('estados.edit');
+    Route::post('/estados/update/{id}', 'update')->name('estados.update');
+    Route::get('/estados/delete/{Id}', 'delete')->name('estados.delete');
+    Route::post('/estados/store', 'store')->name('estados.store');
 });
 
 Route::controller(ActoresController::class)->group(function() {
-    Route::get('actores/index', 'index')->name('actores.index');
-    Route::get('actores/post', 'post')->name('actores.post');
-    Route::post('actores/store', 'store')->name('actores.store');
+    Route::get('/actores/index', 'index')->name('actores.index');
+    Route::get('/actores/post', 'post')->name('actores.post');
+    Route::post('/actores/store', 'store')->name('actores.store');
 });
 
 Route::controller(CuentasController::class)->group(function() {
-    Route::get('cuentas/index', 'index')->name('cuentas.index');
+    Route::get('/cuentas/index', 'index')->name('cuentas.index');
 });
 
 Route::controller(DependenciasController::class)->group(function() {
-    Route::get('dependencias/index', 'index')->name('dependencias.index');
+    Route::get('/dependencias/index', 'index')->name('dependencias.index');
 });
 
 Route::controller(EstatusController::class)->group(function() {
-    Route::get('estatus/index', 'index')->name('estatus.index');
+    Route::get('/estatus/index', 'index')->name('estatus.index');
 });
 
 Route::controller(ExpedientesController::class)->group(function() {
-    Route::get('expedientes/index', 'index')->name('expedientes.index');
+    Route::get('/expedientes/index', 'index')->name('expedientes.index');
 });
 
 Route::controller(FestivoController::class)->group(function() {
-    Route::get('festivos/index', 'index')->name('festivos.index');
+    Route::get('/festivos/index', 'index')->name('festivos.index');
 });
 
 Route::controller(MunicipiosController::class)->group(function() {
-    Route::get('municipios/index', 'index')->name('municipios.index');
+    Route::get('/municipios/index', 'index')->name('municipios.index');
 });
 
 Route::controller(NotificacionesController::class)->group(function() {
-    Route::get('notificaciones/index', 'index')->name('notificaciones.index');
+    Route::get('/notificaciones/index', 'index')->name('notificaciones.index');
 });
 
 Route::controller(CobranzaController::class)->group(function() {
-    Route::get('cobranza/index', 'index')->name('cobranza.index');
+    Route::get('/cobranza/index', 'index')->name('cobranza.index');
 });
 
 Route::controller(PaisesController::class)->group(function() {
-    Route::get('paises/index', 'index')->name('paises.index');
+    Route::get('/paises/index', 'index')->name('paises.index');
 });
 
 Route::controller(PeticionesController::class)->group(function() {
-    Route::get('peticiones/index', 'index')->name('peticiones.index');
+    Route::get('/peticiones/index', 'index')->name('peticiones.index');
 });
 
 Route::controller(ProcesosController::class)->group(function() {
-    Route::get('proceso/index', 'index')->name('proceso.index');
+    Route::get('/proceso/index', 'index')->name('proceso.index');
 });
 
 Route::controller(RegionesController::class)->group(function() {
-    Route::get('regiones/index', 'index')->name('regiones.index');
+    Route::get('/regiones/index', 'index')->name('regiones.index');
 });
 
 Route::controller(RespaldoController::class)->group(function() {
-    Route::get('respaldo/index', 'index')->name('respaldo.index');
+    Route::get('/respaldo/index', 'index')->name('respaldo.index');
 });
 
 Route::controller(SituacionesController::class)->group(function() {
-    Route::get('situaciones/index', 'index')->name('situaciones.index');
+    Route::get('/situaciones/index', 'index')->name('situaciones.index');
 });
 
 Route::controller(TramitesController::class)->group(function() {
-    Route::get('tramites/index', 'index')->name('tramites.index');
+    Route::get('/tramites/index', 'index')->name('tramites.index');
 });
 
 
