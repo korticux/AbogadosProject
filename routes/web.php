@@ -54,6 +54,9 @@ Route::controller(ActoresController::class)->group(function() {
     Route::get('/actores/index', 'index')->name('actores.index');
     Route::get('/actores/post', 'post')->name('actores.post');
     Route::post('/actores/store', 'store')->name('actores.store');
+    Route::get('/actores/edit/{id}', 'edit')->name('actores.edit');
+    Route::post('/actores/update/{id}', 'update')->name('actores.update');
+    Route::get('/actores/delete/{Id}', 'delete')->name('actores.delete');
 });
 
 Route::controller(CuentasController::class)->group(function() {

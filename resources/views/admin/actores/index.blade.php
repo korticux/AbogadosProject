@@ -18,7 +18,7 @@
                                 <th scope="col"># De Cliente</th>
                                 <th scope="col">nombre</th>
                                 <th scope="col">Correo</th>
-                                <th scope="col">Accions</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         @foreach ($actores as $actor)
@@ -29,8 +29,12 @@
                                     <th>{{ $actor->correo }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark"><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark"><i class="bi bi-trash-fill"></i></a>
+                                            <a class="btn  btn-sm btn-outline-dark"
+                                                href="{{ route('actores.edit', $actor->id) }}"><i
+                                                    class="bi bi-pencil-fill"></i></a>
+                                            <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                href="{{ route('actores.delete', $actor->id) }}"><i
+                                                    class="bi bi-trash-fill"></i></a>
                                         </div>
                                     </th>
                                 </tr>

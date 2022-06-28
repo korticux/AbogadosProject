@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('actores', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->string("nocliente");
-            $table->string("agregado");
             $table->string("nombre");
             $table->string("curp");
             $table->string("rfc");
