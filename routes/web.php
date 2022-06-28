@@ -71,6 +71,11 @@ Route::controller(DependenciasController::class)->group(function() {
 
 Route::controller(EstatusController::class)->group(function() {
     Route::get('/estatus/index', 'index')->name('estatus.index');
+    Route::get('/estatus/post', 'post')->name('estatus.post');
+    Route::get('/estatus/edit/{id}', 'edit')->name('estatus.edit');
+    Route::post('/estatus/update/{id}', 'update')->name('estatus.update');
+    Route::get('/estatus/delete/{Id}', 'delete')->name('estatus.delete');
+    Route::post('/estatus/store', 'store')->name('estatus.store');
 });
 
 Route::controller(ExpedientesController::class)->group(function() {
