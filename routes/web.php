@@ -119,6 +119,11 @@ Route::controller(NotificacionesController::class)->group(function() {
 
 Route::controller(CobranzaController::class)->group(function() {
     Route::get('/cobranza/index', 'index')->name('cobranza.index');
+    Route::get('/cobranza/post', 'post')->name('cobranza.post');
+    Route::post('/cobranza/store', 'store')->name('cobranza.store');
+    Route::get('/cobranza/edit/{id}', 'edit')->name('cobranza.edit');
+    Route::post('/cobranza/update/{id}', 'update')->name('cobranza.update');
+    Route::get('/cobranza/delete/{Id}', 'delete')->name('cobranza.delete');
 });
 
 Route::controller(PaisesController::class)->group(function() {
