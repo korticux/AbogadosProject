@@ -91,6 +91,11 @@ Route::controller(FestivoController::class)->group(function() {
 
 Route::controller(MunicipiosController::class)->group(function() {
     Route::get('/municipios/index', 'index')->name('municipios.index');
+    Route::get('/municipios/post', 'post')->name('municipios.post');
+    Route::get('/municipios/edit/{id}', 'edit')->name('municipios.edit');
+    Route::post('/municipios/update/{id}', 'update')->name('municipios.update');
+    Route::get('/municipios/delete/{Id}', 'delete')->name('municipios.delete');
+    Route::post('/municipios/store', 'store')->name('municipios.store');
 });
 
 Route::controller(NotificacionesController::class)->group(function() {
