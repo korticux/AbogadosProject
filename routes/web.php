@@ -61,6 +61,11 @@ Route::controller(ActoresController::class)->group(function() {
 
 Route::controller(CuentasController::class)->group(function() {
     Route::get('/cuentas/index', 'index')->name('cuentas.index');
+    Route::get('/cuentas/post', 'post')->name('cuentas.post');
+    Route::post('/cuentas/store', 'store')->name('cuentas.store');
+    Route::get('/cuentas/edit/{id}', 'edit')->name('cuentas.edit');
+    Route::post('/cuentas/update/{id}', 'update')->name('cuentas.update');
+    Route::get('/cuentas/delete/{Id}', 'delete')->name('cuentas.delete');
 });
 
 Route::controller(DependenciasController::class)->group(function() {
