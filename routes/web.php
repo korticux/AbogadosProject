@@ -87,6 +87,11 @@ Route::controller(ExpedientesController::class)->group(function() {
 
 Route::controller(FestivoController::class)->group(function() {
     Route::get('/festivos/index', 'index')->name('festivos.index');
+    Route::get('/festivos/post', 'post')->name('festivos.post');
+    Route::get('/festivos/edit/{id}', 'edit')->name('festivos.edit');
+    Route::post('/festivos/update/{id}', 'update')->name('festivos.update');
+    Route::get('/festivos/delete/{Id}', 'delete')->name('festivos.delete');
+    Route::post('/festivos/store', 'store')->name('festivos.store');
 });
 
 Route::controller(MunicipiosController::class)->group(function() {
