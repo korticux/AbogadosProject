@@ -62,6 +62,11 @@ Route::controller(CuentasController::class)->group(function() {
 
 Route::controller(DependenciasController::class)->group(function() {
     Route::get('/dependencias/index', 'index')->name('dependencias.index');
+    Route::get('/dependencias/post', 'post')->name('dependencias.post');
+    Route::get('/dependencias/edit/{id}', 'edit')->name('dependencias.edit');
+    Route::post('/dependencias/update/{id}', 'update')->name('dependencias.update');
+    Route::get('/dependencias/delete/{Id}', 'delete')->name('dependencias.delete');
+    Route::post('/dependencias/store', 'store')->name('dependencias.store');
 });
 
 Route::controller(EstatusController::class)->group(function() {
