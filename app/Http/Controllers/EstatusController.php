@@ -74,7 +74,7 @@ class EstatusController extends Controller
         ]);
 
         $notification = array(
-            'message' => "Estatus Actualizada Correctamente",
+            'message' => "Estatus Actualizado Correctamente",
             'alert-type' => "success",
         );
 

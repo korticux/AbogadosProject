@@ -92,6 +92,11 @@ Route::controller(MunicipiosController::class)->group(function() {
 
 Route::controller(NotificacionesController::class)->group(function() {
     Route::get('/notificaciones/index', 'index')->name('notificaciones.index');
+    Route::get('/notificaciones/post', 'post')->name('notificaciones.post');
+    Route::get('/notificaciones/edit/{id}', 'edit')->name('notificaciones.edit');
+    Route::post('/notificaciones/update/{id}', 'update')->name('notificaciones.update');
+    Route::get('/notificaciones/delete/{Id}', 'delete')->name('notificaciones.delete');
+    Route::post('/notificaciones/store', 'store')->name('notificaciones.store');
 });
 
 Route::controller(CobranzaController::class)->group(function() {
