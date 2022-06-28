@@ -74,6 +74,11 @@ Route::controller(DependenciasController::class)->group(function() {
 
 Route::controller(EstatusController::class)->group(function() {
     Route::get('/estatus/index', 'index')->name('estatus.index');
+    Route::get('/estatus/post', 'post')->name('estatus.post');
+    Route::get('/estatus/edit/{id}', 'edit')->name('estatus.edit');
+    Route::post('/estatus/update/{id}', 'update')->name('estatus.update');
+    Route::get('/estatus/delete/{Id}', 'delete')->name('estatus.delete');
+    Route::post('/estatus/store', 'store')->name('estatus.store');
 });
 
 Route::controller(ExpedientesController::class)->group(function() {
@@ -90,6 +95,11 @@ Route::controller(MunicipiosController::class)->group(function() {
 
 Route::controller(NotificacionesController::class)->group(function() {
     Route::get('/notificaciones/index', 'index')->name('notificaciones.index');
+    Route::get('/notificaciones/post', 'post')->name('notificaciones.post');
+    Route::get('/notificaciones/edit/{id}', 'edit')->name('notificaciones.edit');
+    Route::post('/notificaciones/update/{id}', 'update')->name('notificaciones.update');
+    Route::get('/notificaciones/delete/{Id}', 'delete')->name('notificaciones.delete');
+    Route::post('/notificaciones/store', 'store')->name('notificaciones.store');
 });
 
 Route::controller(CobranzaController::class)->group(function() {
