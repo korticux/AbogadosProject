@@ -172,6 +172,11 @@ Route::controller(SituacionesController::class)->group(function() {
 
 Route::controller(TramitesController::class)->group(function() {
     Route::get('/tramites/index', 'index')->name('tramites.index');
+    Route::get('/tramites/post', 'post')->name('tramites.post');
+    Route::get('/tramites/edit/{id}', 'edit')->name('tramites.edit');
+    Route::post('/tramites/update/{id}', 'update')->name('tramites.update');
+    Route::get('/tramites/delete/{Id}', 'delete')->name('tramites.delete');
+    Route::post('/tramites/store', 'store')->name('tramites.store');
 });
 
 
