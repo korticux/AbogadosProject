@@ -163,6 +163,11 @@ Route::controller(RespaldoController::class)->group(function() {
 
 Route::controller(SituacionesController::class)->group(function() {
     Route::get('/situaciones/index', 'index')->name('situaciones.index');
+    Route::get('/situaciones/post', 'post')->name('situaciones.post');
+    Route::post('/situaciones/store', 'store')->name('situaciones.store');
+    Route::get('/situaciones/edit/{id}', 'edit')->name('situaciones.edit');
+    Route::post('/situaciones/update/{id}', 'update')->name('situaciones.update');
+    Route::get('/situaciones/delete/{Id}', 'delete')->name('situaciones.delete');
 });
 
 Route::controller(TramitesController::class)->group(function() {
