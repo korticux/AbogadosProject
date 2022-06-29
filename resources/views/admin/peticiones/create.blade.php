@@ -4,7 +4,7 @@
 @section('admin')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Crear Pais</h5>
+            <h5 class="card-title">Crear Peticion</h5>
 
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('peticiones.store') }}">
