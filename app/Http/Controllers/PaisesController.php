@@ -4,11 +4,81 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paises;
+use Carbon\Carbon;
 
 class PaisesController extends Controller
 {
     public function index() {
         $paises = Paises::latest()->get();
         return View("admin.paises.index" , compact("paises"));
+    }
+
+    public function post()
+    {
+        return View('admin.paises.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required',
+        ], [
+            'nombre.required' => 'El nombre del pais es requerido',
+        ]);
+
+        Paises::insert([
+            'nombre' => $request->nombre,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "Pais Agregado Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('paises.index')->with($notification);
+    }
+
+    public function delete($id)
+    {
+        $estado = Paises::findOrFail($id);
+
+        Paises::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => "Pais Eliminada Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('paises.index')->with($notification);
+    }
+
+    public function edit($id)
+    {
+        $pais = Paises::findOrFail($id);
+
+        return View('admin.paises.update', compact('pais'));
+    }
+
+    public function update($id, Request $request)
+    {
+
+        $request->validate([
+            'nombre' => 'required',
+        ], [
+            'nombre.required' => 'El nombre del pais es requerido',
+        ]);
+
+        Paises::findOrFail($id)->update([
+            'nombre' => $request->nombre,
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
+
+        $notification = array(
+            'message' => "Pais Actualizada Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('paises.index')->with($notification);
     }
 }
