@@ -128,6 +128,11 @@ Route::controller(CobranzaController::class)->group(function() {
 
 Route::controller(PaisesController::class)->group(function() {
     Route::get('/paises/index', 'index')->name('paises.index');
+    Route::get('/paises/post', 'post')->name('paises.post');
+    Route::post('/paises/store', 'store')->name('paises.store');
+    Route::get('/paises/edit/{id}', 'edit')->name('paises.edit');
+    Route::post('/paises/update/{id}', 'update')->name('paises.update');
+    Route::get('/paises/delete/{Id}', 'delete')->name('paises.delete');
 });
 
 Route::controller(PeticionesController::class)->group(function() {
