@@ -137,6 +137,11 @@ Route::controller(PaisesController::class)->group(function() {
 
 Route::controller(PeticionesController::class)->group(function() {
     Route::get('/peticiones/index', 'index')->name('peticiones.index');
+    Route::get('/peticiones/post', 'post')->name('peticiones.post');
+    Route::post('/peticiones/store', 'store')->name('peticiones.store');
+    Route::get('/peticiones/edit/{id}', 'edit')->name('peticiones.edit');
+    Route::post('/peticiones/update/{id}', 'update')->name('peticiones.update');
+    Route::get('/peticiones/delete/{Id}', 'delete')->name('peticiones.delete');
 });
 
 Route::controller(ProcesosController::class)->group(function() {
