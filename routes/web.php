@@ -150,6 +150,11 @@ Route::controller(ProcesosController::class)->group(function() {
 
 Route::controller(RegionesController::class)->group(function() {
     Route::get('/regiones/index', 'index')->name('regiones.index');
+    Route::get('/regiones/post', 'post')->name('regiones.post');
+    Route::post('/regiones/store', 'store')->name('regiones.store');
+    Route::get('/regiones/edit/{id}', 'edit')->name('regiones.edit');
+    Route::post('/regiones/update/{id}', 'update')->name('regiones.update');
+    Route::get('/regiones/delete/{Id}', 'delete')->name('regiones.delete');
 });
 
 Route::controller(RespaldoController::class)->group(function() {

@@ -7,7 +7,7 @@
             <h5 class="card-title">Crear Dependencia</h5>
 
             <!-- Floating Labels Form -->
-            <form class="row g-3" method="POST" action="{{ route('dependencias.store') }}">
+            <form class="row g-3" method="POST" action="{{ route('dependencias.update', $dependencia->id) }}">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floating">
