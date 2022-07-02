@@ -27,6 +27,9 @@
     <link href="{{ asset('backend/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/datatable-bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/datatable-buttons.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/datatable-responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 
@@ -126,7 +129,7 @@
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Sí, Eliminar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location.href = link;
@@ -140,6 +143,7 @@
             })
         })
     </script>
+
 </body>
 
 </html>

@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\CuentasExport;
 use App\Models\Cuentas;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CuentasController extends Controller
 {
@@ -88,5 +91,9 @@ class CuentasController extends Controller
         return redirect()->route('cuentas.index')->with($notification);
     }
 
+    public function export()
+    {
+        return Excel::download(new CuentasExport, "cuentas.xlsx");
+    }
 
 }

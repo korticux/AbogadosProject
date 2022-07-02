@@ -57,12 +57,14 @@ Route::controller(ActoresController::class)->group(function() {
     Route::get('/actores/edit/{id}', 'edit')->name('actores.edit');
     Route::post('/actores/update/{id}', 'update')->name('actores.update');
     Route::get('/actores/delete/{Id}', 'delete')->name('actores.delete');
+    Route::get('/actores/export/', 'export')->name('actores.export');
 });
 
 Route::controller(CuentasController::class)->group(function() {
     Route::get('/cuentas/index', 'index')->name('cuentas.index');
     Route::get('/cuentas/post', 'post')->name('cuentas.post');
     Route::post('/cuentas/store', 'store')->name('cuentas.store');
+    Route::get('/cuentas/export', 'export')->name('cuentas.export');
     Route::get('/cuentas/edit/{id}', 'edit')->name('cuentas.edit');
     Route::post('/cuentas/update/{id}', 'update')->name('cuentas.update');
     Route::get('/cuentas/delete/{Id}', 'delete')->name('cuentas.delete');
@@ -70,6 +72,7 @@ Route::controller(CuentasController::class)->group(function() {
 
 Route::controller(DependenciasController::class)->group(function() {
     Route::get('/dependencias/index', 'index')->name('dependencias.index');
+    Route::get('/dependencias/export', 'export')->name('dependencias.export');
     Route::get('/dependencias/post', 'post')->name('dependencias.post');
     Route::get('/dependencias/edit/{id}', 'edit')->name('dependencias.edit');
     Route::post('/dependencias/update/{id}', 'update')->name('dependencias.update');
@@ -124,6 +127,7 @@ Route::controller(CobranzaController::class)->group(function() {
     Route::get('/cobranza/edit/{id}', 'edit')->name('cobranza.edit');
     Route::post('/cobranza/update/{id}', 'update')->name('cobranza.update');
     Route::get('/cobranza/delete/{Id}', 'delete')->name('cobranza.delete');
+    Route::get('/cobranza/export/', 'export')->name('cobranza.export');
 });
 
 Route::controller(PaisesController::class)->group(function() {

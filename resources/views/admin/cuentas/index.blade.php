@@ -11,6 +11,9 @@
                         Agregar
                         Cuenta</a>
 
+                        <a href="{{ route('cuentas.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cuentas</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

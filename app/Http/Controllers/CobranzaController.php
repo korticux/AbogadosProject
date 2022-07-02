@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\CobranzasExport;
 use App\Models\Cuentas;
 use Illuminate\Http\Request;
 use App\Models\Cobranza;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CobranzaController extends Controller
 {
@@ -114,5 +117,9 @@ class CobranzaController extends Controller
         return redirect()->route('cobranza.index')->with($notification);
     }
 
+    public function export()
+    {
+        return Excel::download(new CobranzasExport, "cobranzas.xlsx");
+    }
 
 }

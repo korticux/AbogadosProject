@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\DependenciasExport;
 use App\Models\Dependencias;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DependenciasController extends Controller
 {
@@ -79,5 +82,10 @@ class DependenciasController extends Controller
         );
 
         return redirect()->route('dependencias.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new DependenciasExport, "dependencias.xlsx");
     }
 }

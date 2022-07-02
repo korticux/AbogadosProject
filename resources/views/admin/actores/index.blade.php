@@ -8,8 +8,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Datatables</h5>
                     <a class="btn btn-primary" href="{{ route('actores.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                        Add
+                        Agregar
                         Actores</a>
+                    <a href="{{ route('actores.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Actores</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -45,7 +47,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
