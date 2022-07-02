@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\EstatusExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Estatus;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EstatusController extends Controller
 {
@@ -81,5 +84,9 @@ class EstatusController extends Controller
         return redirect()->route('estatus.index')->with($notification);
     }
 
+    public function export()
+    {
+        return Excel::download(new EstatusExport, "estatus.xlsx");
+    }
 
 }

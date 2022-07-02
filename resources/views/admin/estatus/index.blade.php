@@ -11,6 +11,10 @@
                         Agregar
                         Estatus</a>
 
+                        <a href="{{ route('estatus.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estatus</a>
+
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

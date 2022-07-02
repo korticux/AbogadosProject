@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PaisesExport;
 use Illuminate\Http\Request;
 use App\Models\Paises;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use Psy\ExecutionLoopClosure;
 
 class PaisesController extends Controller
 {
@@ -80,5 +83,10 @@ class PaisesController extends Controller
         );
 
         return redirect()->route('paises.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new PaisesExport, "paises.xlsx");
     }
 }

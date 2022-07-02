@@ -45,7 +45,7 @@
 
                 <div class="col-md-12">
                     <div class="form-floating">
-                            <textarea name="" id="" cols="10" rows="10" name="comentario" class="form-control" id="floatingName"
+                        <textarea id="" cols="10" rows="10" name="comentario" class="form-control" id="floatingName"
                             placeholder="Ingresar comentario"></textarea>
                         @error('comentario')
                             <span class="text-danger"> {{ $message }} </span>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PeticionesExport;
 use Illuminate\Http\Request;
 use App\Models\Peticiones;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeticionesController extends Controller
 {
@@ -80,5 +82,10 @@ class PeticionesController extends Controller
         );
 
         return redirect()->route('peticiones.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new PeticionesExport, "peticiones.xlsx");
     }
 }

@@ -11,6 +11,10 @@
                         Agregar
                         Festivo</a>
 
+
+                    <a href="{{ route('festivos.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Festivos</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
@@ -27,7 +31,9 @@
                                     <th>{{ $festivo->fecha }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('festivos.edit', $festivo->id) }}" ><i class="bi bi-pencil-fill"></i></a>
+                                            <a class="btn  btn-sm btn-outline-dark"
+                                                href="{{ route('festivos.edit', $festivo->id) }}"><i
+                                                    class="bi bi-pencil-fill"></i></a>
                                             <a class="btn btn-sm btn-outline-dark" id="delete"
                                                 href="{{ route('festivos.delete', $festivo->id) }}"><i
                                                     class="bi bi-trash-fill"></i></a>

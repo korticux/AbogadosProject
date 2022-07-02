@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SituacionesExport;
 use Illuminate\Http\Request;
 use App\Models\Situaciones;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SituacionesController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $situaciones = Situaciones::latest()->get();
-        return View("admin.situaciones.index" , compact("situaciones"));
+        return View("admin.situaciones.index", compact("situaciones"));
     }
 
     public function post()
@@ -41,7 +44,7 @@ class SituacionesController extends Controller
         ]);
 
         $notification  = array(
-            'message' => "Pais Agregado Correctamente",
+            'message' => "Situacion Agregado Correctamente",
             'alert-type' => "success",
         );
 
@@ -98,5 +101,10 @@ class SituacionesController extends Controller
         );
 
         return redirect()->route('situaciones.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new SituacionesExport, "situaciones.xlsx");
     }
 }
