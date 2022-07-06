@@ -11,6 +11,9 @@
                         Agregar
                         Peticion</a>
 
+                        <a href="{{ route('peticiones.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Peticiones</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

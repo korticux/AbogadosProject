@@ -43,6 +43,7 @@ Route::get('/dashboard', function () {
 
 Route::controller(EstadosController::class)->group(function() {
     Route::get('/estados/index', 'index')->name('estados.index');
+    Route::get('/estados/export', 'export')->name('estados.export');
     Route::get('/estados/post', 'post')->name('estados.post');
     Route::get('/estados/edit/{id}', 'edit')->name('estados.edit');
     Route::post('/estados/update/{id}', 'update')->name('estados.update');
@@ -57,12 +58,14 @@ Route::controller(ActoresController::class)->group(function() {
     Route::get('/actores/edit/{id}', 'edit')->name('actores.edit');
     Route::post('/actores/update/{id}', 'update')->name('actores.update');
     Route::get('/actores/delete/{Id}', 'delete')->name('actores.delete');
+    Route::get('/actores/export/', 'export')->name('actores.export');
 });
 
 Route::controller(CuentasController::class)->group(function() {
     Route::get('/cuentas/index', 'index')->name('cuentas.index');
     Route::get('/cuentas/post', 'post')->name('cuentas.post');
     Route::post('/cuentas/store', 'store')->name('cuentas.store');
+    Route::get('/cuentas/export', 'export')->name('cuentas.export');
     Route::get('/cuentas/edit/{id}', 'edit')->name('cuentas.edit');
     Route::post('/cuentas/update/{id}', 'update')->name('cuentas.update');
     Route::get('/cuentas/delete/{Id}', 'delete')->name('cuentas.delete');
@@ -70,6 +73,7 @@ Route::controller(CuentasController::class)->group(function() {
 
 Route::controller(DependenciasController::class)->group(function() {
     Route::get('/dependencias/index', 'index')->name('dependencias.index');
+    Route::get('/dependencias/export', 'export')->name('dependencias.export');
     Route::get('/dependencias/post', 'post')->name('dependencias.post');
     Route::get('/dependencias/edit/{id}', 'edit')->name('dependencias.edit');
     Route::post('/dependencias/update/{id}', 'update')->name('dependencias.update');
@@ -79,6 +83,7 @@ Route::controller(DependenciasController::class)->group(function() {
 
 Route::controller(EstatusController::class)->group(function() {
     Route::get('/estatus/index', 'index')->name('estatus.index');
+    Route::get('/estatus/export', 'export')->name('estatus.export');
     Route::get('/estatus/post', 'post')->name('estatus.post');
     Route::get('/estatus/edit/{id}', 'edit')->name('estatus.edit');
     Route::post('/estatus/update/{id}', 'update')->name('estatus.update');
@@ -97,6 +102,7 @@ Route::controller(ExpedientesController::class)->group(function() {
 
 Route::controller(FestivoController::class)->group(function() {
     Route::get('/festivos/index', 'index')->name('festivos.index');
+    Route::get('/festivos/export', 'export')->name('festivos.export');
     Route::get('/festivos/post', 'post')->name('festivos.post');
     Route::get('/festivos/edit/{id}', 'edit')->name('festivos.edit');
     Route::post('/festivos/update/{id}', 'update')->name('festivos.update');
@@ -106,6 +112,7 @@ Route::controller(FestivoController::class)->group(function() {
 
 Route::controller(MunicipiosController::class)->group(function() {
     Route::get('/municipios/index', 'index')->name('municipios.index');
+    Route::get('/municipios/export', 'export')->name('municipios.export');
     Route::get('/municipios/post', 'post')->name('municipios.post');
     Route::get('/municipios/edit/{id}', 'edit')->name('municipios.edit');
     Route::post('/municipios/update/{id}', 'update')->name('municipios.update');
@@ -115,6 +122,7 @@ Route::controller(MunicipiosController::class)->group(function() {
 
 Route::controller(NotificacionesController::class)->group(function() {
     Route::get('/notificaciones/index', 'index')->name('notificaciones.index');
+    Route::get('/notificaciones/export', 'export')->name('notificaciones.export');
     Route::get('/notificaciones/post', 'post')->name('notificaciones.post');
     Route::get('/notificaciones/edit/{id}', 'edit')->name('notificaciones.edit');
     Route::post('/notificaciones/update/{id}', 'update')->name('notificaciones.update');
@@ -129,10 +137,12 @@ Route::controller(CobranzaController::class)->group(function() {
     Route::get('/cobranza/edit/{id}', 'edit')->name('cobranza.edit');
     Route::post('/cobranza/update/{id}', 'update')->name('cobranza.update');
     Route::get('/cobranza/delete/{Id}', 'delete')->name('cobranza.delete');
+    Route::get('/cobranza/export/', 'export')->name('cobranza.export');
 });
 
 Route::controller(PaisesController::class)->group(function() {
     Route::get('/paises/index', 'index')->name('paises.index');
+    Route::get('/paises/export', 'export')->name('paises.export');
     Route::get('/paises/post', 'post')->name('paises.post');
     Route::post('/paises/store', 'store')->name('paises.store');
     Route::get('/paises/edit/{id}', 'edit')->name('paises.edit');
@@ -142,6 +152,7 @@ Route::controller(PaisesController::class)->group(function() {
 
 Route::controller(PeticionesController::class)->group(function() {
     Route::get('/peticiones/index', 'index')->name('peticiones.index');
+    Route::get('/peticiones/export', 'export')->name('peticiones.export');
     Route::get('/peticiones/post', 'post')->name('peticiones.post');
     Route::post('/peticiones/store', 'store')->name('peticiones.store');
     Route::get('/peticiones/edit/{id}', 'edit')->name('peticiones.edit');
@@ -155,6 +166,7 @@ Route::controller(ProcesosController::class)->group(function() {
 
 Route::controller(RegionesController::class)->group(function() {
     Route::get('/regiones/index', 'index')->name('regiones.index');
+    Route::get('/regiones/export', 'export')->name('regiones.export');
     Route::get('/regiones/post', 'post')->name('regiones.post');
     Route::post('/regiones/store', 'store')->name('regiones.store');
     Route::get('/regiones/edit/{id}', 'edit')->name('regiones.edit');
@@ -168,6 +180,7 @@ Route::controller(RespaldoController::class)->group(function() {
 
 Route::controller(SituacionesController::class)->group(function() {
     Route::get('/situaciones/index', 'index')->name('situaciones.index');
+    Route::get('/situaciones/export', 'export')->name('situaciones.export');
     Route::get('/situaciones/post', 'post')->name('situaciones.post');
     Route::post('/situaciones/store', 'store')->name('situaciones.store');
     Route::get('/situaciones/edit/{id}', 'edit')->name('situaciones.edit');

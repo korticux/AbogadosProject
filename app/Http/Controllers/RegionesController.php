@@ -1,16 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\RegionesExport;
 use App\Models\Regiones;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RegionesController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $regiones = Regiones::latest()->get();
-        return View("admin.regiones.index" , compact("regiones"));
+        return View("admin.regiones.index", compact("regiones"));
     }
 
     public function post()
@@ -91,5 +95,8 @@ class RegionesController extends Controller
         return redirect()->route('regiones.index')->with($notification);
     }
 
-
+    public function export()
+    {
+        return Excel::download(new RegionesExport, "regiones.xlsx");
+    }
 }

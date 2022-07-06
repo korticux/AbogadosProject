@@ -11,6 +11,9 @@
                         Agregar
                         Pais</a>
 
+                        <a href="{{ route('paises.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Paises</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

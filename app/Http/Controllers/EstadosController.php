@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EstadosExport;
 use Illuminate\Http\Request;
 use App\Models\Estados;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EstadosController extends Controller
 {
@@ -81,5 +83,10 @@ class EstadosController extends Controller
         );
 
         return redirect()->route('estados.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new EstadosExport, "estados.xlsx");
     }
 }

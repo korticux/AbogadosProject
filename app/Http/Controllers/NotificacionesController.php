@@ -1,15 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\NotificacionesExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Notificaciones;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NotificacionesController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $notificaciones = Notificaciones::latest()->get();
-        return View("admin.notificaciones.index" , compact("notificaciones"));
+        return View("admin.notificaciones.index", compact("notificaciones"));
     }
 
     public function post()
@@ -81,4 +85,8 @@ class NotificacionesController extends Controller
         return redirect()->route('notificaciones.index')->with($notification);
     }
 
+    public function export()
+    {
+        return Excel::download(new NotificacionesExport, "notificaciones.xlsx");
+    }
 }

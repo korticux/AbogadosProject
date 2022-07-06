@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MunicipiosExport;
 use App\Models\Estados;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Municipios;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MunicipiosController extends Controller
 {
@@ -86,5 +88,9 @@ class MunicipiosController extends Controller
         return redirect()->route('municipios.index')->with($notification);
     }
 
+    public function export()
+    {
+        return Excel::download(new MunicipiosExport, "municipios.xlsx");
+    }
 
 }

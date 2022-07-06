@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ActoresExport;
 use App\Models\Actores;
 use App\Models\Estados;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ActoresController extends Controller
 {
@@ -118,5 +120,10 @@ class ActoresController extends Controller
         );
 
         return redirect()->route('actores.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ActoresExport, "actores.xlsx");
     }
 }

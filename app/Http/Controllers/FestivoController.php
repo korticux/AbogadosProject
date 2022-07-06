@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\FestivosExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Festivos;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class FestivoController extends Controller
 {
@@ -86,5 +88,10 @@ class FestivoController extends Controller
         );
 
         return redirect()->route('festivos.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new FestivosExport, "festivos.xlsx");
     }
 }
