@@ -11,24 +11,31 @@
                         Agregar
                         Expediente</a>
 
+                        <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Expedientes</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">Núm.Exp</th>
+                                <th scope="col">Numero</th>
                                 <th scope="col">Año</th>
                                 <th scope="col">Región</th>
                                 <th scope="col">Sala</th>
                                 <th scope="col">Ponencia</th>
-                                <th scope="col">Compuesto</th>
                                 <th scope="col">Actor</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         @foreach ($expedientes as $expediente)
                             <tbody>
                                 <tr>
-                                    <th>{{ $expediente->nombre }}</th>
-                                    <th>{{ $expediente->created_at }}</th>
+                                    <th>{{ $expediente->numero}}</th>
+                                    <th>{{ $expediente->ano}}</th>
+                                    <th>{{ $expediente->region_id}}</th>
+                                    <th>{{ $expediente->sala}}</th>
+                                    <th>{{ $expediente->ponencia}}</th>
+                                    <th>{{ $expediente->actor_id}}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a class="btn  btn-sm btn-outline-dark" href="{{ route('expedientes.edit', $expediente->id) }}" ><i class="bi bi-pencil-fill"></i></a>

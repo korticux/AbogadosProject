@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Expedientes;
-
-
+use App\Models\Regiones;
+use App\Models\Actores;
+use App\Models\Dependencias;
+use App\Models\Estatus;
+use App\Models\Tramites;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Peticiones;
 
 class ExpedientesController extends Controller
 {
@@ -17,8 +22,15 @@ class ExpedientesController extends Controller
 
     public function post()
     {
-        $expedientes = Expedientes::latest()->get();
-        return View('admin.expedientes.create', compact("expedientes"));
+
+        $regiones = Regiones::latest()->get();
+        $dependencias = Dependencias::latest()->get();
+        $actores = Actores::latest()->get();
+        $estatus = Estatus::latest()->get();
+        $tramites = Tramites::latest()->get();
+        $peticiones = Peticiones::latest()->get();
+        return View('admin.expedientes.create', compact("tramites", "estatus", "actores", "dependencias", "regiones", "peticiones"));
+
     }
 
     public function store(Request $request)
@@ -29,12 +41,12 @@ class ExpedientesController extends Controller
             'region_id' => 'required',
             'sala' => 'required',
             'ponencia' => 'required',
-            'peticion' => 'required',
+            'peticion_id' => 'required',
             'fecha' => 'required',
             'actor_id' => 'required',
             'dependencia_id' => 'required',
             'estatus_id' => 'required',
-            'tramites_id' => 'required',
+            'tramite_id' => 'required',
             'comentarios' => 'required',
             'honorario' => 'required',
             'pagoinicial' => 'required',
@@ -51,12 +63,12 @@ class ExpedientesController extends Controller
             'region_id.required' => 'La region del expediente es requerida',
             'sala.required' => 'La sala del expediente es requerida',
             'ponencia.required' => 'La ponencia del expediente es requerida',
-            'peticion.required' => 'La peticion del expediente es requerida',
+            'peticion_id.required' => 'La peticion del expediente es requerida',
             'fecha.required' => 'La fecha del expediente es requerida',
             'actor_id.required' => 'El actor del expediente es requerido',
             'dependencia_id.required' => 'La fecha del expediente es requerida',
             'estatus_id.required' => 'El estatus del expediente es requerido',
-            'tramites_id.required' => 'El tramite del expediente es requerido',
+            'tramite_id.required' => 'El tramite del expediente es requerido',
             'comentarios.required' => 'El comentario del expediente es requerida',
             'honorario.required' => 'El honorario del expediente es requerido',
             'pagoinicial.required' => 'El pago inicial del expediente es requerido',
@@ -68,18 +80,19 @@ class ExpedientesController extends Controller
             'fecha6.required' => 'La fecha del expediente es requerida',
         ]);
 
+
         Expedientes::insert([
             'numero' => $request->numero,
             'ano' => $request->ano,
             'region_id' => $request->region_id,
             'sala' => $request->sala,
             'ponencia' => $request->ponencia,
-            'peticion' => $request->peticion,
+            'peticion_id' => $request->peticion_id,
             'fecha' => $request->fecha,
             'actor_id' => $request->actor_id,
             'dependencia_id' => $request->dependencia_id,
             'estatus_id' => $request->estatus_id,
-            'tramites_id' => $request->tramites_id,
+            'tramite_id' => $request->tramite_id,
             'comentarios' => $request->comentarios,
             'honorario' => $request->honorario,
             'pagoinicial' => $request->pagoinicial,
@@ -99,4 +112,30 @@ class ExpedientesController extends Controller
 
         return redirect()->route('expedientes.index')->with($notification);
     }
+
+    public function delete($id)
+    {
+
+        Expedientes::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => "Expediente Eliminado Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('expedientes.index')->with($notification);
+    }
+
+    public function edit($id)
+    {
+        $expediente = Expedientes::findOrFail($id);
+        $regiones = Regiones::latest()->get();
+        $dependencias = Dependencias::latest()->get();
+        $actores = Actores::latest()->get();
+        $estatus = Estatus::latest()->get();
+        $tramites = Tramites::latest()->get();
+        $peticiones = Peticiones::latest()->get();
+        return View('admin.expedientes.update', compact("tramites", "estatus", "actores", "dependencias", "regiones", "peticiones", "expediente"));
+    }
+
 }
