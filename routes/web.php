@@ -16,11 +16,10 @@ use App\Http\Controllers\PeticionesController;
 use App\Http\Controllers\ProcesosController;
 use App\Http\Controllers\RegionesController;
 use App\Http\Controllers\RespaldoController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SituacionesController;
 use App\Http\Controllers\TramitesController;
-
-
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +54,7 @@ Route::controller(EstadosController::class)->group(function() {
 Route::controller(ActoresController::class)->group(function() {
     Route::get('/actores/index', 'index')->name('actores.index');
     Route::get('/actores/post', 'post')->name('actores.post');
+    Route::get('/actores/downloadPdf', 'downloadPdf')->name('actores.downloadPdf');
     Route::post('/actores/store', 'store')->name('actores.store');
     Route::get('/actores/edit/{id}', 'edit')->name('actores.edit');
     Route::post('/actores/update/{id}', 'update')->name('actores.update');
@@ -211,6 +211,11 @@ Route::controller(TramitesController::class)->group(function() {
     Route::get('/tramites/delete/{Id}', 'delete')->name('tramites.delete');
     Route::post('/tramites/store', 'store')->name('tramites.store');
     Route::get('/tramites/createPDF', 'createPDF')->name('tramites.createPDF');
+});
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
 });
 
 
