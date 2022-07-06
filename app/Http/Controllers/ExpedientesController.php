@@ -12,10 +12,21 @@ use App\Models\Estatus;
 use App\Models\Tramites;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Peticiones;
+use PDF;
 
 class ExpedientesController extends Controller
 {
+
+
+    public function createPDF(){
+        $datos = Expedientes::all();
+        $pdf = PDF::loadView('admin.expedientes.createPDF', compact('datos'));
+        return $pdf->download('Expedientes_PDF.pdf');
+    }
+
     public function index() {
+        $regiones = Regiones::with('expedientes')->get();
+        $actores = Actores::with('expedientes')->get();
         $expedientes = Expedientes::latest()->get();
         return View("admin.expedientes.index" , compact("expedientes"));
     }

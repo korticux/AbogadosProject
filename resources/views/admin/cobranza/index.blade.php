@@ -20,10 +20,10 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">cobranza</th>
-                                <th scope="col">tipo</th>
-                                <th scope="col">fecha</th>
-                                <th scope="col">monto</th>
+                                <th scope="col">Cobranza</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Monto</th>
                                 <th scope="col">Acciones</th>
 
                             </tr>
@@ -34,7 +34,7 @@
                                     <th>{{ $cobranza->cobranza }}</th>
                                     <th>{{ $cobranza->tipo }}</th>
                                     <th>{{ $cobranza->fecha }}</th>
-                                    <th>{{ $cobranza->monto }}</th>
+                                    <th>$ {{ $cobranza->monto }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a class="btn  btn-sm btn-outline-dark" href="{{ route('cobranza.edit', $cobranza->id) }}" ><i class="bi bi-pencil-fill"></i></a>
