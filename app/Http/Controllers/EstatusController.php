@@ -7,9 +7,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Estatus;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class EstatusController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Estatus::all();
+        $pdf = PDF::loadView('admin.estatus.createPDF', compact('datos'));
+        return $pdf->download('Estatus_PDF.pdf');
+    }
+
     public function index() {
         $estatus = Estatus::latest()->get();
         return View("admin.estatus.index" , compact("estatus"));

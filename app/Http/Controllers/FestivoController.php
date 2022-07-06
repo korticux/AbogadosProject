@@ -7,9 +7,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Festivos;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class FestivoController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Festivos::all();
+        $pdf = PDF::loadView('admin.festivos.createPDF', compact('datos'));
+        return $pdf->download('Festivos_PDF.pdf');
+    }
+
     public function index() {
         $festivos = Festivos::latest()->get();
         return View("admin.festivos.index" , compact("festivos"));

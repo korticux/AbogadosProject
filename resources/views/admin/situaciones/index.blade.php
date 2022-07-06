@@ -15,6 +15,9 @@
                     <a href="{{ route('situaciones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Situaciones</a>
 
+                            <a href="{{ URL::to('/situaciones/pdf') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

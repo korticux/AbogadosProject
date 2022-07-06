@@ -14,12 +14,15 @@
                         <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Regiones</a>
 
+                            <a href="{{ URL::to('/regiones/pdf') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">numero</th>
-                                <th scope="col">nombre</th>
+                                <th scope="col">Numero</th>
+                                <th scope="col">Nombre</th>
                             </tr>
                         </thead>
                         @foreach ($regiones as $region)

@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Exports\RegionesExport;
 use App\Models\Regiones;
 use Carbon\Carbon;
-
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class RegionesController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Regiones::all();
+        $pdf = PDF::loadView('admin.regiones.createPDF', compact('datos'));
+        return $pdf->download('Regiones_PDF.pdf');
+    }
+
     public function index()
     {
         $regiones = Regiones::latest()->get();

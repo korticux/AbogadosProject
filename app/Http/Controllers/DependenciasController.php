@@ -7,9 +7,17 @@ use App\Models\Dependencias;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class DependenciasController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Dependencias::all();
+        $pdf = PDF::loadView('admin.dependencias.createPDF', compact('datos'));
+        return $pdf->download('Dependencias_PDF.pdf');
+    }
+
     public function index() {
         $dependencias = Dependencias::latest()->get();
         return View("admin.dependencias.index" , compact("dependencias"));
