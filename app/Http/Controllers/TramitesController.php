@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Tramites;
+use PDF;
 
 class TramitesController extends Controller
 {
+
+
+    public function createPDF(){
+        $datos = Tramites::all();
+        $pdf = PDF::loadView('admin.tramites.createPDF', compact('datos'));
+        return $pdf->download('Tramites_PDF.pdf');
+    }
+
     public function index() {
         $tramites = Tramites::latest()->get();
         return View("admin.tramites.index" , compact("tramites"));

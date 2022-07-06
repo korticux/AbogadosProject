@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use App\Exports\PaisesExport;
 use Illuminate\Http\Request;
 use App\Models\Paises;
+use PDF;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Psy\ExecutionLoopClosure;
 
 class PaisesController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Paises::all();
+        $pdf = PDF::loadView('admin.paises.createPDF', compact('datos'));
+        return $pdf->download('Paises_PDF.pdf');
+    }
+
     public function index() {
         $paises = Paises::latest()->get();
         return View("admin.paises.index" , compact("paises"));

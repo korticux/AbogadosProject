@@ -8,9 +8,16 @@ use App\Models\Estados;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class ActoresController extends Controller
 {
+    public function createPDF(){
+        $datos = Actores::all();
+        $pdf = PDF::loadView('admin.actores.createPDF', compact('datos'));
+        return $pdf->download('Actores_PDF.pdf');
+    }
+
     public function index()
     {
         $actores = Actores::latest()->get();

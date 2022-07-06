@@ -8,9 +8,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Municipios;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class MunicipiosController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Municipios::all();
+        $pdf = PDF::loadView('admin.municipios.createPDF', compact('datos'));
+        return $pdf->download('Municipios_PDF.pdf');
+    }
+
     public function index() {
         $municipios = Municipios::latest()->get();
         return View("admin.municipios.index" , compact("municipios"));
