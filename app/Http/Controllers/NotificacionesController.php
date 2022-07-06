@@ -7,9 +7,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Notificaciones;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class NotificacionesController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Notificaciones::all();
+        $pdf = PDF::loadView('admin.notificaciones.createPDF', compact('datos'));
+        return $pdf->download('Notificaciones_PDF.pdf');
+    }
+
     public function index()
     {
         $notificaciones = Notificaciones::latest()->get();

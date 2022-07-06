@@ -48,6 +48,7 @@ Route::controller(EstadosController::class)->group(function() {
     Route::post('/estados/update/{id}', 'update')->name('estados.update');
     Route::get('/estados/delete/{Id}', 'delete')->name('estados.delete');
     Route::post('/estados/store', 'store')->name('estados.store');
+    Route::get('/estados/createPDF', 'createPDF')->name('estados.createPDF');
 });
 
 Route::controller(ActoresController::class)->group(function() {
@@ -93,6 +94,12 @@ Route::controller(EstatusController::class)->group(function() {
 
 Route::controller(ExpedientesController::class)->group(function() {
     Route::get('/expedientes/index', 'index')->name('expedientes.index');
+    Route::get('/expedientes/pdf', 'createPDF')->name('expendientes.createPDF');
+    Route::get('/expedientes/post', 'post')->name('expedientes.post');
+    Route::get('/expedientes/edit/{id}', 'edit')->name('expedientes.edit');
+    Route::post('/expedientes/update/{id}', 'update')->name('expedientes.update');
+    Route::get('/expedientes/delete/{Id}', 'delete')->name('expedientes.delete');
+    Route::post('/expedientes/store', 'store')->name('expedientes.store');
 });
 
 Route::controller(FestivoController::class)->group(function() {

@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 use App\Models\Cobranza;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class CobranzaController extends Controller
 {
+
+
+    public function createPDF(){
+        $datos = Cobranza::all();
+        $pdf = PDF::loadView('admin.cobranza.createPDF', compact('datos'));
+        return $pdf->download('Cobranza_PDF.pdf');
+    }
+
     public function index() {
         $cobranzas = Cobranza::latest()->get();
         return View("admin.cobranza.index" , compact("cobranzas"));

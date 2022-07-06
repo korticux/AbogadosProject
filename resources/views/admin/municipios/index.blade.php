@@ -15,11 +15,15 @@
                     <a href="{{ route('municipios.export') }}" class="btn btn-secondary"> <i
                         class="bi bi-file-earmark-excel-fill"></i> &nbsp; Municipios</a>
 
+                        <a href="{{ URL::to('/municipios/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Numero </th>
                                 <th scope="col">Fecha Agregado</th>
                                 <th scope="col">Acciones</th>
                             </tr>

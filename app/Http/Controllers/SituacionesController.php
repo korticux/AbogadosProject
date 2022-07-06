@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Situaciones;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class SituacionesController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Situaciones::all();
+        $pdf = PDF::loadView('admin.situaciones.createPDF', compact('datos'));
+        return $pdf->download('Situaciones_PDF.pdf');
+    }
+
     public function index()
     {
         $situaciones = Situaciones::latest()->get();

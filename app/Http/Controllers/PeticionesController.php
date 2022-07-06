@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Peticiones;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class PeticionesController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Peticiones::all();
+        $pdf = PDF::loadView('admin.peticiones.createPDF', compact('datos'));
+        return $pdf->download('Peticiones_PDF.pdf');
+    }
+
     public function index() {
         $peticiones = Peticiones::latest()->get();
         return View("admin.peticiones.index" , compact("peticiones"));

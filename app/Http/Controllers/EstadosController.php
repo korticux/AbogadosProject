@@ -6,9 +6,18 @@ use App\Exports\EstadosExport;
 use Illuminate\Http\Request;
 use App\Models\Estados;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class EstadosController extends Controller
 {
+
+
+    public function createPDF(){
+        $datos = Estados::all();
+        $pdf = PDF::loadView('admin.estados.createPDF', compact('datos'));
+        return $pdf->download('Estados_PDF.pdf');
+    }
+
     public function Index()
     {
         $estados = Estados::latest()->get();

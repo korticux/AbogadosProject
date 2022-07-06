@@ -13,6 +13,9 @@
                         <a href="{{ route('cobranza.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cobranza</a>
 
+                            <a href="{{ URL::to('/cobranza/pdf') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

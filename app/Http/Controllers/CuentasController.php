@@ -7,9 +7,18 @@ use App\Models\Cuentas;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class CuentasController extends Controller
 {
+
+    public function createPDF(){
+        $datos = Cuentas::all();
+        $pdf = PDF::loadView('admin.cuentas.createPDF', compact('datos'));
+        return $pdf->download('Cuentas_PDF.pdf');
+    }
+
+
     public function index() {
         $cuentas = Cuentas::latest()->get();
         return View("admin.cuentas.index" , compact("cuentas"));

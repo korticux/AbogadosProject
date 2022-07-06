@@ -12,6 +12,12 @@ use PDF;
 
 class ActoresController extends Controller
 {
+    public function createPDF(){
+        $datos = Actores::all();
+        $pdf = PDF::loadView('admin.actores.createPDF', compact('datos'));
+        return $pdf->download('Actores_PDF.pdf');
+    }
+
     public function index()
     {
         $actores = Actores::latest()->get();

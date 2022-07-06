@@ -15,6 +15,10 @@
                     <a href="{{ route('festivos.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Festivos</a>
 
+                    <a href="{{ URL::to('/festivos/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
