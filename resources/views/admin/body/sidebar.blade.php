@@ -18,6 +18,19 @@
             </a>
         </li><!-- End Blank Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('roles.index') }}">
+                <i class="bi bi-map"></i>
+                <span>Roles</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('users.index') }}">
+                <i class="bi bi-people"></i>
+                <span>Usuarios</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('actores.index') }}">

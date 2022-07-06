@@ -8,6 +8,7 @@ use App\Models\Estados;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class ActoresController extends Controller
 {
@@ -80,7 +81,7 @@ class ActoresController extends Controller
         $actor = Actores::findOrFail($id);
         $estados = Estados::latest()->get();
 
-        return View('admin.actores.update', compact('actor','estados'));
+        return View('admin.actores.update', compact('actor', 'estados'));
     }
 
     public function update($id, Request $request)
@@ -125,5 +126,14 @@ class ActoresController extends Controller
     public function export()
     {
         return Excel::download(new ActoresExport, "actores.xlsx");
+    }
+
+    public function downloadPdf()
+    {
+        $actores = Actores::all();
+
+        $pdf = PDF::loadView("admin.actores.actoresPdf", compact("actores"));
+
+        return $pdf->download("actores.pdf");
     }
 }
