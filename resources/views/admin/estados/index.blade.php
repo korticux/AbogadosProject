@@ -14,6 +14,10 @@
                         <a href="{{ route('estados.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
 
+                            <a href="{{ route('estados.createPDF') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
+
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

@@ -49,6 +49,7 @@ Route::controller(EstadosController::class)->group(function() {
     Route::post('/estados/update/{id}', 'update')->name('estados.update');
     Route::get('/estados/delete/{Id}', 'delete')->name('estados.delete');
     Route::post('/estados/store', 'store')->name('estados.store');
+    Route::get('/estados/createPDF', 'createPDF')->name('estados.createPDF');
 });
 
 Route::controller(ActoresController::class)->group(function() {
