@@ -14,7 +14,7 @@
                         <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Regiones</a>
 
-                            <a href="{{ URL::to('/regiones/pdf') }}" class="btn btn-secondary"> <i
+                            <a href="{{ URL::to('/regiones/createPDF') }}" class="btn btn-secondary"> <i
                                 class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->

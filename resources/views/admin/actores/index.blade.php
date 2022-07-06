@@ -12,7 +12,7 @@
                         Actores</a>
                     <a href="{{ route('actores.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Actores</a>
-                            <a href="{{ URL::to('/actores/pdf') }}" class="btn btn-secondary"> <i
+                            <a href="{{ URL::to('/actores/createPDF') }}" class="btn btn-secondary"> <i
                                 class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->

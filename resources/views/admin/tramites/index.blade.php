@@ -11,7 +11,7 @@
                         Agregar
                         Tramite</a>
 
-                        <a href="{{ URL::to('/tramites/pdf') }}" class="btn btn-secondary"> <i
+                        <a href="{{ URL::to('/tramites/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->

@@ -15,7 +15,7 @@
                     <a href="{{ route('municipios.export') }}" class="btn btn-secondary"> <i
                         class="bi bi-file-earmark-excel-fill"></i> &nbsp; Municipios</a>
 
-                        <a href="{{ URL::to('/municipios/pdf') }}" class="btn btn-secondary"> <i
+                        <a href="{{ URL::to('/municipios/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 
