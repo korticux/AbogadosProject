@@ -5,17 +5,21 @@
         <th scope="col">Numero</th>
         <th scope="col">Año</th>
         <th scope="col">Región</th>
-        <th scope="col">Monto</th>
+        <th scope="col">Sala</th>
+        <th scope="col">Ponencia</th>
+        <th scope="col">Actor</th>
       </tr>
     </thead>
     <tbody>
-        @foreach($datos as $dato)
+        @foreach($datos as $obj)
       <tr>
-        <th scope="row">{{$dato->id}}</th>
-        <td>{{$dato->cobranza}}</td>
-        <td>{{$dato->tipo}}</td>
-        <td>{{$dato->fecha}}</td>
-        <td>{{$dato->monto}}</td>
+        <th scope="row">{{$obj->id}}</th>
+        <td>{{$obj->numero}}</td>
+        <td>{{$obj->ano}}</td>
+        <td>{{$obj->region->nombre}}</td>
+        <td>{{$obj->sala}}</td>
+        <td>{{$obj->ponencia}}</td>
+        <td>{{$obj->actor->nombre}}</td>
       </tr>
       @endforeach
     </tbody>
