@@ -23,7 +23,7 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Numero </th>
                                 <th scope="col">Fecha Agregado</th>
                                 <th scope="col">Acciones</th>
                             </tr>

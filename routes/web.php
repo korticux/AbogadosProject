@@ -97,7 +97,15 @@ Route::controller(EstatusController::class)->group(function() {
 
 Route::controller(ExpedientesController::class)->group(function() {
     Route::get('/expedientes/index', 'index')->name('expedientes.index');
+<<<<<<< HEAD
     Route::get('/expedientes/pdf', 'createPDF')->name('expendientes.createPDF');
+=======
+    Route::get('/expedientes/post', 'post')->name('expedientes.post');
+    Route::get('/expedientes/edit/{id}', 'edit')->name('expedientes.edit');
+    Route::post('/expedientes/update/{id}', 'update')->name('expedientes.update');
+    Route::get('/expedientes/delete/{Id}', 'delete')->name('expedientes.delete');
+    Route::post('/expedientes/store', 'store')->name('expedientes.store');
+>>>>>>> 09fbb9908ed843bc1617e78bb7015955a408029b
 });
 
 Route::controller(FestivoController::class)->group(function() {
