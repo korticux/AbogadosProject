@@ -176,6 +176,13 @@ Route::controller(PeticionesController::class)->group(function() {
 
 Route::controller(ProcesosController::class)->group(function() {
     Route::get('/proceso/index', 'index')->name('proceso.index');
+    Route::get('/proceso/export', 'export')->name('proceso.export');
+    Route::get('/proceso/post', 'post')->name('proceso.post');
+    Route::post('/proceso/store', 'store')->name('proceso.store');
+    Route::get('/proceso/edit/{id}', 'edit')->name('proceso.edit');
+    Route::post('/proceso/update/{id}', 'update')->name('proceso.update');
+    Route::get('/proceso/delete/{Id}', 'delete')->name('proceso.delete');
+    Route::get('/proceso/createPDF', 'createPDF')->name('proceso.createPDF');
 });
 
 Route::controller(RegionesController::class)->group(function() {

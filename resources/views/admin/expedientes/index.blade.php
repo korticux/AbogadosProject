@@ -11,11 +11,11 @@
                         Agregar
                         Expediente</a>
 
-                        <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
+                        {{-- <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Expedientes</a>
 
                         <a href="{{ URL::to('/expedientes/createPDF') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a> --}}
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
