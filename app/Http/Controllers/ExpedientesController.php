@@ -217,6 +217,7 @@ class ExpedientesController extends Controller
             'fecha6' => $request->fecha6,
             'updated_at' => \Carbon\Carbon::now(),
 
+
         ]);
 
         $notification = array(
