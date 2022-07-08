@@ -233,6 +233,7 @@ Route::controller(TramitesController::class)->group(function() {
     Route::post('/tramites/update/{id}', 'update')->name('tramites.update');
     Route::get('/tramites/delete/{Id}', 'delete')->name('tramites.delete');
     Route::post('/tramites/store', 'store')->name('tramites.store');
+    Route::get('/tramites/export', 'export')->name('tramites.export');
     Route::get('/tramites/createPDF', 'createPDF')->name('tramites.createPDF');
 });
 

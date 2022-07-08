@@ -13,11 +13,12 @@
                             Estado</a>
                     @endcan
 
+
                     <a href="{{ route('estados.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ route('estados.createPDF') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 
                     <!-- Table with stripped rows -->

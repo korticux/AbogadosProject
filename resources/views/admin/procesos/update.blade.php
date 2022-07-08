@@ -3,21 +3,21 @@
 
 @section('admin')
     <div class="card-body">
-        <h5 class="card-title">Default Tabs</h5>
+        <h5 class="card-title">Editar Proceso</h5>
 
         <!-- Default Tabs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                    role="tab" aria-controls="home" aria-selected="true">Home</button>
+                    role="tab" aria-controls="home" aria-selected="true">Proceso Inicial</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                    role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                    role="tab" aria-controls="profile" aria-selected="false">Contestación Tribunal</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                    role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+                    role="tab" aria-controls="contact" aria-selected="false">Proceso Final</button>
             </li>
         </ul>
         <div class="tab-content pt-2" id="myTabContent">
@@ -152,6 +152,7 @@
                 </form><!-- End floating Labels Form -->
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
                {{-- Aqui empiza ell segundo tab --}}
                 <!-- Floating Labels Form -->
                 <form class="row g-3" method="POST" action="{{ route('proceso.update', $proceso->id) }}">
@@ -291,9 +292,12 @@
             </div>
         </form><!-- End floating Labels Form -->
 
+
                 {{-- Aqui termina ell segundo tab --}}
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
                 {{-- Aqui empiza ell tercero tab --}}
                 <!-- Floating Labels Form -->
                 <form class="row g-3" method="POST" action="{{ route('proceso.update', $proceso->id) }}">

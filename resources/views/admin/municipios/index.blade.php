@@ -6,6 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
+
                     <h5 class="card-title">Municipios</h5>
                     @can('municipios-create')
                         <a class="btn btn-primary" href="{{ route('municipios.post') }}"> <i class="bi bi-plus-circle"></i>
@@ -14,9 +15,8 @@
                             Municipio</a>
                     @endcan
 
-
                     <a href="{{ route('municipios.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Municipios</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/municipios/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>

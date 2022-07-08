@@ -6,6 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
+
                     <h5 class="card-title">Expedientes</h5>
                     @can('expedientes-create')
                         <a class="btn btn-primary" href="{{ route('expedientes.post') }}"> <i class="bi bi-plus-circle"></i>

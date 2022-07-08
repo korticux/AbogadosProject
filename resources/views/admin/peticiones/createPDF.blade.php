@@ -1,17 +1,15 @@
 <table class="table" border='1'>
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Fecha Agregado</th>
+        <th style="text-align:center"  scope="col">Nombre</th>
+        <th style="text-align:center"  scope="col">Fecha Agregado</th>
       </tr>
     </thead>
     <tbody>
         @foreach($datos as $dato)
       <tr>
-        <th scope="row">{{$dato->id}}</th>
-        <td>{{$dato->lugar}}</td>
-        <td>{{$dato->created_at}}</td>
+        <td style="text-align:center" >{{$dato->lugar}}</td>
+        <td style="text-align:center" >{{$dato->created_at}}</td>
       </tr>
       @endforeach
     </tbody>

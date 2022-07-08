@@ -6,18 +6,22 @@
 
             <div class="card">
                 <div class="card-body">
+
+
                     <h5 class="card-title">Procesos</h5>
+
                     @can('procesos-create')
                         <a class="btn btn-primary" href="{{ route('proceso.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
                             Proceso</a>
                     @endcan
 
-                    {{-- <a href="{{ route('proceso.export') }}" class="btn btn-secondary"> <i
+                     <a href="{{ route('proceso.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; proceso</a>
 
+
                         <a href="{{ URL::to('/proceso/createPDF') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a> --}}
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a> --
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">

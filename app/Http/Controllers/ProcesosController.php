@@ -1,15 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\ProcesoExport;
 use Carbon\Carbon;
 use App\Models\Proceso;
 use App\Models\Expedientes;
-
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class ProcesosController extends Controller
 {
+<<<<<<< HEAD
+
+    public function createPDF(){
+        $datos = Proceso::all();
+        $pdf = PDF::loadView('admin.procesos.createPDF', compact('datos'));
+        return $pdf->download('Proceso_PDF.pdf');
+    }
+
+=======
     function __construct()
     {
         $this->middleware('permission:procesos-list|procesos-create|procesos-edit|procesos-delete', ['only' => ['index', 'store']]);
@@ -17,6 +27,7 @@ class ProcesosController extends Controller
         $this->middleware('permission:procesos-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:procesos-delete', ['only' => ['destroy']]);
     }
+>>>>>>> 5216f75d5daaf47b6486d2c22d6e035e7c10fcc1
     public function index() {
         $procesos = Proceso::latest()->get();
         return View("admin.procesos.index" , compact("procesos"));
@@ -162,6 +173,11 @@ class ProcesosController extends Controller
         );
 
         return redirect()->route('proceso.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProcesoExport, "Proceso.xlsx");
     }
 
 }
