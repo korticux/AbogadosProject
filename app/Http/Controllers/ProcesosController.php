@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class ProcesosController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:procesos-list|procesos-create|procesos-edit|procesos-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:procesos-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:procesos-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:procesos-delete', ['only' => ['destroy']]);
+    }
     public function index() {
         $procesos = Proceso::latest()->get();
         return View("admin.procesos.index" , compact("procesos"));

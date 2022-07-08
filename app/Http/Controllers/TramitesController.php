@@ -9,7 +9,13 @@ use PDF;
 class TramitesController extends Controller
 {
 
-
+    function __construct()
+    {
+        $this->middleware('permission:tramites-list|tramites-create|tramites-edit|tramites-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:tramites-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:tramites-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:tramites-delete', ['only' => ['destroy']]);
+    }
     public function createPDF(){
         $datos = Tramites::all();
         $pdf = PDF::loadView('admin.tramites.createPDF', compact('datos'));

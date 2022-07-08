@@ -7,9 +7,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Datatables</h5>
-                    <a class="btn btn-primary" href="{{ route('estatus.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                        Agregar
-                        Estatus</a>
+                    @can('estatus-create')
+                        <a class="btn btn-primary" href="{{ route('estatus.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                            Agregar
+                            Estatus</a>
+                    @endcan
 
                     <a href="{{ route('estatus.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estatus</a>

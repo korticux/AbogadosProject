@@ -7,14 +7,16 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Datatables</h5>
-                    <a class="btn btn-primary" href="{{ route('cobranza.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                        Agregar
-                        Cobranza</a>
+                    @can('cobranza-create')
+                        <a class="btn btn-primary" href="{{ route('cobranza.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                            Agregar
+                            Cobranza</a>
+                    @endcan
                     <a href="{{ route('cobranza.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cobranza</a>
 
-                            <a href="{{ URL::to('/cobranza/createPDF') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/cobranza/createPDF') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
