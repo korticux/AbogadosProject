@@ -28,7 +28,7 @@ class CobranzaController extends Controller
     }
 
     public function index() {
-        $cobranzas = Cobranza::latest()->get();
+        $cobranzas = Cobranza::latest()->paginate(5);
         return View("admin.cobranza.index" , compact("cobranzas"));
     }
 
