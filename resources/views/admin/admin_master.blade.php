@@ -86,6 +86,7 @@
     <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/echarts/echarts.min.js') }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('backend/assets/vendor/quill/quill.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/tinymce/tinymce.min.js') }}"></script>

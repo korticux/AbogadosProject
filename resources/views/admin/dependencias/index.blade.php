@@ -16,8 +16,8 @@
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Dependencias</a>
 
 
-                    <a href="{{ URL::to('/dependencias/pdf') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                            <a href="{{ URL::to('/dependencias/createPDF') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">

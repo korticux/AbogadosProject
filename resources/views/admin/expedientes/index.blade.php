@@ -14,6 +14,9 @@
                         <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Expedientes</a>
 
+                        <a href="{{ URL::to('/expedientes/createPDF') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
@@ -32,10 +35,10 @@
                                 <tr>
                                     <th>{{ $expediente->numero}}</th>
                                     <th>{{ $expediente->ano}}</th>
-                                    <th>{{ $expediente->region_id}}</th>
+                                    <th>{{ $expediente->region->nombre}}</th>
                                     <th>{{ $expediente->sala}}</th>
                                     <th>{{ $expediente->ponencia}}</th>
-                                    <th>{{ $expediente->actor_id}}</th>
+                                    <th>{{ $expediente->actor->nombre}}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a class="btn  btn-sm btn-outline-dark" href="{{ route('expedientes.edit', $expediente->id) }}" ><i class="bi bi-pencil-fill"></i></a>

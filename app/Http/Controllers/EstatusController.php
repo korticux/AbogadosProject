@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Estatus;
 use Maatwebsite\Excel\Facades\Excel;
-use PDF;
+use Barryvdh\DomPDF\PDF;
 
 class EstatusController extends Controller
 {

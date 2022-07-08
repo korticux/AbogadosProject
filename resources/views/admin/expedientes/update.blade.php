@@ -4,14 +4,14 @@
 @section('admin')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Editar Expediente</h5>
+            <h5 class="card-title">Actualizar Expediente</h5>
 
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" name="numero" value="{{$expediente->numero}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->numero}}" name="numero" class="form-control" id="floatingName"
                             placeholder="Ingresar numero">
                         @error('numero')
                             <span class="text-danger"> {{ $message }} </span>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" name="ano" value="{{$expediente->ano}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->ano}}" name="ano" class="form-control" id="floatingName"
                             placeholder="Ingresar ano">
                         @error('ano')
                             <span class="text-danger"> {{ $message }} </span>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" name="sala" value="{{$expediente->sala}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->sala}}" name="sala" class="form-control" id="floatingName"
                             placeholder="Ingresar sala">
                         @error('sala')
                             <span class="text-danger"> {{ $message }} </span>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" name="ponencia" value="{{$expediente->ponencia}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->ponencia}}" name="ponencia" class="form-control" id="floatingName"
                             placeholder="Ingresar ponencia">
                         @error('ponencia')
                             <span class="text-danger"> {{ $message }} </span>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha" value="{{$expediente->fecha}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha}}" name="fecha" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha">
                         @error('fecha')
                             <span class="text-danger"> {{ $message }} </span>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" name="comentarios" value="{{$expediente->comentarios}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->comentario}}" name="comentarios" class="form-control" id="floatingName"
                             placeholder="Ingresar comentario">
                         @error('Comentario')
                             <span class="text-danger"> {{ $message }} </span>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" name="honorario" value="{{$expediente->honorario}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->honorario}}" name="honorario" class="form-control" id="floatingName"
                             placeholder="Ingresar honorario">
                         @error('honorario')
                             <span class="text-danger"> {{ $message }} </span>
@@ -141,9 +141,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" name="pagoinicial"  value="{{$expediente->pagoinicial}}" class="form-control" id="floatingName"
+                        <input type="text" value="{{$expediente->pagoinicial}}" name="pagoinicial" class="form-control" id="floatingName"
                             placeholder="Ingresar pago inicial">
-                        @error('pago inicial')
+                        @error('pagoinicial')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                         <label for="nombre">Pago Inicial</label>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha1" value="{{$expediente->fecha1}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha1}}" name="fecha1" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha1">
                         @error('fecha1')
                             <span class="text-danger"> {{ $message }} </span>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha2" value="{{$expediente->fecha2}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha2}}" name="fecha2" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha2">
                         @error('fecha2')
                             <span class="text-danger"> {{ $message }} </span>
@@ -171,7 +171,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha3" value="{{$expediente->fecha3}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha3}}" name="fecha3" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha3">
                         @error('fecha3')
                             <span class="text-danger"> {{ $message }} </span>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha4" value="{{$expediente->fecha4}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha4}}" name="fecha4" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha4">
                         @error('fecha4')
                             <span class="text-danger"> {{ $message }} </span>
@@ -191,7 +191,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha5" value="{{$expediente->fecha5}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha5}}" name="fecha5" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha5">
                         @error('fecha5')
                             <span class="text-danger"> {{ $message }} </span>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha6" value="{{$expediente->fecha6}}" class="form-control" id="floatingName"
+                        <input type="date" value="{{$expediente->fecha6}}" name="fecha6" class="form-control" id="floatingName"
                             placeholder="Ingresar fecha6">
                         @error('fecha6')
                             <span class="text-danger"> {{ $message }} </span>
@@ -218,3 +218,4 @@
         </div>
     </div>
 @endsection
+

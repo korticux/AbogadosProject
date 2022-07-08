@@ -60,6 +60,7 @@ Route::controller(ActoresController::class)->group(function() {
     Route::post('/actores/update/{id}', 'update')->name('actores.update');
     Route::get('/actores/delete/{Id}', 'delete')->name('actores.delete');
     Route::get('/actores/export/', 'export')->name('actores.export');
+    Route::get('/actores/createPDF', 'createPDF')->name('actores.createPDF');
 });
 
 Route::controller(CuentasController::class)->group(function() {
@@ -70,6 +71,7 @@ Route::controller(CuentasController::class)->group(function() {
     Route::get('/cuentas/edit/{id}', 'edit')->name('cuentas.edit');
     Route::post('/cuentas/update/{id}', 'update')->name('cuentas.update');
     Route::get('/cuentas/delete/{Id}', 'delete')->name('cuentas.delete');
+    Route::get('/cuentas/createPDF', 'createPDF')->name('cuentas.createPDF');
 });
 
 Route::controller(DependenciasController::class)->group(function() {
@@ -80,6 +82,7 @@ Route::controller(DependenciasController::class)->group(function() {
     Route::post('/dependencias/update/{id}', 'update')->name('dependencias.update');
     Route::get('/dependencias/delete/{Id}', 'delete')->name('dependencias.delete');
     Route::post('/dependencias/store', 'store')->name('dependencias.store');
+    Route::get('/dependencias/createPDF', 'createPDF')->name('dependencias.createPDF');
 });
 
 Route::controller(EstatusController::class)->group(function() {
@@ -90,6 +93,7 @@ Route::controller(EstatusController::class)->group(function() {
     Route::post('/estatus/update/{id}', 'update')->name('estatus.update');
     Route::get('/estatus/delete/{Id}', 'delete')->name('estatus.delete');
     Route::post('/estatus/store', 'store')->name('estatus.store');
+    Route::get('/estatus/createPDF', 'createPDF')->name('estatus.createPDF');
 });
 
 Route::controller(ExpedientesController::class)->group(function() {
@@ -100,6 +104,8 @@ Route::controller(ExpedientesController::class)->group(function() {
     Route::post('/expedientes/update/{id}', 'update')->name('expedientes.update');
     Route::get('/expedientes/delete/{Id}', 'delete')->name('expedientes.delete');
     Route::post('/expedientes/store', 'store')->name('expedientes.store');
+    Route::get('/expedientes/createPDF', 'createPDF')->name('expedientes.createPDF');
+    Route::get('/expedientes/export', 'export')->name('expedientes.export');
 });
 
 Route::controller(FestivoController::class)->group(function() {
@@ -110,6 +116,7 @@ Route::controller(FestivoController::class)->group(function() {
     Route::post('/festivos/update/{id}', 'update')->name('festivos.update');
     Route::get('/festivos/delete/{Id}', 'delete')->name('festivos.delete');
     Route::post('/festivos/store', 'store')->name('festivos.store');
+    Route::get('/festivos/createPDF', 'createPDF')->name('festivos.createPDF');
 });
 
 Route::controller(MunicipiosController::class)->group(function() {
@@ -120,6 +127,7 @@ Route::controller(MunicipiosController::class)->group(function() {
     Route::post('/municipios/update/{id}', 'update')->name('municipios.update');
     Route::get('/municipios/delete/{Id}', 'delete')->name('municipios.delete');
     Route::post('/municipios/store', 'store')->name('municipios.store');
+    Route::get('/municipios/createPDF', 'createPDF')->name('municipios.createPDF');
 });
 
 Route::controller(NotificacionesController::class)->group(function() {
@@ -130,6 +138,7 @@ Route::controller(NotificacionesController::class)->group(function() {
     Route::post('/notificaciones/update/{id}', 'update')->name('notificaciones.update');
     Route::get('/notificaciones/delete/{Id}', 'delete')->name('notificaciones.delete');
     Route::post('/notificaciones/store', 'store')->name('notificaciones.store');
+    Route::get('/notificaciones/createPDF', 'createPDF')->name('notificaciones.createPDF');
 });
 
 Route::controller(CobranzaController::class)->group(function() {
@@ -140,6 +149,7 @@ Route::controller(CobranzaController::class)->group(function() {
     Route::post('/cobranza/update/{id}', 'update')->name('cobranza.update');
     Route::get('/cobranza/delete/{Id}', 'delete')->name('cobranza.delete');
     Route::get('/cobranza/export/', 'export')->name('cobranza.export');
+    Route::get('/cobranza/createPDF', 'createPDF')->name('cobranza.createPDF');
 });
 
 Route::controller(PaisesController::class)->group(function() {
@@ -150,6 +160,7 @@ Route::controller(PaisesController::class)->group(function() {
     Route::get('/paises/edit/{id}', 'edit')->name('paises.edit');
     Route::post('/paises/update/{id}', 'update')->name('paises.update');
     Route::get('/paises/delete/{Id}', 'delete')->name('paises.delete');
+    Route::get('/paises/createPDF', 'createPDF')->name('paises.createPDF');
 });
 
 Route::controller(PeticionesController::class)->group(function() {
@@ -160,10 +171,18 @@ Route::controller(PeticionesController::class)->group(function() {
     Route::get('/peticiones/edit/{id}', 'edit')->name('peticiones.edit');
     Route::post('/peticiones/update/{id}', 'update')->name('peticiones.update');
     Route::get('/peticiones/delete/{Id}', 'delete')->name('peticiones.delete');
+    Route::get('/peticiones/createPDF', 'createPDF')->name('peticiones.createPDF');
 });
 
 Route::controller(ProcesosController::class)->group(function() {
     Route::get('/proceso/index', 'index')->name('proceso.index');
+    Route::get('/proceso/export', 'export')->name('proceso.export');
+    Route::get('/proceso/post', 'post')->name('proceso.post');
+    Route::post('/proceso/store', 'store')->name('proceso.store');
+    Route::get('/proceso/edit/{id}', 'edit')->name('proceso.edit');
+    Route::post('/proceso/update/{id}', 'update')->name('proceso.update');
+    Route::get('/proceso/delete/{Id}', 'delete')->name('proceso.delete');
+    Route::get('/proceso/createPDF', 'createPDF')->name('proceso.createPDF');
 });
 
 Route::controller(RegionesController::class)->group(function() {
@@ -174,6 +193,7 @@ Route::controller(RegionesController::class)->group(function() {
     Route::get('/regiones/edit/{id}', 'edit')->name('regiones.edit');
     Route::post('/regiones/update/{id}', 'update')->name('regiones.update');
     Route::get('/regiones/delete/{Id}', 'delete')->name('regiones.delete');
+    Route::get('/regiones/createPDF', 'createPDF')->name('regiones.createPDF');
 });
 
 Route::controller(RespaldoController::class)->group(function() {
@@ -188,6 +208,7 @@ Route::controller(SituacionesController::class)->group(function() {
     Route::get('/situaciones/edit/{id}', 'edit')->name('situaciones.edit');
     Route::post('/situaciones/update/{id}', 'update')->name('situaciones.update');
     Route::get('/situaciones/delete/{Id}', 'delete')->name('situaciones.delete');
+    Route::get('/situaciones/createPDF', 'createPDF')->name('situaciones.createPDF');
 });
 
 Route::controller(TramitesController::class)->group(function() {
@@ -197,6 +218,7 @@ Route::controller(TramitesController::class)->group(function() {
     Route::post('/tramites/update/{id}', 'update')->name('tramites.update');
     Route::get('/tramites/delete/{Id}', 'delete')->name('tramites.delete');
     Route::post('/tramites/store', 'store')->name('tramites.store');
+    Route::get('/tramites/createPDF', 'createPDF')->name('tramites.createPDF');
 });
 
 Route::group(['middleware' => ['auth']], function(){

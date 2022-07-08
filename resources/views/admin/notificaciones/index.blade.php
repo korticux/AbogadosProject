@@ -15,7 +15,7 @@
                     <a href="{{ route('notificaciones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Notificaciones</a>
 
-                    <a href="{{ URL::to('/notificaciones/pdf') }}" class="btn btn-secondary"> <i
+                    <a href="{{ URL::to('/notificaciones/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 

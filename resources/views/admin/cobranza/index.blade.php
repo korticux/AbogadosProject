@@ -13,17 +13,22 @@
                     <a href="{{ route('cobranza.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cobranza</a>
 
+<<<<<<< HEAD
                     <a href="{{ URL::to('/cobranza/pdf') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+=======
+                            <a href="{{ URL::to('/cobranza/createPDF') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+>>>>>>> 2c198f0fe293659035c72ea7d078269ca3e3718e
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">cobranza</th>
-                                <th scope="col">tipo</th>
-                                <th scope="col">fecha</th>
-                                <th scope="col">monto</th>
+                                <th scope="col">Cobranza</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Monto</th>
                                 <th scope="col">Acciones</th>
 
                             </tr>
@@ -34,7 +39,7 @@
                                     <th>{{ $cobranza->cobranza }}</th>
                                     <th>{{ $cobranza->tipo }}</th>
                                     <th>{{ $cobranza->fecha }}</th>
-                                    <th>{{ $cobranza->monto }}</th>
+                                    <th>$ {{ $cobranza->monto }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('cobranza-edit')

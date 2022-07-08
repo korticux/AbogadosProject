@@ -14,8 +14,13 @@
                     <a href="{{ route('cuentas.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cuentas</a>
 
+<<<<<<< HEAD
                     <a href="{{ URL::to('/cuentas/pdf') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+=======
+                            <a href="{{ URL::to('/cuentas/createPDF') }}" class="btn btn-secondary"> <i
+                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+>>>>>>> 2c198f0fe293659035c72ea7d078269ca3e3718e
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
