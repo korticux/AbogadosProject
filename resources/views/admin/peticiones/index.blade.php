@@ -6,11 +6,14 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">• Peticiones</h5>
-                    <a class="btn btn-primary" href="{{ route('peticiones.post') }}"> <i class="bi bi-plus-circle"></i>
-                        &nbsp;
-                        Agregar
-                        Peticion</a>
+                    <h5 class="card-title">Peticiones</h5>
+
+                    @can('peticiones-create')
+                        <a class="btn btn-primary" href="{{ route('peticiones.post') }}"> <i class="bi bi-plus-circle"></i>
+                            &nbsp;
+                            Agregar
+                            Peticion</a>
+                    @endcan
 
                     <a href="{{ route('peticiones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>

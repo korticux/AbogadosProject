@@ -6,10 +6,13 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">• Estados</h5>
-                    <a class="btn btn-primary" href="{{ route('estados.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                        Agregar
-                        Estado</a>
+                    <h5 class="card-title">Estados</h5>
+                    @can('estados-create')
+                        <a class="btn btn-primary" href="{{ route('estados.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                            Add
+                            Estado</a>
+                    @endcan
+
 
                     <a href="{{ route('estados.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>

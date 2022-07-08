@@ -6,10 +6,16 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">• Festivos</h5>
-                    <a class="btn btn-primary" href="{{ route('festivos.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                        Agregar
-                        Festivo</a>
+
+                    <h5 class="card-title">Festivos</h5>
+
+
+                    @can('festivos-create')
+                        <a class="btn btn-primary" href="{{ route('festivos.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                            Agregar
+                            Festivo</a>
+                    @endcan
+
 
 
                     <a href="{{ route('festivos.export') }}" class="btn btn-secondary"> <i

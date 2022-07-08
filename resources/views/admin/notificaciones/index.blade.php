@@ -6,11 +6,17 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">• Notificaciones</h5>
-                    <a class="btn btn-primary" href="{{ route('notificaciones.post') }}"> <i class="bi bi-plus-circle"></i>
-                        &nbsp;
-                        Agregar
-                        Notificacion</a>
+
+
+                    <h5 class="card-title">Notificaciones</h5>
+
+                    @can('notificaciones-create')
+                        <a class="btn btn-primary" href="{{ route('notificaciones.post') }}"> <i class="bi bi-plus-circle"></i>
+                            &nbsp;
+                            Agregar
+                            Notificacion</a>
+                    @endcan
+
 
                     <a href="{{ route('notificaciones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>

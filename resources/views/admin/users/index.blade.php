@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Users</h5>
                     <a class="btn btn-primary" href="{{ route('users.create') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Usuarios</a>

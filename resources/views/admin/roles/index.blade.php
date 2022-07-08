@@ -6,10 +6,10 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Roles</h5>
                     <a class="btn btn-primary" href="{{ route('roles.create') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
-                        Role</a>
+                        Rol</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
