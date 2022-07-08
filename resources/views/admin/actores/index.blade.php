@@ -27,8 +27,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($actores as $actor)
-                            <tbody>
+                        <tbody>
+                            @foreach ($actores as $actor)
                                 <tr>
                                     <th>{{ $actor->nocliente }}</th>
                                     <th>{{ $actor->nombre }}</th>
@@ -48,11 +48,13 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $actores->links() !!}
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,3 +1,7 @@
+{{-- @php
+        dd($estados->links());
+@endphp --}}
+
 @extends('admin.admin_master')
 
 @section('admin')
@@ -6,7 +10,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Todos los Estados</h5>
                     @can('estados-create')
                         <a class="btn btn-primary" href="{{ route('estados.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Add
@@ -29,8 +33,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($estados as $estado)
-                            <tbody>
+                        <tbody>
+                            @foreach ($estados as $estado)
                                 <tr>
                                     <th>{{ $estado->Nombre }}</th>
                                     <th>{{ $estado->created_at }}</th>
@@ -49,14 +53,15 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
+                    <div class="d-flex">
+                              {!! $estados->links() !!}
+                    </div>
                     <!-- End Table with stripped rows -->
-
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

@@ -48,17 +48,6 @@
     <!-- End Sidebar-->
 
     <main id="main" class="main">
-
-        <div class="pagetitle">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-
         <section class="section dashboard">
             @yield('admin')
         </section>
@@ -79,8 +68,8 @@
     <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('backend/assets/vendor/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('backend\assets\js\jquerydatatable.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/php-email-form/validate.js') }}"></script>

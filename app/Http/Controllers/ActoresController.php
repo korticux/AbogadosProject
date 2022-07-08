@@ -27,7 +27,7 @@ class ActoresController extends Controller
 
     public function index()
     {
-        $actores = Actores::latest()->get();
+        $actores = Actores::latest()->paginate(5);
         return View("admin.actores.index", compact("actores"));
     }
 
