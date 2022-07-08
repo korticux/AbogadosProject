@@ -59,6 +59,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $cobranza->links() !!}
+                    </div>
+
                 </div>
             </div>
 

@@ -26,7 +26,7 @@ class CuentasController extends Controller
 
 
     public function index() {
-        $cuentas = Cuentas::latest()->paginate(2);
+        $cuentas = Cuentas::latest()->paginate(5);
         return View("admin.cuentas.index" , compact("cuentas"));
     }
 
