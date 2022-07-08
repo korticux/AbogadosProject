@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">• Actores</h5>
+                    <h5 class="card-title">Actores</h5>
                     <a class="btn btn-primary" href="{{ route('actores.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Actores</a>
