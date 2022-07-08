@@ -55,6 +55,9 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $cuentas->links() !!}
+                    </div>
 
                 </div>
             </div>

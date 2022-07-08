@@ -26,7 +26,7 @@ class PeticionesController extends Controller
     }
 
     public function index() {
-        $peticiones = Peticiones::latest()->get();
+        $peticiones = Peticiones::latest()->paginate(5);
         return View("admin.peticiones.index" , compact("peticiones"));
     }
 

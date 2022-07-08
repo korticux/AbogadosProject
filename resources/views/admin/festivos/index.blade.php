@@ -59,6 +59,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $festivos->links() !!}
+                    </div>
+
                 </div>
             </div>
 

@@ -56,7 +56,9 @@
                         @endforeach
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $dependencias->links() !!}
+                    </div>
                 </div>
             </div>
 

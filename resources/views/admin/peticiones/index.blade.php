@@ -55,6 +55,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $peticiones->links() !!}
+                    </div>
+
                 </div>
             </div>
 

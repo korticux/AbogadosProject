@@ -58,6 +58,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $situaciones->links() !!}
+                    </div>
+
                 </div>
             </div>
 

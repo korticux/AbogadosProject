@@ -27,7 +27,7 @@ class PaisesController extends Controller
     }
 
     public function index() {
-        $paises = Paises::latest()->get();
+        $paises = Paises::latest()->paginate(5);
         return View("admin.paises.index" , compact("paises"));
     }
 

@@ -54,7 +54,9 @@
                         @endforeach
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $estados->links() !!}
+                    </div>
                 </div>
             </div>
 

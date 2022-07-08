@@ -26,7 +26,7 @@ class EstatusController extends Controller
     }
 
     public function index() {
-        $estatus = Estatus::latest()->get();
+        $estatus = Estatus::latest()->paginate(5);
         return View("admin.estatus.index" , compact("estatus"));
     }
 

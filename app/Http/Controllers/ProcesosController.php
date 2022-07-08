@@ -26,7 +26,7 @@ class ProcesosController extends Controller
     public function post()
     {
 
-        $expedientes = Expedientes::latest()->get();
+        $expedientes = Expedientes::latest()->paginate(5);
         return View('admin.procesos.create', compact("expedientes"));
 
     }

@@ -27,7 +27,7 @@ class SituacionesController extends Controller
 
     public function index()
     {
-        $situaciones = Situaciones::latest()->get();
+        $situaciones = Situaciones::latest()->paginate(5);
         return View("admin.situaciones.index", compact("situaciones"));
     }
 

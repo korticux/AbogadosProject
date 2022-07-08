@@ -62,7 +62,9 @@
                         @endforeach
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $expedientes->links() !!}
+                    </div>
                 </div>
             </div>
 

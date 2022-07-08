@@ -54,6 +54,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $procesos->links() !!}
+                    </div>
+
                 </div>
             </div>
 

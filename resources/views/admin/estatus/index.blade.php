@@ -31,21 +31,21 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($estatus as $estatus)
+                        @foreach ($estatus as $estatuses)
                             <tbody>
                                 <tr>
-                                    <th>{{ $estatus->nombre }}</th>
-                                    <th>{{ $estatus->created_at }}</th>
+                                    <th>{{ $estatuses->nombre }}</th>
+                                    <th>{{ $estatuses->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('estatus-edit')
                                                 <a class="btn  btn-sm btn-outline-dark"
-                                                    href="{{ route('estatus.edit', $estatus->id) }}"><i
+                                                    href="{{ route('estatus.edit', $estatuses->id) }}"><i
                                                         class="bi bi-pencil-fill"></i></a>
                                             @endcan
-                                            @can('estatus-delete')
+                                            @can('es-delete')
                                                 <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                    href="{{ route('estatus.delete', $estatus->id) }}"><i
+                                                    href="{{ route('estatus.delete', $estatuses->id) }}"><i
                                                         class="bi bi-trash-fill"></i></a>
                                             @endcan
                                         </div>
@@ -55,7 +55,9 @@
                         @endforeach
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $estatus->links() !!}
+                    </div>
                 </div>
             </div>
 

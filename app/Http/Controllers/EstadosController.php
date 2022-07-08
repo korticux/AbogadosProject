@@ -28,7 +28,7 @@ class EstadosController extends Controller
 
     public function Index()
     {
-        $estados = Estados::latest()->get();
+        $estados = Estados::latest()->paginate(2);
 
         return View('admin.estados.index', compact('estados'));
     }

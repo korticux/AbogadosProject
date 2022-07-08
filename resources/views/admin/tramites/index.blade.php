@@ -49,6 +49,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $tramites->links() !!}
+                    </div>
+
                 </div>
             </div>
 

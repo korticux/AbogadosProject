@@ -53,6 +53,10 @@
                     </table>
                     <!-- End Table with stripped rows -->
 
+                    <div class="d-flex">
+                        {!! $regiones->links() !!}
+                    </div>
+
                 </div>
             </div>
 
