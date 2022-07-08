@@ -11,6 +11,13 @@ use PDF;
 
 class SituacionesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:situaciones-list|situaciones-create|situaciones-edit|situaciones-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:situaciones-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:situaciones-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:situaciones-delete', ['only' => ['destroy']]);
+    }
 
     public function createPDF(){
         $datos = Situaciones::all();

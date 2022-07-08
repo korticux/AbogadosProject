@@ -15,7 +15,7 @@ class MunicipiosController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:municipios-list|municipios-created|municipios-edit|municipios-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:municipios-list|municipios-create|municipios-edit|municipios-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:municipios-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:municipios-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:municipios-delete', ['only' => ['destroy']]);

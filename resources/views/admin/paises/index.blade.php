@@ -6,6 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
+<<<<<<< HEAD
                     <h5 class="card-title">• Paises</h5>
                     <a class="btn btn-primary" href="{{ route('paises.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
@@ -15,6 +16,18 @@
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
                             <a href="{{ URL::to('/paises/createPDF') }}" class="btn btn-secondary"> <i
                                 class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+=======
+                    <h5 class="card-title">Datatables</h5>
+                    @can('paises-create')
+                        <a class="btn btn-primary" href="{{ route('paises.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                            Agregar
+                            Pais</a>
+                    @endcan
+                    <a href="{{ route('paises.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Paises</a>
+                    <a href="{{ URL::to('/paises/createPDF') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+>>>>>>> 5216f75d5daaf47b6486d2c22d6e035e7c10fcc1
 
 
                     <!-- Table with stripped rows -->

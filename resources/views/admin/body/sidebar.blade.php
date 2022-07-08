@@ -92,7 +92,7 @@ $route = Route::current()->getName();
         </li><!-- End Blank Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link {{ $route == 'cuentas.index' ? '' : 'collapsed' }}" href="{{ route('cobranza.index') }}">
+            <a class="nav-link {{ $route == 'cobranza.index' ? '' : 'collapsed' }}" href="{{ route('cobranza.index') }}">
                 <i class="bi bi-coin"></i>
                 <span>Cobranza</span>
             </a>
@@ -121,7 +121,7 @@ $route = Route::current()->getName();
 
 
         <li class="nav-item">
-            <a class="nav-link {{ $route == 'respaldo.index' ? '' : 'collapsed' }}" href="{{ route('regiones.index') }}">
+            <a class="nav-link {{ $route == 'regiones.index' ? '' : 'collapsed' }}" href="{{ route('regiones.index') }}">
                 <i class="bi bi-compass"></i>
                 <span>Regiones</span>
             </a>

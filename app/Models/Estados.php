@@ -10,4 +10,14 @@ class Estados extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function actores()
+    {
+        return $this->hasMany(Actores::class, 'estado_id');
+    }
+
+    public function municipios()
+    {
+        return $this->hasMany(Municipios::class, 'estado_id');
+    }
 }

@@ -11,8 +11,8 @@
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" name="nombre" class="form-control" id="floatingName"
-                            placeholder="Ingresar nombre">
+                        <input type="text" name="nombre" value="{{ $municipio->nombre }}" class="form-control"
+                            id="floatingName" placeholder="Ingresar nombre">
                         @error('nombre')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="form-floathing">
                         <select name="estado_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Selecciona Un Estado</option>
+                            <option selected disabled>{{ $municipio->estado->Nombre }}</option>
                             @foreach ($estados as $estado)
                                 <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
                             @endforeach

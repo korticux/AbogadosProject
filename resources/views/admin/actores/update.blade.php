@@ -59,9 +59,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floathing">
-                        <select value="{{ $actor->estado_id }}" name="estado_id" class="form-select"
-                            aria-label="Default select example">
-                            <option selected disabled>Selecciona Un Estado</option>
+                        <select name="estado_id" class="form-select" aria-label="Default select example">
+                            <option selected disabled>{{ $actor->estado->Nombre }}</option>
                             @foreach ($estados as $estado)
                                 <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
                             @endforeach

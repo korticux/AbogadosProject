@@ -11,6 +11,7 @@ use App\Http\Controllers\FestivoController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\CobranzaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PeticionesController;
 use App\Http\Controllers\ProcesosController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SituacionesController;
 use App\Http\Controllers\TramitesController;
 use App\Http\Controllers\UserController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
+
+Route::controller(DashboardController::class)->group(function(){
+    Route::get('/', 'EstadosTotal');
+    Route::get('/', 'ActoresTotal');
+    Route::get('/', 'CuentasTotal');
+    Route::get('/', 'DependenciasTotal');
+    Route::get('/', 'EstatusesTotal');
+    Route::get('/', 'ExpedientesTotal');
+    Route::get('/', 'FestivosTotal');
+    Route::get('/', 'MunicipiosTotal');
+    Route::get('/', 'NotificacionesTotal');
+
+});
 
 Route::controller(EstadosController::class)->group(function() {
     Route::get('/estados/index', 'index')->name('estados.index');

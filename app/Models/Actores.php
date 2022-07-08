@@ -10,9 +10,15 @@ class Actores extends Model
 {
     use HasFactory;
 
-    protected $filled = [];
+    protected $guarded = [];
 
-    public function expedientes(){
+    public function expedientes()
+    {
         return $this->hasMany(Expedientes::class, 'actor_id');
+    }
+
+    public function estado()
+    {
+        return $this->belongsTo(Estados::class);
     }
 }

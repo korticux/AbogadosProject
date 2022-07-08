@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExpedientesExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Expedientes;
@@ -16,17 +17,25 @@ use PDF;
 
 class ExpedientesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:estatus-list|estatus-created|estatus-edit|estatus-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:estatus-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:estatus-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:estatus-delete', ['only' => ['destroy']]);
+    }
 
-
-    public function createPDF(){
+    public function createPDF()
+    {
         $datos = Expedientes::all();
         $pdf = PDF::loadView('admin.expedientes.createPDF', compact('datos'));
         return $pdf->download('Expedientes_PDF.pdf');
     }
 
-    public function index() {
+    public function index()
+    {
         $expedientes = Expedientes::latest()->get();
-        return View("admin.expedientes.index" , compact("expedientes"));
+        return View("admin.expedientes.index", compact("expedientes"));
     }
 
     public function post()
@@ -39,7 +48,6 @@ class ExpedientesController extends Controller
         $tramites = Tramites::latest()->get();
         $peticiones = Peticiones::latest()->get();
         return View('admin.expedientes.create', compact("tramites", "estatus", "actores", "dependencias", "regiones", "peticiones"));
-
     }
 
     public function store(Request $request)
@@ -228,4 +236,8 @@ class ExpedientesController extends Controller
         return redirect()->route('expedientes.index')->with($notification);
     }
 
+    public function export()
+    {
+        return Excel::download(new ExpedientesExport, "expedientes.xlsx");
+    }
 }

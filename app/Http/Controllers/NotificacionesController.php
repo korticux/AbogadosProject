@@ -14,7 +14,7 @@ class NotificacionesController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:notificaciones-list|notificaciones-created|notificaciones-edit|notificaciones-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:notificaciones-list|notificaciones-create|notificaciones-edit|notificaciones-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:notificaciones-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:notificaciones-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:notificaciones-delete', ['only' => ['destroy']]);

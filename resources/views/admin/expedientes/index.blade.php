@@ -6,6 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
+<<<<<<< HEAD
                     <h5 class="card-title">• Expedientes</h5>
                     <a class="btn btn-primary" href="{{ route('expedientes.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
@@ -13,8 +14,20 @@
 
                         <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
+=======
+                    <h5 class="card-title">Datatables</h5>
+                    @can('expedientes-create')
+                        <a class="btn btn-primary" href="{{ route('expedientes.post') }}"> <i class="bi bi-plus-circle"></i>
+                            &nbsp;
+                            Agregar
+                            Expediente</a>
+                    @endcan
 
-                        <a href="{{ URL::to('/expedientes/createPDF') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Expedientes</a>
+>>>>>>> 5216f75d5daaf47b6486d2c22d6e035e7c10fcc1
+
+                    <a href="{{ URL::to('/expedientes/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
@@ -33,18 +46,24 @@
                         @foreach ($expedientes as $expediente)
                             <tbody>
                                 <tr>
-                                    <th>{{ $expediente->numero}}</th>
-                                    <th>{{ $expediente->ano}}</th>
-                                    <th>{{ $expediente->region->nombre}}</th>
-                                    <th>{{ $expediente->sala}}</th>
-                                    <th>{{ $expediente->ponencia}}</th>
-                                    <th>{{ $expediente->actor->nombre}}</th>
+                                    <th>{{ $expediente->numero }}</th>
+                                    <th>{{ $expediente->ano }}</th>
+                                    <th>{{ $expediente->region->nombre }}</th>
+                                    <th>{{ $expediente->sala }}</th>
+                                    <th>{{ $expediente->ponencia }}</th>
+                                    <th>{{ $expediente->actor->nombre }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('expedientes.edit', $expediente->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('expedientes.delete', $expediente->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('expedientes-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('expedientes.edit', $expediente->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('expedientes-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('expedientes.delete', $expediente->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

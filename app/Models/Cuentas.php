@@ -10,4 +10,9 @@ class Cuentas extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function cobranzas()
+    {
+        return $this->hasMany(cobranza::class, 'cuenta_id');
+    }
 }

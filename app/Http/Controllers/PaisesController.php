@@ -14,7 +14,7 @@ class PaisesController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:paises-list|paises-created|paises-edit|paises-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:paises-list|paises-create|paises-edit|paises-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:paises-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:paises-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:paises-delete', ['only' => ['destroy']]);

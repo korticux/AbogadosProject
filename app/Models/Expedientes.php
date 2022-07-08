@@ -13,15 +13,34 @@ class Expedientes extends Model
 
     protected $guarded = [];
 
-    public function region(){
+    public function region()
+    {
 
         return $this->belongsTo(Regiones::class);
     }
 
-    public function actor(){
-
+    public function actor()
+    {
         return $this->belongsTo(Actores::class);
     }
 
-}
+    public function dependencia()
+    {
+        return $this->belongsTo(Dependencias::class);
+    }
 
+    public function tramite()
+    {
+        return $this->belongsTo(Tramites::class);
+    }
+
+    public function estatus()
+    {
+        return $this->belongsTo(Estatus::class);
+    }
+
+    public function peticion()
+    {
+        return $this->belongsTo(Peticiones::class);
+    }
+}

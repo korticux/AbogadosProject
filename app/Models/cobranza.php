@@ -10,4 +10,9 @@ class cobranza extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function cuenta()
+    {
+        return $this->belongsTo(Cuentas::class);
+    }
 }

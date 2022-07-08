@@ -11,8 +11,8 @@
                 @csrf
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="text" value="{{$cobranza->cobranza}}" name="cobranza" class="form-control" id="floatingName"
-                            placeholder="Ingresar cobranza">
+                        <input type="text" value="{{ $cobranza->cobranza }}" name="cobranza" class="form-control"
+                            id="floatingName" placeholder="Ingresar cobranza">
                         @error('cobranza')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -21,8 +21,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="text" name="tipo" value="{{$cobranza->tipo}}" class="form-control" id="floatingName"
-                            placeholder="Ingresar tipo">
+                        <input type="text" name="tipo" value="{{ $cobranza->tipo }}" class="form-control"
+                            id="floatingName" placeholder="Ingresar tipo">
                         @error('tipo')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -32,7 +32,7 @@
                 <div class="col-md-4">
                     <div class="form-floathing">
                         <select name="cuenta_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Selecciona una cuenta</option>
+                            <option selected disabled>{{ $cobranza->cuenta->cuenta }}</option>
                             @foreach ($cuentas as $cuenta)
                                 <option value="{{ $cuenta->id }}">{{ $cuenta->cuenta }}</option>
                             @endforeach
@@ -41,8 +41,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="text" value="{{$cobranza->referencia}}" name="referencia" class="form-control" id="floatingName"
-                            placeholder="Ingresar referencia">
+                        <input type="text" value="{{ $cobranza->referencia }}" name="referencia" class="form-control"
+                            id="floatingName" placeholder="Ingresar referencia">
                         @error('referencia')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -52,7 +52,7 @@
                 <div class="col-md-4">
                     <div class="form-floathing">
                         <label for="fecha">Fecha</label>
-                        <input type="date" value="{{$cobranza->fecha}}" class="form-control" name="fecha">
+                        <input type="date" value="{{ $cobranza->fecha }}" class="form-control" name="fecha">
                         @error('fecha')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -60,8 +60,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="text" name="monto" value="{{$cobranza->monto}}" class="form-control" id="floatingName"
-                            placeholder="Ingresar monto">
+                        <input type="text" name="monto" value="{{ $cobranza->monto }}" class="form-control"
+                            id="floatingName" placeholder="Ingresar monto">
                         @error('monto')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
