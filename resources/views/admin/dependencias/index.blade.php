@@ -7,16 +7,17 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Datatables</h5>
-                    <a class="btn btn-primary" href="{{ route('dependencias.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                    <a class="btn btn-primary" href="{{ route('dependencias.post') }}"> <i class="bi bi-plus-circle"></i>
+                        &nbsp;
                         Agregar
                         Dependencias</a>
 
-                        <a href="{{ route('dependencias.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('dependencias.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Dependencias</a>
 
 
-                            <a href="{{ URL::to('/dependencias/pdf') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/dependencias/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -34,10 +35,16 @@
                                     <th>{{ $dependencia->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('dependencias.edit', $dependencia->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('dependencias.delete', $dependencia->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('dependencias-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('dependencias.edit', $dependencia->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('dependencias-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('dependencias.delete', $dependencia->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

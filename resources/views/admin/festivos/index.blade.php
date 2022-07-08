@@ -35,12 +35,16 @@
                                     <th>{{ $festivo->fecha }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark"
-                                                href="{{ route('festivos.edit', $festivo->id) }}"><i
-                                                    class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('festivos.delete', $festivo->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('festivos-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('festivos.edit', $festivo->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('festivos-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('festivos.delete', $festivo->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

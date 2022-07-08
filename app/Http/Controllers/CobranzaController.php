@@ -13,6 +13,13 @@ use PDF;
 class CobranzaController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:cobranza-list|cobranza-created|cobranza-edit|cobranza-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:cobranza-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:cobranza-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:cobranza-delete', ['only' => ['destroy']]);
+    }
 
     public function createPDF(){
         $datos = Cobranza::all();

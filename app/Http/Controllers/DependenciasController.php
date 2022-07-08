@@ -12,6 +12,14 @@ use PDF;
 class DependenciasController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:dependencias-list|dependencias-created|dependencias-edit|dependencias-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:dependencias-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:dependencias-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:dependencias-delete', ['only' => ['destroy']]);
+    }
+
     public function createPDF(){
         $datos = Dependencias::all();
         $pdf = PDF::loadView('admin.dependencias.createPDF', compact('datos'));

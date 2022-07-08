@@ -11,7 +11,13 @@ use PDF;
 
 class CuentasController extends Controller
 {
-
+    function __construct()
+    {
+        $this->middleware('permission:cuentas-list|cuentas-created|cuentas-edit|cuentas-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:cuentas-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:cuentas-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:cuentas-delete', ['only' => ['destroy']]);
+    }
     public function createPDF(){
         $datos = Cuentas::all();
         $pdf = PDF::loadView('admin.cuentas.createPDF', compact('datos'));

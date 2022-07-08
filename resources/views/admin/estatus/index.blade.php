@@ -11,11 +11,11 @@
                         Agregar
                         Estatus</a>
 
-                        <a href="{{ route('estatus.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('estatus.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estatus</a>
 
 
-                         <a href="{{ URL::to('/estatus/pdf') }}" class="btn btn-secondary"> <i
+                    <a href="{{ URL::to('/estatus/pdf') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 
@@ -35,10 +35,16 @@
                                     <th>{{ $estatus->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('estatus.edit', $estatus->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('estatus.delete', $estatus->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('estatus-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('estatus.edit', $estatus->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('estatus-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('estatus.delete', $estatus->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

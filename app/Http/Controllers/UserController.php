@@ -44,7 +44,7 @@ class UserController extends Controller
             'alert-type' => "sucess"
         ];
 
-        return redirect()->route('admin.users.index')->with($notification);
+        return redirect()->route('users.index')->with($notification);
     }
 
     public function show($id)

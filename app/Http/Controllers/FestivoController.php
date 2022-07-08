@@ -11,6 +11,13 @@ use PDF;
 
 class FestivoController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:festivos-list|festivos-created|festivos-edit|festivos-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:festivos-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:festivos-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:festivos-delete', ['only' => ['destroy']]);
+    }
 
     public function createPDF(){
         $datos = Festivos::all();

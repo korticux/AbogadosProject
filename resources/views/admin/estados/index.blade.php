@@ -11,11 +11,11 @@
                         Add
                         Estado</a>
 
-                        <a href="{{ route('estados.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('estados.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
 
-                            <a href="{{ route('estados.createPDF') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
+                    <a href="{{ route('estados.createPDF') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
 
 
                     <!-- Table with stripped rows -->
@@ -34,10 +34,16 @@
                                     <th>{{ $estado->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('estados.edit', $estado->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('estados.delete', $estado->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('estados-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('estados.edit', $estado->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('estados-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('estados.delete', $estado->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

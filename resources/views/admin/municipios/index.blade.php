@@ -7,15 +7,16 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Datatables</h5>
-                    <a class="btn btn-primary" href="{{ route('municipios.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                    <a class="btn btn-primary" href="{{ route('municipios.post') }}"> <i class="bi bi-plus-circle"></i>
+                        &nbsp;
                         Agregar
                         Municipio</a>
 
 
                     <a href="{{ route('municipios.export') }}" class="btn btn-secondary"> <i
-                        class="bi bi-file-earmark-excel-fill"></i> &nbsp; Municipios</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Municipios</a>
 
-                        <a href="{{ URL::to('/municipios/pdf') }}" class="btn btn-secondary"> <i
+                    <a href="{{ URL::to('/municipios/pdf') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 
@@ -35,10 +36,16 @@
                                     <th>{{ $municipio->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('municipios.edit', $municipio->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('municipios.delete', $municipio->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('municipios-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('municipios.edit', $municipio->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('municipios-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('municipios.delete', $municipio->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

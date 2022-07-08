@@ -12,6 +12,13 @@ use PDF;
 
 class ActoresController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:actores-list|actores-created|actores-edit|actores-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:actores-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:actores-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:actores-delete', ['only' => ['destroy']]);
+    }
     public function createPDF(){
         $datos = Actores::all();
         $pdf = PDF::loadView('admin.actores.createPDF', compact('datos'));

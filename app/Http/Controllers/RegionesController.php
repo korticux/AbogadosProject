@@ -11,6 +11,13 @@ use PDF;
 
 class RegionesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:regiones-list|regiones-created|regiones-edit|regiones-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:regiones-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:regiones-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:regiones-delete', ['only' => ['destroy']]);
+    }
 
     public function createPDF(){
         $datos = Regiones::all();

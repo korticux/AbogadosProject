@@ -11,10 +11,10 @@
                         Agregar
                         Pais</a>
 
-                        <a href="{{ route('paises.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('paises.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Paises</a>
-                            <a href="{{ URL::to('/paises/pdf') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/paises/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 
                     <!-- Table with stripped rows -->
@@ -33,10 +33,16 @@
                                     <th>{{ $pais->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('paises.edit', $pais->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('paises.delete', $pais->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('paises-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('paises.edit', $pais->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('paises-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('paises.delete', $pais->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

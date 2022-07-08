@@ -11,11 +11,11 @@
                         Agregar
                         Regiones</a>
 
-                        <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Regiones</a>
 
-                            <a href="{{ URL::to('/regiones/pdf') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/regiones/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -32,10 +32,16 @@
                                     <th>{{ $region->nombre }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('regiones.edit', $region->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('regiones.delete', $region->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('regiones-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('regiones.edit', $region->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('regiones-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('regiones.delete', $region->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

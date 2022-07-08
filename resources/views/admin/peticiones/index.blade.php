@@ -7,15 +7,16 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Datatables</h5>
-                    <a class="btn btn-primary" href="{{ route('peticiones.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                    <a class="btn btn-primary" href="{{ route('peticiones.post') }}"> <i class="bi bi-plus-circle"></i>
+                        &nbsp;
                         Agregar
                         Peticion</a>
 
-                        <a href="{{ route('peticiones.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('peticiones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Peticiones</a>
 
-                            <a href="{{ URL::to('/peticiones/pdf') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/peticiones/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -33,10 +34,16 @@
                                     <th>{{ $peticion->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('peticiones.edit', $peticion->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('peticiones.delete', $peticion->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('peticiones-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('peticiones.edit', $peticion->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('peticiones-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('peticiones.delete', $peticion->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

@@ -11,8 +11,16 @@ use PDF;
 class EstadosController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:estados-list|estados-created|estados-edit|estados-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:estados-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:estados-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:estados-delete', ['only' => ['destroy']]);
+    }
 
-    public function createPDF(){
+    public function createPDF()
+    {
         $datos = Estados::all();
         $pdf = PDF::loadView('admin.estados.createPDF', compact('datos'));
         return $pdf->download('Estados_PDF.pdf');

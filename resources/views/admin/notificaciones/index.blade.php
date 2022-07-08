@@ -35,12 +35,16 @@
                                     <th>{{ $notificaciones->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark"
-                                                href="{{ route('notificaciones.edit', $notificaciones->id) }}"><i
-                                                    class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('notificaciones.delete', $notificaciones->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('notificaciones-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('notificaciones.edit', $notificaciones->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('notificaciones-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('notificaciones.delete', $notificaciones->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

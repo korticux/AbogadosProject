@@ -11,6 +11,13 @@ use PDF;
 
 class EstatusController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:estatus-list|estatus-created|estatus-edit|estatus-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:estatus-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:estatus-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:estatus-delete', ['only' => ['destroy']]);
+    }
 
     public function createPDF(){
         $datos = Estatus::all();

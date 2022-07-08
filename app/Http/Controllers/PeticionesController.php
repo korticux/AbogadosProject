@@ -11,6 +11,13 @@ use PDF;
 
 class PeticionesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:peticiones-list|peticiones-created|peticiones-edit|peticiones-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:peticiones-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:peticiones-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:peticiones-delete', ['only' => ['destroy']]);
+    }
 
     public function createPDF(){
         $datos = Peticiones::all();

@@ -11,11 +11,11 @@
                         Agregar
                         Cuenta</a>
 
-                        <a href="{{ route('cuentas.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('cuentas.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cuentas</a>
 
-                            <a href="{{ URL::to('/cuentas/pdf') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/cuentas/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -33,10 +33,16 @@
                                     <th>{{ $cuenta->cuenta }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('cuentas.edit', $cuenta->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('cuentas.delete', $cuenta->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('cuentas-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('cuentas.edit', $cuenta->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('cuentas-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('cuentas.delete', $cuenta->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>

@@ -10,11 +10,11 @@
                     <a class="btn btn-primary" href="{{ route('cobranza.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Cobranza</a>
-                        <a href="{{ route('cobranza.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('cobranza.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Cobranza</a>
 
-                            <a href="{{ URL::to('/cobranza/pdf') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/cobranza/pdf') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -37,10 +37,16 @@
                                     <th>{{ $cobranza->monto }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark" href="{{ route('cobranza.edit', $cobranza->id) }}" ><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('cobranza.delete', $cobranza->id) }}"><i
-                                                    class="bi bi-trash-fill"></i></a>
+                                            @can('cobranza-edit')
+                                                <a class="btn  btn-sm btn-outline-dark"
+                                                    href="{{ route('cobranza.edit', $cobranza->id) }}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                            @endcan
+                                            @can('cobranza-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                    href="{{ route('cobranza.delete', $cobranza->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
                                         </div>
                                     </th>
                                 </tr>
