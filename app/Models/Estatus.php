@@ -10,4 +10,9 @@ class Estatus extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function tramites()
+    {
+        return $this->hasMany(Expedientes::class, 'estatus_id');
+    }
 }

@@ -10,4 +10,8 @@ class Peticiones extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function tramites()
+    {
+        return $this->hasMany(Expedientes::class, 'peticion_id');
+    }
 }
