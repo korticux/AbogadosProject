@@ -6,8 +6,6 @@
 
             <div class="card">
                 <div class="card-body">
-
-
                     <h5 class="card-title">Procesos</h5>
 
                     @can('procesos-create')

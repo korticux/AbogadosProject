@@ -6,8 +6,6 @@
 
             <div class="card">
                 <div class="card-body">
-
-
                     <h5 class="card-title">Situaciones</h5>
 
                     @can('situaciones-create')
