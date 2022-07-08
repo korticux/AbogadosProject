@@ -11,7 +11,6 @@ use PDF;
 
 class ProcesosController extends Controller
 {
-<<<<<<< HEAD
 
     public function createPDF(){
         $datos = Proceso::all();
@@ -19,15 +18,6 @@ class ProcesosController extends Controller
         return $pdf->download('Proceso_PDF.pdf');
     }
 
-=======
-    function __construct()
-    {
-        $this->middleware('permission:procesos-list|procesos-create|procesos-edit|procesos-delete', ['only' => ['index', 'store']]);
-        $this->middleware('permission:procesos-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:procesos-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:procesos-delete', ['only' => ['destroy']]);
-    }
->>>>>>> 5216f75d5daaf47b6486d2c22d6e035e7c10fcc1
     public function index() {
         $procesos = Proceso::latest()->get();
         return View("admin.procesos.index" , compact("procesos"));
