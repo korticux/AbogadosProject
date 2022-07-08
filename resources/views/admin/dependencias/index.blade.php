@@ -32,8 +32,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($dependencias as $dependencia)
-                            <tbody>
+                        <tbody>
+                            @foreach ($dependencias as $dependencia)
                                 <tr>
                                     <th>{{ $dependencia->nombre }}</th>
                                     <th>{{ $dependencia->created_at }}</th>
@@ -52,8 +52,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

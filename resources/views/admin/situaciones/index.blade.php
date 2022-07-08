@@ -34,8 +34,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($situaciones as $situacion)
-                            <tbody>
+                        <tbody>
+                            @foreach ($situaciones as $situacion)
                                 <tr>
                                     <th>{{ $situacion->expediente }}</th>
                                     <th>{{ $situacion->situacion }}</th>
@@ -53,8 +53,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

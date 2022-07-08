@@ -31,8 +31,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($estatus as $estatus)
-                            <tbody>
+                        <tbody>
+                            @foreach ($estatus as $estatus)
                                 <tr>
                                     <th>{{ $estatus->nombre }}</th>
                                     <th>{{ $estatus->created_at }}</th>
@@ -51,8 +51,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

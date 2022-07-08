@@ -28,8 +28,9 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
+                        <tbody>
                         @foreach ($paises as $pais)
-                            <tbody>
+
                                 <tr>
                                     <th>{{ $pais->nombre }}</th>
                                     <th>{{ $pais->created_at }}</th>
@@ -48,8 +49,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
                         @endforeach
+                    </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 
