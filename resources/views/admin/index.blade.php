@@ -39,299 +39,296 @@ $total_notificaciones = DB::table('notificaciones')->count();
                                 </div>
                                 <div class="ps-3">
                                     <h6>{{ $total_cobranza }}</h6>
-                                    <h5 class="card-title">Estados registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-map"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_estados }}</h6>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div><!-- End Sales Card -->
-
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-3">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Paises Registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-geo-alt"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_paises }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-3">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Peticiones Registradas</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-inbox"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_peticiones }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-
-
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-3">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Procesos Registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-hourglass"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_procesos }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-3">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Regiones Registradas</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-compass"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_regiones }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-3">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Situaciones Registradas</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-brush"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_situaciones }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-3">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Trámitres Registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-clipboard"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_tramites }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Actores registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_actores }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Cuentas registradas</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-bank"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_cuentas }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Dependencias registradas</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-building"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_dependencias }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Estatus registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-clipboard-data"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_estatuses }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Expedientes registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-briefcase"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_expedientes }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Festivos registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-pin-angle"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_festivos }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Municipios registrados</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-pin-map"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_municipios }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Notificaciones registradas</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-bell"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ $total_notificaciones }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- End Sales Card -->
-
+                        </div>
 
                     </div>
-                </div>
+                </div><!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Estados Registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-map"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_estados }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+
+
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Paises Registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_paises }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Peticiones Registradas</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-inbox"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_peticiones }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+
+
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Procesos Registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-hourglass"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_procesos }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Regiones Registradas</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-compass"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_regiones }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Situaciones Registradas</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-brush"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_situaciones }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Trámitres Registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-clipboard"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_tramites }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Actores registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_actores }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Cuentas registradas</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-bank"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_cuentas }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Dependencias registradas</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_dependencias }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Estatus registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-clipboard-data"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_estatuses }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Expedientes registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-briefcase"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_expedientes }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Festivos registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-pin-angle"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_festivos }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Municipios registrados</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-pin-map"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_municipios }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+                <!-- Sales Card -->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Notificaciones registradas</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon  rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-bell"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_notificaciones }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Sales Card -->
+
+
             </div>
-        @endsection
+        </div>
+    @endsection
