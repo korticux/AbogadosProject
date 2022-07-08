@@ -19,8 +19,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($roles as $role)
-                            <tbody>
+                        <tbody>
+                            @foreach ($roles as $role)
                                 <tr>
                                     <th>{{ $role->name }}</th>
                                     <th class="row">
@@ -38,8 +38,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

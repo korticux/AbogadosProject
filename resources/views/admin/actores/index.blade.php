@@ -6,14 +6,14 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">• Actores</h5>
+                    <h5 class="card-title">Actores</h5>
                     <a class="btn btn-primary" href="{{ route('actores.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Actores</a>
                     <a href="{{ route('actores.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
-                            <a href="{{ URL::to('/actores/createPDF') }}" class="btn btn-secondary"> <i
-                                class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
+                    <a href="{{ URL::to('/actores/createPDF') }}" class="btn btn-secondary"> <i
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -25,8 +25,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($actores as $actor)
-                            <tbody>
+                        <tbody>
+                            @foreach ($actores as $actor)
                                 <tr>
                                     <th>{{ $actor->nocliente }}</th>
                                     <th>{{ $actor->nombre }}</th>
@@ -46,8 +46,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

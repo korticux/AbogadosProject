@@ -34,8 +34,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($notificaciones as $notificaciones)
-                            <tbody>
+                        <>
+                            @foreach ($notificaciones as $notificaciones)
                                 <tr>
                                     <th>{{ $notificaciones->nombre }}</th>
                                     <th>{{ $notificaciones->created_at }}</th>
@@ -54,8 +54,8 @@
                                         </div>
                                     </th>
                                 </tr>
+                            @endforeach
                             </tbody>
-                        @endforeach
                     </table>
                     <!-- End Table with stripped rows -->
 

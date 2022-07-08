@@ -32,8 +32,8 @@
 
                             </tr>
                         </thead>
-                        @foreach ($cobranzas as $cobranza)
-                            <tbody>
+                        <tbody>
+                            @foreach ($cobranzas as $cobranza)
                                 <tr>
                                     <th>{{ $cobranza->cobranza }}</th>
                                     <th>{{ $cobranza->tipo }}</th>
@@ -54,8 +54,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

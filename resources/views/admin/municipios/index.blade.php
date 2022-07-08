@@ -31,8 +31,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($municipios as $municipio)
-                            <tbody>
+                        <tbody>
+                            @foreach ($municipios as $municipio)
                                 <tr>
                                     <th>{{ $municipio->nombre }}</th>
                                     <th>{{ $municipio->created_at }}</th>
@@ -51,8 +51,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
                     <div class="d-flex">

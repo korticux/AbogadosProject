@@ -14,11 +14,11 @@
                             Proceso</a>
                     @endcan
 
-                     <a href="{{ route('proceso.export') }}" class="btn btn-secondary"> <i
+                    <a href="{{ route('proceso.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; proceso</a>
 
 
-                        <a href="{{ URL::to('/proceso/createPDF') }}" class="btn btn-secondary"> <i
+                    <a href="{{ URL::to('/proceso/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a> --
 
                     <!-- Table with stripped rows -->
@@ -31,8 +31,8 @@
                                 <th scope="col">Quien Recibio</th>
                             </tr>
                         </thead>
-                        @foreach ($procesos as $proceso)
-                            <tbody>
+                        <tbody>
+                            @foreach ($procesos as $proceso)
                                 <tr>
                                     <th>{{ $proceso->numero_expediente }}</th>
                                     <th>{{ $proceso->fecha_de_ingreso }}</th>
@@ -49,8 +49,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

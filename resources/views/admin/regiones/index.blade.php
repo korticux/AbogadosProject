@@ -28,8 +28,8 @@
                                 <th scope="col">Nombre</th>
                             </tr>
                         </thead>
-                        @foreach ($regiones as $region)
-                            <tbody>
+                        <tbody>
+                            @foreach ($regiones as $region)
                                 <tr>
                                     <th>{{ $region->numero }}</th>
                                     <th>{{ $region->nombre }}</th>
@@ -48,8 +48,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

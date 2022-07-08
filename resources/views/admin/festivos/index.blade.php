@@ -34,8 +34,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($festivos as $festivo)
-                            <tbody>
+                        <tbody>
+                            @foreach ($festivos as $festivo)
                                 <tr>
                                     <th>{{ $festivo->nombre }}</th>
                                     <th>{{ $festivo->fecha }}</th>
@@ -54,8 +54,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 

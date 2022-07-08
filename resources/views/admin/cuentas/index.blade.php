@@ -30,8 +30,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($cuentas as $cuenta)
-                            <tbody>
+                        <tbody>
+                            @foreach ($cuentas as $cuenta)
                                 <tr>
                                     <th>{{ $cuenta->banco }}</th>
                                     <th>{{ $cuenta->cuenta }}</th>
@@ -50,8 +50,8 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
 
