@@ -6,20 +6,11 @@
 
             <div class="card">
                 <div class="card-body">
-<<<<<<< HEAD
                     <h5 class="card-title">• Regiones</h5>
                     <a class="btn btn-primary" href="{{ route('regiones.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Regiones</a>
 
-=======
-                    <h5 class="card-title">Datatables</h5>
-                    @can('regiones-create')
-                        <a class="btn btn-primary" href="{{ route('regiones.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                            Agregar
-                            Regiones</a>
-                    @endcan
->>>>>>> 5216f75d5daaf47b6486d2c22d6e035e7c10fcc1
                     <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
