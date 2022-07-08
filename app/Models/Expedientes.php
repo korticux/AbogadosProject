@@ -11,7 +11,7 @@ class Expedientes extends Model
 {
     use HasFactory;
 
-    protected $filled = [];
+    protected $guarded = [];
 
     public function region(){
 

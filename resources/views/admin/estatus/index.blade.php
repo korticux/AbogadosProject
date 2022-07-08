@@ -6,13 +6,13 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">• Estatus</h5>
                     <a class="btn btn-primary" href="{{ route('estatus.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Estatus</a>
 
                     <a href="{{ route('estatus.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estatus</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
 
                     <a href="{{ URL::to('/estatus/pdf') }}" class="btn btn-secondary"> <i

@@ -6,13 +6,13 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">• Regiones</h5>
                     <a class="btn btn-primary" href="{{ route('regiones.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                         Agregar
                         Regiones</a>
 
                     <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Regiones</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                             <a href="{{ URL::to('/regiones/createPDF') }}" class="btn btn-secondary"> <i
                                 class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>

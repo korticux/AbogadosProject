@@ -6,16 +6,16 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">• Estados</h5>
                     <a class="btn btn-primary" href="{{ route('estados.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                        Add
+                        Agregar
                         Estado</a>
 
                     <a href="{{ route('estados.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ route('estados.createPDF') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estados</a>
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
 
                     <!-- Table with stripped rows -->
