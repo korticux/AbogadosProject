@@ -27,7 +27,7 @@ class RegionesController extends Controller
 
     public function index()
     {
-        $regiones = Regiones::latest()->get();
+        $regiones = Regiones::latest()->paginate(5);
         return View("admin.regiones.index", compact("regiones"));
     }
 

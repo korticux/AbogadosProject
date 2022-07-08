@@ -6,7 +6,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+
+                    <h5 class="card-title">Municipios</h5>
                     @can('municipios-create')
                         <a class="btn btn-primary" href="{{ route('municipios.post') }}"> <i class="bi bi-plus-circle"></i>
                             &nbsp;
@@ -14,9 +15,8 @@
                             Municipio</a>
                     @endcan
 
-
                     <a href="{{ route('municipios.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Municipios</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/municipios/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
@@ -31,8 +31,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($municipios as $municipio)
-                            <tbody>
+                        <tbody>
+                            @foreach ($municipios as $municipio)
                                 <tr>
                                     <th>{{ $municipio->nombre }}</th>
                                     <th>{{ $municipio->created_at }}</th>
@@ -51,10 +51,13 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
+                    <div class="d-flex">
+                        {!! $municipios->links() !!}
+                    </div>
 
                 </div>
             </div>

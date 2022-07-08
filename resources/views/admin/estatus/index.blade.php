@@ -6,7 +6,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+
+                    <h5 class="card-title">Estatus</h5>
                     @can('estatus-create')
                         <a class="btn btn-primary" href="{{ route('estatus.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
@@ -14,7 +15,7 @@
                     @endcan
 
                     <a href="{{ route('estatus.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Estatus</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
 
                     <a href="{{ URL::to('/estatus/pdf') }}" class="btn btn-secondary"> <i
@@ -30,31 +31,33 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($estatus as $estatus)
+                        @foreach ($estatus as $estatuses)
                             <tbody>
                                 <tr>
-                                    <th>{{ $estatus->nombre }}</th>
-                                    <th>{{ $estatus->created_at }}</th>
+                                    <th>{{ $estatuses->nombre }}</th>
+                                    <th>{{ $estatuses->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('estatus-edit')
                                                 <a class="btn  btn-sm btn-outline-dark"
-                                                    href="{{ route('estatus.edit', $estatus->id) }}"><i
+                                                    href="{{ route('estatus.edit', $estatuses->id) }}"><i
                                                         class="bi bi-pencil-fill"></i></a>
                                             @endcan
-                                            @can('estatus-delete')
+                                            @can('es-delete')
                                                 <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                    href="{{ route('estatus.delete', $estatus->id) }}"><i
+                                                    href="{{ route('estatus.delete', $estatuses->id) }}"><i
                                                         class="bi bi-trash-fill"></i></a>
                                             @endcan
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $estatus->links() !!}
+                    </div>
                 </div>
             </div>
 

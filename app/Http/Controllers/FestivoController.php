@@ -26,7 +26,7 @@ class FestivoController extends Controller
     }
 
     public function index() {
-        $festivos = Festivos::latest()->get();
+        $festivos = Festivos::latest()->paginate(5);
         return View("admin.festivos.index" , compact("festivos"));
     }
     public function post()

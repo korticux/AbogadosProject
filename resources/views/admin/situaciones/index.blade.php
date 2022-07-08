@@ -6,7 +6,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Situaciones</h5>
+
                     @can('situaciones-create')
                         <a class="btn btn-primary" href="{{ route('situaciones.post') }}"> <i class="bi bi-plus-circle"></i>
                             &nbsp;
@@ -14,8 +15,9 @@
                             Situacion</a>
                     @endcan
 
+
                     <a href="{{ route('situaciones.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Situaciones</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/situaciones/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
@@ -32,8 +34,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($situaciones as $situacion)
-                            <tbody>
+                        <tbody>
+                            @foreach ($situaciones as $situacion)
                                 <tr>
                                     <th>{{ $situacion->expediente }}</th>
                                     <th>{{ $situacion->situacion }}</th>
@@ -51,10 +53,14 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
+
+                    <div class="d-flex">
+                        {!! $situaciones->links() !!}
+                    </div>
 
                 </div>
             </div>

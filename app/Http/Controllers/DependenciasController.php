@@ -27,7 +27,7 @@ class DependenciasController extends Controller
     }
 
     public function index() {
-        $dependencias = Dependencias::latest()->get();
+        $dependencias = Dependencias::latest()->paginate(2);
         return View("admin.dependencias.index" , compact("dependencias"));
     }
 

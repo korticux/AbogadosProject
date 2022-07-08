@@ -28,7 +28,7 @@ class NotificacionesController extends Controller
 
     public function index()
     {
-        $notificaciones = Notificaciones::latest()->get();
+        $notificaciones = Notificaciones::latest()->paginate(5);
         return View("admin.notificaciones.index", compact("notificaciones"));
     }
 

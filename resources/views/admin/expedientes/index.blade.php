@@ -6,7 +6,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+
+                    <h5 class="card-title">Expedientes</h5>
                     @can('expedientes-create')
                         <a class="btn btn-primary" href="{{ route('expedientes.post') }}"> <i class="bi bi-plus-circle"></i>
                             &nbsp;
@@ -33,8 +34,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($expedientes as $expediente)
-                            <tbody>
+                        <tbody>
+                            @foreach ($expedientes as $expediente)
                                 <tr>
                                     <th>{{ $expediente->numero }}</th>
                                     <th>{{ $expediente->ano }}</th>
@@ -57,11 +58,13 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $expedientes->links() !!}
+                    </div>
                 </div>
             </div>
 

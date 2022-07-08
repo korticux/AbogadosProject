@@ -6,7 +6,9 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+
+                    <h5 class="card-title">Tramites</h5>
+
                     @can('tramites-create')
                         <a class="btn btn-primary" href="{{ route('tramites.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
@@ -25,8 +27,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($tramites as $tramite)
-                            <tbody>
+                        <tbody>
+                            @foreach ($tramites as $tramite)
                                 <tr>
                                     <th>{{ $tramite->nombre }}</th>
                                     <th>{{ $tramite->created_at }}</th>
@@ -41,10 +43,14 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
+
+                    <div class="d-flex">
+                        {!! $tramites->links() !!}
+                    </div>
 
                 </div>
             </div>

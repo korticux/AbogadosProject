@@ -6,14 +6,16 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Regiones</h5>
+
                     @can('regiones-create')
                         <a class="btn btn-primary" href="{{ route('regiones.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
                             Regiones</a>
                     @endcan
+
                     <a href="{{ route('regiones.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Regiones</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/regiones/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
@@ -26,8 +28,8 @@
                                 <th scope="col">Nombre</th>
                             </tr>
                         </thead>
-                        @foreach ($regiones as $region)
-                            <tbody>
+                        <tbody>
+                            @foreach ($regiones as $region)
                                 <tr>
                                     <th>{{ $region->numero }}</th>
                                     <th>{{ $region->nombre }}</th>
@@ -46,10 +48,14 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
+
+                    <div class="d-flex">
+                        {!! $regiones->links() !!}
+                    </div>
 
                 </div>
             </div>

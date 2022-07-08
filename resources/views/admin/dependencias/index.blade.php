@@ -6,7 +6,9 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+
+                    <h5 class="card-title">Dependencias</h5>
+
                     @can('dependencias-create')
                         <a class="btn btn-primary" href="{{ route('dependencias.post') }}"> <i class="bi bi-plus-circle"></i>
                             &nbsp;
@@ -15,7 +17,7 @@
                     @endcan
 
                     <a href="{{ route('dependencias.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Dependencias</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
 
                     <a href="{{ URL::to('/dependencias/createPDF') }}" class="btn btn-secondary"> <i
@@ -30,8 +32,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($dependencias as $dependencia)
-                            <tbody>
+                        <tbody>
+                            @foreach ($dependencias as $dependencia)
                                 <tr>
                                     <th>{{ $dependencia->nombre }}</th>
                                     <th>{{ $dependencia->created_at }}</th>
@@ -50,11 +52,13 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $dependencias->links() !!}
+                    </div>
                 </div>
             </div>
 

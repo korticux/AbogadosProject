@@ -6,14 +6,12 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
-                    @can('actores-create')
-                        <a class="btn btn-primary" href="{{ route('actores.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                            Agregar
-                            Actores</a>
-                    @endcan
+                    <h5 class="card-title">Actores</h5>
+                    <a class="btn btn-primary" href="{{ route('actores.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                        Agregar
+                        Actores</a>
                     <a href="{{ route('actores.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Actores</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
                     <a href="{{ URL::to('/actores/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Pagination\Paginator;
 use App\Exports\CuentasExport;
 use App\Models\Cuentas;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ class CuentasController extends Controller
 
 
     public function index() {
-        $cuentas = Cuentas::latest()->get();
+        $cuentas = Cuentas::latest()->paginate(2);
         return View("admin.cuentas.index" , compact("cuentas"));
     }
 

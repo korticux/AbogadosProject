@@ -6,7 +6,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Paises</h5>
+
                     @can('paises-create')
                         <a class="btn btn-primary" href="{{ route('paises.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
@@ -27,8 +28,9 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
+                        <tbody>
                         @foreach ($paises as $pais)
-                            <tbody>
+
                                 <tr>
                                     <th>{{ $pais->nombre }}</th>
                                     <th>{{ $pais->created_at }}</th>
@@ -47,10 +49,14 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
                         @endforeach
+                    </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
+
+                    <div class="d-flex">
+                        {!! $paises->links() !!}
+                    </div>
 
                 </div>
             </div>

@@ -1,23 +1,21 @@
 <table class="table" border='1'>
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col"># De Cliente</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">CURP</th>
+        <th style="text-align:center"  scope="col"># De Cliente</th>
+        <th style="text-align:center"  scope="col">Nombre</th>
+        <th  style="text-align:center" scope="col">Correo</th>
+        <th style="text-align:center"  scope="col">Telefono</th>
+        <th style="text-align:center"  scope="col">CURP</th>
       </tr>
     </thead>
     <tbody>
         @foreach($datos as $dato)
       <tr>
-        <th scope="row">{{$dato->id}}</th>
-        <td>{{$dato->nocliente}}</td>
-        <td>{{$dato->nombre}}</td>
-        <td>{{$dato->correo}}</td>
-        <td>{{$dato->telefono}}</td>
-        <td>{{$dato->curp}}</td>
+        <td style="text-align:center" >{{$dato->nocliente}}</td>
+        <td style="text-align:center" >{{$dato->nombre}}</td>
+        <td style="text-align:center" >{{$dato->correo}}</td>
+        <td style="text-align:center" >{{$dato->telefono}}</td>
+        <td style="text-align:center" >{{$dato->curp}}</td>
       </tr>
       @endforeach
     </tbody>

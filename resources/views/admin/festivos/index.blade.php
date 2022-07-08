@@ -6,7 +6,10 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+
+                    <h5 class="card-title">Festivos</h5>
+
+
                     @can('festivos-create')
                         <a class="btn btn-primary" href="{{ route('festivos.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
@@ -14,8 +17,9 @@
                     @endcan
 
 
+
                     <a href="{{ route('festivos.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Festivos</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/festivos/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
@@ -30,8 +34,8 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        @foreach ($festivos as $festivo)
-                            <tbody>
+                        <tbody>
+                            @foreach ($festivos as $festivo)
                                 <tr>
                                     <th>{{ $festivo->nombre }}</th>
                                     <th>{{ $festivo->fecha }}</th>
@@ -50,10 +54,14 @@
                                         </div>
                                     </th>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
+
+                    <div class="d-flex">
+                        {!! $festivos->links() !!}
+                    </div>
 
                 </div>
             </div>

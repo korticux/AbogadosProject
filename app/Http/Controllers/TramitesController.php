@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Exports\TramitesExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Tramites;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class TramitesController extends Controller
@@ -23,7 +25,7 @@ class TramitesController extends Controller
     }
 
     public function index() {
-        $tramites = Tramites::latest()->get();
+        $tramites = Tramites::latest()->paginate(5);
         return View("admin.tramites.index" , compact("tramites"));
     }
 
@@ -95,5 +97,10 @@ class TramitesController extends Controller
         );
 
         return redirect()->route('tramites.index')->with($notification);
+    }
+
+    public function export()
+    {
+        return Excel::download(new TramitesExport, "Tramites.xlsx");
     }
 }
