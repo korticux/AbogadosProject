@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Datatables</h5>
+                    <h5 class="card-title">Dependencias</h5>
                     @can('dependencias-create')
                         <a class="btn btn-primary" href="{{ route('dependencias.post') }}"> <i class="bi bi-plus-circle"></i>
                             &nbsp;
