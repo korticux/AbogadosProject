@@ -60,10 +60,6 @@
                     <div class="d-flex">
                               {!! $estados->links() !!}
                     </div>
-                    <!-- End Table with stripped rows -->
-                    <div class="d-flex">
-                        {!! $estados->links() !!}
-                    </div>
                 </div>
             </div>
         </div>
