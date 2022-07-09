@@ -35,20 +35,20 @@
                             </tr>
                         </thead>
                         <>
-                            @foreach ($notificaciones as $notificaciones)
+                            @foreach ($notificaciones as $notificacion)
                                 <tr>
-                                    <th>{{ $notificaciones->nombre }}</th>
-                                    <th>{{ $notificaciones->created_at }}</th>
+                                    <th>{{ $notificacion->nombre }}</th>
+                                    <th>{{ $notificacion->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('notificaciones-edit')
                                                 <a class="btn  btn-sm btn-outline-dark"
-                                                    href="{{ route('notificaciones.edit', $notificaciones->id) }}"><i
+                                                    href="{{ route('notificaciones.edit', $notificacion->id) }}"><i
                                                         class="bi bi-pencil-fill"></i></a>
                                             @endcan
                                             @can('notificaciones-delete')
                                                 <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                    href="{{ route('notificaciones.delete', $notificaciones->id) }}"><i
+                                                    href="{{ route('notificaciones.delete', $notificacion->id) }}"><i
                                                         class="bi bi-trash-fill"></i></a>
                                             @endcan
                                         </div>

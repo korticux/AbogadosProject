@@ -60,7 +60,7 @@
                     <!-- End Table with stripped rows -->
 
                     <div class="d-flex">
-                        {!! $cobranza->links() !!}
+                        {!! $cobranzas->links() !!}
                     </div>
 
                 </div>

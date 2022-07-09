@@ -19,14 +19,14 @@ class ProcesosController extends Controller
     }
 
     public function index() {
-        $procesos = Proceso::latest()->get();
+        $procesos = Proceso::latest()->paginate(5);
         return View("admin.procesos.index" , compact("procesos"));
     }
 
     public function post()
     {
 
-        $expedientes = Expedientes::latest()->paginate(5);
+        $expedientes = Expedientes::latest()->get();
         return View('admin.procesos.create', compact("expedientes"));
 
     }
