@@ -2,7 +2,7 @@
 
 
 @section('admin')
-    <div class="card-body">
+    <div    class="card-body">
         <h5 class="card-title">Editar Proceso</h5>
 
         <!-- Default Tabs -->
