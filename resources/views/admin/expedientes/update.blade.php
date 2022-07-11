@@ -2,9 +2,30 @@
 
 
 @section('admin')
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Actualizar Expediente</h5>
+    <div class="card-body">
+        <h5 class="card-title">Actualizar Expediente</h5>
+
+                    <!-- TABS -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">Expediente</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">Archivos del Expediente</button>
+        </li>
+    </ul>
+
+
+    <div class="tab-content pt-2" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <!-- Floating Labels Form -->
+
+
+
+    <!--<div class="card">-->
+
 
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}">
@@ -29,8 +50,11 @@
                         <label for="nombre">Año</label>
                     </div>
                 </div>
+
                 <div class="col-md-6">
+                    Región
                     <div class="form-floathing">
+
                         <select name="region_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->region->id }}">
                                 {{ $expediente->region->nombre }}</option>
@@ -61,6 +85,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                        Petición
                     <div class="form-floathing">
                         <select name="peticion_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->peticion->id }}">
@@ -82,6 +107,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    Actor
                     <div class="form-floathing">
                         <select name="actor_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->actor->id }}">
@@ -93,6 +119,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    Dependencia
                     <div class="form-floathing">
                         <select name="dependencia_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->dependencia->id }}">
@@ -104,6 +131,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    Estatus
                     <div class="form-floathing">
                         <select name="estatus_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->estatus->id }}">
@@ -115,6 +143,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    Tramite
                     <div class="form-floathing">
                         <select name="tramite_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->tramite->id }}">
@@ -220,7 +249,35 @@
                     <a href="{{ route('expedientes.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
                 </div>
             </form><!-- End floating Labels Form -->
+        </div>
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+            {{-- Aqui empiza el segundo tab --}}
+             <!-- Floating Labels Form -->
+             <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}">
+            <div class="col-md-12">
+                <div class="border p-3 rounded">
+                    <h6 class="mb-0 text-uppercase">Carga de Archivos Del Expediente<br><br><b>Archivos Soportados: .pdf, .xls, .xlsx, .doc, .docx, .png, .jpg, .jpeg, .bmp, .ppt, .pptx</b></h6>
+                    <hr>
+                    <div class="col-6">
+                        <label class="form-label">Título del Archivo:</label>
+                        <input type="text" name="nombre_earchivos" class="form-control" autocomplete="off" required="">
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <input type="file" name="archivo_earchivos" accept=".pdf, .xls, .xlsx, .doc, .docx, .png, .jpeg, .bmp, .jpg, .ppt, .pptx" required="">
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Cargar Archivo">
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
+</div>
+
 @endsection

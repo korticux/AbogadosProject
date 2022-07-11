@@ -25,7 +25,7 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">Numero</th>
+                                <th scope="col">Núm. Exp.</th>
                                 <th scope="col">Año</th>
                                 <th scope="col">Región</th>
                                 <th scope="col">Sala</th>
