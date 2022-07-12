@@ -31,18 +31,6 @@
                     </div>
                 </div>
 
-
-                <div class="col-md-12">
-                    <div class="form-floating">
-                        <input type="date" name="fecha" class="form-control" id="floatingName"
-                            placeholder="Ingresar Fecha">
-                        @error('fecha')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="fecha">Fecha</label>
-                    </div>
-                </div>
-
                 <div class="col-md-12">
                     <div class="form-floating">
                         <textarea id="" cols="10" rows="10" name="comentario" class="form-control" id="floatingName"
@@ -54,6 +42,16 @@
                     </div>
                 </div>
 
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="date" name="fecha" class="form-control" id="floatingName"
+                            placeholder="Ingresar Fecha">
+                        @error('fecha')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        <label for="fecha">Fecha</label>
+                    </div>
+                </div>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>

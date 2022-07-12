@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cobranzas', function (Blueprint $table) {
+        Schema::create('archivos_cobranzas', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("cobranza");
-            $table->string("tipo");
-            $table->unsignedBigInteger("cuenta_id");
-            $table->foreign("cuenta_id")->references('id')->on('cuentas');
-            $table->string("referencia");
-            $table->date("fecha");
-            $table->string("monto");
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cobranzas');
+        Schema::dropIfExists('archivos_cobranzas');
     }
 };

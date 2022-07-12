@@ -8,7 +8,7 @@
                 <div class="card-body">
 
                     <h5 class="card-title">Cuentas</h5>
-                    <h5 class="card-title">Datatables</h5>
+
                     @can('cuentas-create')
                         <a class="btn btn-primary" href="{{ route('cuentas.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                             Agregar
