@@ -6,7 +6,7 @@
             <h5 class="card-title">Crear Actores</h5>
 
             <!-- Floating Labels Form -->
-            <form class="row g-3" method="POST" action="{{ route('actores.store') }}">
+            <form class="row g-3" method="POST" action="{{ route('actores.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-4">
                     <div class="form-floating">
@@ -84,6 +84,12 @@
                     <div class="form-floathing">
                         <label for="nacimiento">Comentarios</label>
                         <textarea name="comentarios" class="form-control" cols="10" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="nombre_archivo">Documentación de Actores</label>
+                        <input type="file" name="nombre_archivo[]" class="form-control" multiple>
                     </div>
                 </div>
                 <div class="text-center">

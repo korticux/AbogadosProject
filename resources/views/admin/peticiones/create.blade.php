@@ -9,7 +9,7 @@
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('peticiones.store') }}">
                 @csrf
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" name="lugar" class="form-control" id="floatingName"
                             placeholder="Ingresar nombre">
@@ -17,6 +17,16 @@
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                         <label for="lugar">Nombre de la peticion</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="date" name="created_at" class="form-control" id="floatingName"
+                            placeholder="Ingresar Fecha">
+                        @error('created_at')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        <label for="nombre">Fecha de Captura</label>
                     </div>
                 </div>
                 <div class="text-center">

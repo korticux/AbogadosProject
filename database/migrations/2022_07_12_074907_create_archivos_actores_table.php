@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('archivos_cobranzas', function (Blueprint $table) {
-            $table->bigIncrements("id");
+        Schema::create('archivos_actores', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre_archivo');
+            $table->unsignedBigInteger('actor_id');
+            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('archivos_cobranzas');
+        Schema::dropIfExists('archivos_actores');
     }
 };

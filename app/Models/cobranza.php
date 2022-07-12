@@ -16,4 +16,9 @@ class cobranza extends Model
     {
         return $this->belongsTo(Cuentas::class);
     }
+
+    public function ArchivosCobranza()
+    {
+        return $this->hasMany(ArchivosCobranza::class, 'cobranza_id');
+    }
 }

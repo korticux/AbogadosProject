@@ -88,6 +88,11 @@
                         </textarea>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <input type="file" name="nombre_archivo[]" class="form-control">
+                    </div>
+                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <a href="{{ route('actores.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
