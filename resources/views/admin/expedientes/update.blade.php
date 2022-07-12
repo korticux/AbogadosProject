@@ -81,7 +81,7 @@
                 </div>
             </div>
             <hr>
-            
+
             <br> <br>
 
 
@@ -100,8 +100,7 @@
                     <label class="col-sm-3 col-form-label">Región:</label>
                     <div class="form-floathing col-sm-5">
                         <select name="region_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->region->id }}">
-                                {{ $expediente->region->nombre }}</option>
+                            <option selected label="{{ $expediente->region->nombre }}"> </option>
                             @foreach ($regiones as $region)
                                 <option value="{{ $region->id }}">{{ $region->nombre }}</option>
                             @endforeach
@@ -114,8 +113,7 @@
                         <label class="col-sm-3 col-form-label">Petición:</label>
                         <div class="form-floathing col-sm-5">
                             <select name="peticion_id" class="form-select" aria-label="Default select example">
-                                <option selected disabled value="{{ $expediente->peticion->id }}">
-                                    {{ $expediente->peticion->lugar }}</option>
+                                <option selected label="{{ $expediente->peticion->lugar }}"> </option>
                                 @foreach ($peticiones as $peticion)
                                     <option value="{{ $peticion->id }}">{{ $peticion->lugar }}</option>
                                 @endforeach
@@ -127,8 +125,7 @@
                     <label class="col-sm-3 col-form-label">Actor:</label>
                     <div class="form-floathing col-sm-5">
                         <select name="actor_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->actor->id }}">
-                                {{ $expediente->actor->nombre }}</option>
+                            <option selected label="{{ $expediente->actor->nombre }}"> </option>
                             @foreach ($actores as $actor)
                                 <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
                             @endforeach
@@ -141,8 +138,7 @@
                     <label class="col-sm-3 col-form-label">Dependencia:</label>
                     <div class="form-floathing col-sm-5">
                         <select name="dependencia_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->dependencia->id }}">
-                                {{ $expediente->dependencia->nombre }}</option>
+                            <option selected label="{{ $expediente->dependencia->nombre }}"> </option>
                             @foreach ($dependencias as $dependencia)
                                 <option value="{{ $dependencia->id }}">{{ $dependencia->nombre }}</option>
                             @endforeach
@@ -155,8 +151,7 @@
                     <label class="col-sm-3 col-form-label">Tramite:</label>
                         <div class="form-floathing col-sm-5">
                             <select name="tramite_id" class="form-select" aria-label="Default select example">
-                                <option selected disabled value="{{ $expediente->tramite->id }}">
-                                    {{ $expediente->tramite->nombre }}</option>
+                                <option selected label="{{ $expediente->tramite->nombre }}"> </option>
                                 @foreach ($tramites as $tramite)
                                     <option value="{{ $tramite->id }}">{{ $tramite->nombre }}</option>
                                 @endforeach
@@ -169,8 +164,7 @@
                     <label class="col-sm-3 col-form-label">Estatus:</label>
                     <div class="form-floathing col-sm-5">
                         <select name="estatus_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->estatus->id }}">
-                                {{ $expediente->estatus->nombre }}</option>
+                            <option selected label="{{ $expediente->estatus->nombre }}"> </option>
                             @foreach ($estatus as $estatus)
                                 <option value="{{ $estatus->id }}">{{ $estatus->nombre }}</option>
                             @endforeach
@@ -210,8 +204,8 @@
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Comentarios del Expediente:</label>
                 <div class="col-md-9">
-                        <textarea class="form-control"  value="{{ $expediente->comentarios }}" name="comentarios"
-                             rows="10"></textarea>
+                        <textarea class="form-control" value="{{ $expediente->comentarios }}" name="comentarios"
+                             rows="10"> {{ $expediente->comentarios }} </textarea>
                         @error('Comentarios')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -307,7 +301,7 @@
                     </div>
                     <br>
                     <div class="col-6">
-                        <input type="submit" name="submit" class="btn btn-primary" value="Cargar Archivo">
+                        <input type="submit" name="submit2" class="btn btn-primary" value="Cargar Archivo">
                     </div>
                 </div>
             </div>
