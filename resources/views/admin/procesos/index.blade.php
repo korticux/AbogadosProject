@@ -19,7 +19,7 @@
 
 
                     <a href="{{ URL::to('/proceso/createPDF') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a> --
+                            class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
@@ -29,6 +29,7 @@
                                 <th scope="col">Fecha de Ingreso</th>
                                 <th scope="col">Numero de oficio</th>
                                 <th scope="col">Quien Recibio</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

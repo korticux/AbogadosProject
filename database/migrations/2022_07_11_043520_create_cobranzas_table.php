@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string("tipo");
             $table->unsignedBigInteger("cuenta_id");
             $table->foreign("cuenta_id")->references('id')->on('cuentas');
-            $table->unsignedBigInteger("archivos_cobranzas_id");
-            $table->foreign("archivos_cobranzas_id")->references('id')->on('archivos_cobranzas');
             $table->string("referencia");
             $table->date("fecha");
             $table->string("monto");

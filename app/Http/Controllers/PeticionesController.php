@@ -19,15 +19,17 @@ class PeticionesController extends Controller
         $this->middleware('permission:peticiones-delete', ['only' => ['destroy']]);
     }
 
-    public function createPDF(){
+    public function createPDF()
+    {
         $datos = Peticiones::all();
         $pdf = PDF::loadView('admin.peticiones.createPDF', compact('datos'));
         return $pdf->download('Peticiones_PDF.pdf');
     }
 
-    public function index() {
+    public function index()
+    {
         $peticiones = Peticiones::latest()->paginate(5);
-        return View("admin.peticiones.index" , compact("peticiones"));
+        return View("admin.peticiones.index", compact("peticiones"));
     }
 
     public function post()
@@ -39,8 +41,10 @@ class PeticionesController extends Controller
     {
         $request->validate([
             'lugar' => 'required',
+            'created_at' => 'required',
         ], [
             'lugar.required' => 'El nombre de la peticion es requerida',
+            'created_at.required' => 'El nombre de la peticion es requerida',
         ]);
 
         Peticiones::insert([
@@ -82,13 +86,14 @@ class PeticionesController extends Controller
 
         $request->validate([
             'lugar' => 'required',
+            'created_at' => 'required',
         ], [
-            'lugar.required' => 'El nombre de la peticion es requerido',
+            'lugar.required' => 'El nombre de la peticion es requerida',
+            'created_at.required' => 'El nombre de la peticion es requerida',
         ]);
-
         Peticiones::findOrFail($id)->update([
             'lugar' => $request->lugar,
-            'updated_at' => \Carbon\Carbon::now()
+            'created_at' => $request->created_at
         ]);
 
         $notification = array(

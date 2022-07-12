@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Exports\ActoresExport;
 use App\Models\Actores;
+use App\Models\ArchivosActores;
 use App\Models\Estados;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -19,7 +21,8 @@ class ActoresController extends Controller
         $this->middleware('permission:actores-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:actores-delete', ['only' => ['destroy']]);
     }
-    public function createPDF(){
+    public function createPDF()
+    {
         $datos = Actores::all();
         $pdf = PDF::loadView('admin.actores.createPDF', compact('datos'));
         return $pdf->download('Actores_PDF.pdf');
@@ -39,12 +42,13 @@ class ActoresController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $data = $request->validate([
             'nombre' => 'required',
             'curp' => 'required',
             'correo' => 'required',
             'telefono' => 'required',
             'nocliente' => 'required',
+            'rfc' => 'required',
             'domicilio' => 'required',
             'ciudad' => 'required',
             'comentarios' => 'required',
@@ -52,20 +56,19 @@ class ActoresController extends Controller
             'estado_id' => 'required',
         ]);
 
-        Actores::insert([
-            'nombre' => $request->nombre,
-            'curp' => $request->curp,
-            'correo' => $request->correo,
-            'telefono' => $request->telefono,
-            'nocliente' => $request->nocliente,
-            'nacimiento' => $request->nacimiento,
-            'domicilio' => $request->domicilio,
-            'rfc' => $request->rfc,
-            'estado_id' => $request->estado_id,
-            'ciudad' => $request->ciudad,
-            'comentarios' => $request->comentarios,
-            'created_at' => \Carbon\Carbon::now()
-        ]);
+        $new_actor = Actores::create($data);
+
+        if ($request->has('nombre_archivo')) {
+            foreach ($request->file('nombre_archivo') as $documento) {
+                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('actores_documentos'), $documento_nname);
+                ArchivosActores::create([
+                    'actor_id' => $new_actor->id,
+                    'nombre_archivo' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
 
         $notification  = array(
             'message' => "Actor Agregado Correctamente",
