@@ -2,8 +2,10 @@
 
 
 @section('admin')
+
     <div class="card-body">
-        <h5 class="card-title">Actualizar Expediente</h5>
+            <h5 class="mb-0">Actualización del Expediente <b>No. ({{$expediente->numero}}) {{$expediente->actor->nombre }}</b></h5>
+        <hr>
 
                     <!-- TABS -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -11,6 +13,7 @@
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
                 role="tab" aria-controls="home" aria-selected="true">Expediente</button>
         </li>
+
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
                 role="tab" aria-controls="profile" aria-selected="false">Archivos del Expediente</button>
@@ -20,17 +23,15 @@
 
     <div class="tab-content pt-2" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <!-- Floating Labels Form -->
-
-
-
-    <!--<div class="card">-->
-
+            <br>
 
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}">
                 @csrf
-                <div class="col-md-12">
+
+            <div class="row mb-3">
+
+                <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" value="{{ $expediente->numero }}" name="numero" class="form-control"
                             id="floatingName" placeholder="Ingresar numero">
@@ -40,6 +41,7 @@
                         <label for="numero">Numero del expediente</label>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" value="{{ $expediente->ano }}" name="ano" class="form-control"
@@ -51,19 +53,11 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    Región
-                    <div class="form-floathing">
+            </div>
 
-                        <select name="region_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->region->id }}">
-                                {{ $expediente->region->nombre }}</option>
-                            @foreach ($regiones as $region)
-                                <option value="{{ $region->id }}">{{ $region->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+
+            <div class="row mb-3">
+
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" value="{{ $expediente->sala }}" name="sala" class="form-control"
@@ -74,6 +68,7 @@
                         <label for="nombre">Sala</label>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" value="{{ $expediente->ponencia }}" name="ponencia" class="form-control"
@@ -84,31 +79,53 @@
                         <label for="nombre">Ponencia</label>
                     </div>
                 </div>
-                <div class="col-md-6">
-                        Petición
-                    <div class="form-floathing">
-                        <select name="peticion_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->peticion->id }}">
-                                {{ $expediente->peticion->lugar }}</option>
-                            @foreach ($peticiones as $peticion)
-                                <option value="{{ $peticion->id }}">{{ $peticion->lugar }}</option>
+            </div>
+            <hr>
+            
+            <br> <br>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 ">Fecha Inicial del Expediente:</label>
+                    <div class="form-floating col-sm-5">
+                        <input type="date" value="{{ $expediente->fecha }}" name="fecha" class="form-control" id="floatingName" placeholder="Ingresar fecha_de_ingreso">
+                        @error('fecha')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Región:</label>
+                    <div class="form-floathing col-sm-5">
+                        <select name="region_id" class="form-select" aria-label="Default select example">
+                            <option selected disabled value="{{ $expediente->region->id }}">
+                                {{ $expediente->region->nombre }}</option>
+                            @foreach ($regiones as $region)
+                                <option value="{{ $region->id }}">{{ $region->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="date" value="{{ $expediente->fecha }}" name="fecha" class="form-control"
-                            id="floatingName" placeholder="Ingresar fecha">
-                        @error('fecha')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="nombre">Fecha</label>
-                    </div>
+
+
+                <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">Petición:</label>
+                        <div class="form-floathing col-sm-5">
+                            <select name="peticion_id" class="form-select" aria-label="Default select example">
+                                <option selected disabled value="{{ $expediente->peticion->id }}">
+                                    {{ $expediente->peticion->lugar }}</option>
+                                @foreach ($peticiones as $peticion)
+                                    <option value="{{ $peticion->id }}">{{ $peticion->lugar }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                 </div>
-                <div class="col-md-6">
-                    Actor
-                    <div class="form-floathing">
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Actor:</label>
+                    <div class="form-floathing col-sm-5">
                         <select name="actor_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->actor->id }}">
                                 {{ $expediente->actor->nombre }}</option>
@@ -118,9 +135,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    Dependencia
-                    <div class="form-floathing">
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Dependencia:</label>
+                    <div class="form-floathing col-sm-5">
                         <select name="dependencia_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->dependencia->id }}">
                                 {{ $expediente->dependencia->nombre }}</option>
@@ -130,9 +149,25 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    Estatus
-                    <div class="form-floathing">
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Tramite:</label>
+                        <div class="form-floathing col-sm-5">
+                            <select name="tramite_id" class="form-select" aria-label="Default select example">
+                                <option selected disabled value="{{ $expediente->tramite->id }}">
+                                    {{ $expediente->tramite->nombre }}</option>
+                                @foreach ($tramites as $tramite)
+                                    <option value="{{ $tramite->id }}">{{ $tramite->nombre }}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Estatus:</label>
+                    <div class="form-floathing col-sm-5">
                         <select name="estatus_id" class="form-select" aria-label="Default select example">
                             <option selected disabled value="{{ $expediente->estatus->id }}">
                                 {{ $expediente->estatus->nombre }}</option>
@@ -141,39 +176,23 @@
                             @endforeach
                         </select>
                     </div>
+                    <br> <br>
                 </div>
+
+
+
+            <div class="row mb-3">
                 <div class="col-md-6">
-                    Tramite
-                    <div class="form-floathing">
-                        <select name="tramite_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled value="{{ $expediente->tramite->id }}">
-                                {{ $expediente->tramite->nombre }}</option>
-                            @foreach ($tramites as $tramite)
-                                <option value="{{ $tramite->id }}">{{ $tramite->nombre }}</option>
-                            @endforeach
-                        </select>
+                        <div class="form-floating">
+                            <input type="text" value="{{ $expediente->honorario }}" name="honorario"
+                                class="form-control" id="floatingName" placeholder="Ingresar honorario">
+                            @error('honorario')
+                                <span class="text-danger"> {{ $message }} </span>
+                            @enderror
+                            <label for="nombre">Honorario</label>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $expediente->comentario }}" name="comentarios"
-                            class="form-control" id="floatingName" placeholder="Ingresar comentario">
-                        @error('Comentario')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="nombre">Comentario</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $expediente->honorario }}" name="honorario"
-                            class="form-control" id="floatingName" placeholder="Ingresar honorario">
-                        @error('honorario')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="nombre">Honorario</label>
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" value="{{ $expediente->pagoinicial }}" name="pagoinicial"
@@ -184,7 +203,23 @@
                         <label for="nombre">Pago Inicial</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+            </div>
+            <hr>
+
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Comentarios del Expediente:</label>
+                <div class="col-md-9">
+                        <textarea class="form-control"  value="{{ $expediente->comentarios }}" name="comentarios"
+                             rows="10"></textarea>
+                        @error('Comentarios')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
                     <div class="form-floating">
                         <input type="date" value="{{ $expediente->fecha1 }}" name="fecha1" class="form-control"
                             id="floatingName" placeholder="Ingresar fecha1">
@@ -251,7 +286,9 @@
             </form><!-- End floating Labels Form -->
         </div>
 
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
             {{-- Aqui empiza el segundo tab --}}
              <!-- Floating Labels Form -->
@@ -274,10 +311,8 @@
                     </div>
                 </div>
             </div>
-
-
+        </form><!-- End floating Labels Form -->
         </div>
     </div>
 </div>
-
 @endsection

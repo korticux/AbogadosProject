@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Regiones;
 use App\Models\Actores;
+use App\Models\Dependencias;
+use App\Models\Tramites;
+use App\Models\Estatus;
+use App\Models\Peticiones;
 
 class Expedientes extends Model
 {

@@ -20,6 +20,8 @@
                     role="tab" aria-controls="contact" aria-selected="false">Proceso Final</button>
             </li>
         </ul>
+
+
         <div class="tab-content pt-2" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                <!-- Floating Labels Form -->
