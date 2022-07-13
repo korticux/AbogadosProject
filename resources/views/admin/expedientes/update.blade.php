@@ -388,10 +388,11 @@
                 $fechad4 = date("m/d/Y",strtotime($expediente->fecha4."+ 13 days"));
                 $fechaden4 = date("d/m/Y",strtotime($expediente->fecha4."+ 13 days"));
             @endphp
+            <br>
             <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha de Vencimiento Para Contestar Ampliación:&nbsp; <label class="text-danger"><b> {{$fechaden4}} </label> </b></small></label>
 
 
-            <br>
+
         </div>
     </div>
 
@@ -425,7 +426,7 @@
     <div class="row">
         <div class="col-6">
             <label class="col-sm-12 col-form-label" style="width:100%;"><small>
-                Fecha Sentencia: </small></label>
+                Fecha Boletin Oficial: </small></label>
                 <input type="date" value="{{ $expediente->fecha5 }}" name="fecha5" class="form-control"
                     id="floatingName" placeholder="Ingresar fecha4">
             @error('fecha5')
@@ -438,7 +439,7 @@
                 $fechaden5 = date("d/m/Y",strtotime($expediente->fecha4."+ 45 days"));
             @endphp
             <br>
-            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Vencimiento Para Amparo y/o Rec De Revisión:&nbsp; <label class="text-danger"><b> {{$fechaden5}} </label> </b></small></label>
+            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Dictamen de Sentencia:&nbsp; <label class="text-danger"><b> {{$fechaden5}} </label> </b></small></label>
 
 
         </div>
