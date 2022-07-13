@@ -76,7 +76,7 @@
                         @error('fecha')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="nombre">Fecha</label>
+                        <label for="nombre">Fecha Inicial Expediente</label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -156,7 +156,7 @@
                         @error('fecha1')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="nombre">fecha1</label>
+                        <label for="nombre">Admisión de Demanda</label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -166,7 +166,7 @@
                         @error('fecha2')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="nombre">fecha2</label>
+                        <label for="nombre">Desechadas, Sobreseimientos, Requerimientos, Incidentes, Reclamos:</label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -176,7 +176,7 @@
                         @error('fecha3')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="nombre">fecha3</label>
+                        <label for="nombre">Demanda Contestada:</label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -186,7 +186,7 @@
                         @error('fecha4')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="nombre">fecha4</label>
+                        <label for="nombre">Fecha de Ampliación Admitida en Boletín:</label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -196,19 +196,10 @@
                         @error('fecha5')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="nombre">fecha5</label>
+                        <label for="nombre">Fecha Sentencia:</label>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="date" name="fecha6" class="form-control" id="floatingName"
-                            placeholder="Ingresar fecha6">
-                        @error('fecha6')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="nombre">fecha6</label>
-                    </div>
-                </div>
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <a href="{{ route('expedientes.index') }}" type="reset" class="btn btn-secondary">Regresar</a>

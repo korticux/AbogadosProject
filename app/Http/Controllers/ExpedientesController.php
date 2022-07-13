@@ -72,7 +72,6 @@ class ExpedientesController extends Controller
             'fecha3' => 'required',
             'fecha4' => 'required',
             'fecha5' => 'required',
-            'fecha6' => 'required',
 
         ], [
             'numero.required' => 'El numero del expediente es requerido',
@@ -94,7 +93,6 @@ class ExpedientesController extends Controller
             'fecha3.required' => 'La fecha del expediente es requerida',
             'fecha4.required' => 'La fecha del expediente es requerida',
             'fecha5.required' => 'La fecha del expediente es requerida',
-            'fecha6.required' => 'La fecha del expediente es requerida',
         ]);
 
 
@@ -118,7 +116,6 @@ class ExpedientesController extends Controller
             'fecha3' => $request->fecha3,
             'fecha4' => $request->fecha4,
             'fecha5' => $request->fecha5,
-            'fecha6' => $request->fecha6,
             'created_at' => Carbon::now(),
         ]);
 
@@ -178,7 +175,6 @@ class ExpedientesController extends Controller
             'fecha3' => 'required',
             'fecha4' => 'required',
             'fecha5' => 'required',
-            'fecha6' => 'required',
         ], [
             'numero.required' => 'El numero del expediente es requerido',
             'ano.required' => 'El año del expediente es requerido',
@@ -199,7 +195,6 @@ class ExpedientesController extends Controller
             'fecha3.required' => 'La fecha del expediente es requerida',
             'fecha4.required' => 'La fecha del expediente es requerida',
             'fecha5.required' => 'La fecha del expediente es requerida',
-            'fecha6.required' => 'La fecha del expediente es requerida',
         ]);
 
         Expedientes::findOrFail($id)->update([
@@ -222,11 +217,9 @@ class ExpedientesController extends Controller
             'fecha3' => $request->fecha3,
             'fecha4' => $request->fecha4,
             'fecha5' => $request->fecha5,
-            'fecha6' => $request->fecha6,
             'updated_at' => \Carbon\Carbon::now(),
-
-
         ]);
+
 
         $notification = array(
             'message' => "Expediente Actualizado Correctamente",

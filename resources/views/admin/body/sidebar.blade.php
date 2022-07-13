@@ -14,6 +14,13 @@ $route = Route::current()->getName();
         <li class="nav-heading">Acciones</li>
 
         <li class="nav-item">
+            <a class="nav-link {{ $route == 'peticiones.index' ? '' : 'collapsed' }}" href="{{ route('peticiones.index') }}">
+                <i class="bi bi-inbox"></i>
+                <span>Peticiones</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+        <li class="nav-item">
             <a class="nav-link {{ $route == 'estados.index' ? '' : 'collapsed' }}"
                 href="{{ route('estados.index') }}">
                 <i class="bi bi-map"></i>
@@ -102,13 +109,6 @@ $route = Route::current()->getName();
             <a class="nav-link {{ $route == 'paises.index' ? '' : 'collapsed' }}" href="{{ route('paises.index') }}">
                 <i class="bi bi-geo-alt"></i>
                 <span>Paises</span>
-            </a>
-        </li><!-- End Blank Page Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link {{ $route == 'peticiones.index' ? '' : 'collapsed' }}" href="{{ route('peticiones.index') }}">
-                <i class="bi bi-inbox"></i>
-                <span>Peticiones</span>
             </a>
         </li><!-- End Blank Page Nav -->
 

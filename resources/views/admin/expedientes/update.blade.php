@@ -228,20 +228,35 @@
                         <span class="text-danger"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 <div class="col-6">
-                    <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha Vencimiento ISSSTE Para Contestar:</small></label>
-                    <div class="col-sm-12">
-                        <input type="date" class="form-control" name="vencimiento1_expediente" value="2022-09-12" disabled="">
-                    </div>
+                    @php
+                    $fechav = date("m/d/Y",strtotime($expediente->fecha."+ 32 days"));
+                    $fechaven = date("d/m/Y",strtotime($expediente->fecha."+ 30 days"));
+                    @endphp
+                    <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha Vencimiento ISSSTE Para Contestar: &nbsp; <label class="text-danger"><b> {{$fechaven}} </label> </b></small></label>
+
                     <br>
                 </div>
             </div>
 
             <div class="row mb-3">
+
                 <div class="col-12">
                    <label class="col-12 col-form-label">Estatus:</label>
+                    @php
+                        use Carbon\Carbon;
+                        $cd = new DateTime(Carbon::now());
+
+                        $date = new DateTime($fechav);
+
+                        $abs_diff = $cd->diff($date)->format("%d");
+
+
+
+                   @endphp
                    <div class="col-12">
-                    <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN X DÍAS" disabled="">
+                    <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN {{$abs_diff}} DÍAS" disabled="">
                    </div>
                </div>
            </div>
@@ -368,17 +383,6 @@
     <hr>
 
 
-
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="date" value="{{ $expediente->fecha6 }}" name="fecha6" class="form-control"
-                            id="floatingName" placeholder="Ingresar fecha6">
-                        @error('fecha6')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="nombre">fecha6</label>
-                    </div>
-                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <a href="{{ route('expedientes.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
