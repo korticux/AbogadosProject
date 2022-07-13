@@ -221,7 +221,7 @@
 
             <div class="row">
                 <div class="col-6">
-                    <label class="col-sm-12 col-form-label" style="width:100%;"><small>Admisión de Demanda</small></label>
+                    <label class="col-sm-12 col-form-label" style="width:100%;"><small>Ingreso de Petición ISSSTE</small></label>
                         <input type="date" value="{{ $expediente->fecha1 }}" name="fecha1" class="form-control"
                             id="floatingName" placeholder="Ingresar fecha1">
                     @error('fecha1')
@@ -231,9 +231,11 @@
 
                 <div class="col-6">
                     @php
-                    $fechav = date("m/d/Y",strtotime($expediente->fecha."+ 32 days"));
-                    $fechaven = date("d/m/Y",strtotime($expediente->fecha."+ 30 days"));
+                        $fechav = date("m/d/Y",strtotime($expediente->fecha1."+ 30 days"));
+                        $fechaven = date("d/m/Y",strtotime($expediente->fecha1."+ 30 days"));
                     @endphp
+                    <br>
+
                     <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha Vencimiento ISSSTE Para Contestar: &nbsp; <label class="text-danger"><b> {{$fechaven}} </label> </b></small></label>
 
                     <br>
@@ -247,16 +249,22 @@
                     @php
                         use Carbon\Carbon;
                         $cd = new DateTime(Carbon::now());
-
                         $date = new DateTime($fechav);
+                        $abs_diff = ($date->diff($cd)->days);
+                        $iabs = (int) $abs_diff;
 
-                        $abs_diff = $cd->diff($date)->format("%d");
-
-
+                        if($iabs >= 20 ){
+                            $fuga = 'btn-success';
+                        }elseif($iabs < 20 && $iabs >= 10 ){
+                            $fuga = 'btn-warning';
+                        }elseif($iabs < 10){
+                            $fuga = 'btn-danger';
+                        }
 
                    @endphp
-                   <div class="col-12">
-                    <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN {{$abs_diff}} DÍAS" disabled="">
+                   <div class="col-2">
+                    <input type="text" class="form-alerta-readonly form-control {{$fuga}}"
+                    name="alerta1_expediente" value="FALTAN {{$abs_diff}} DÍAS" disabled="">
                    </div>
                </div>
            </div>
@@ -273,20 +281,40 @@
                     <span class="text-danger"> {{ $message }} </span>
                 @enderror
             </div>
+
             <div class="col-6">
-                <label class="col-sm-12 col-form-label" style="width:100%;"><small>Vencimiento 2:</small></label>
-                <div class="col-sm-12">
-                    <input type="date" class="form-control" name="vencimiento1_expediente" value="2022-09-12" disabled="">
-                </div>
+                @php
+                    $fechad = date("m/d/Y",strtotime($expediente->fecha2."+ 10 days"));
+                    $fechaden = date("d/m/Y",strtotime($expediente->fecha2."+ 10 days"));
+                @endphp
+                <br>
+                <label class="col-sm-12 col-form-label" style="width:100%;"><small>Vencimiento Desechada: &nbsp; <label class="text-danger"><b> {{$fechaden}} </label> </b></small></label>
                 <br>
             </div>
         </div>
 
         <div class="row mb-3">
+
             <div class="col-12">
                <label class="col-12 col-form-label">Estatus:</label>
-               <div class="col-12">
-                <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN X DÍAS" disabled="">
+                @php
+                    $d2 = new DateTime(Carbon::now());
+                    $date2 = new DateTime($fechad);
+                    $abs_diff2 = ($date2->diff($d2)->days);
+                    $iabs2 = (int) $abs_diff2;
+
+                    if($iabs2 >= 8 ){
+                        $f2 = 'btn-success';
+                    }elseif($iabs2 < 8 && $iabs2 >= 4 ){
+                        $f2 = 'btn-warning';
+                    }elseif($iabs2 < 4){
+                        $f2 = 'btn-danger';
+                    }
+
+               @endphp
+               <div class="col-2">
+                <input type="text" class="form-alerta-readonly form-control {{$f2}}"
+                name="alerta1_expediente" value="FALTAN {{$abs_diff2}} DÍAS" disabled="">
                </div>
            </div>
        </div>
@@ -296,27 +324,49 @@
        <div class="row">
         <div class="col-6">
             <label class="col-sm-12 col-form-label" style="width:100%;"><small>
-                Demanda Contestada: </small></label>
+                Admision de Demanda: </small></label>
                 <input type="date" value="{{ $expediente->fecha3 }}" name="fecha3" class="form-control"
                     id="floatingName" placeholder="Ingresar fecha3">
             @error('fecha3')
                 <span class="text-danger"> {{ $message }} </span>
             @enderror
         </div>
+
         <div class="col-6">
-            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha de Vencimiento Para Ampliar:</small></label>
-            <div class="col-sm-12">
-                <input type="date" class="form-control" name="vencimiento1_expediente" value="2022-09-12" disabled="">
-            </div>
-            <br>
+            @php
+                $fechad3 = date("m/d/Y",strtotime($expediente->fecha3."+ 30 days"));
+                $fechaden3 = date("d/m/Y",strtotime($expediente->fecha3."+ 30 days"));
+            @endphp
+             <br>
+            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Contestación ISSSTE:&nbsp; <label class="text-danger"><b> {{$fechaden3}} </label> </b></small></label>
+
+
+
         </div>
     </div>
 
         <div class="row mb-3">
+
             <div class="col-12">
             <label class="col-12 col-form-label">Estatus:</label>
-            <div class="col-12">
-                <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN X DÍAS" disabled="">
+                @php
+                    $d3 = new DateTime(Carbon::now());
+                    $date3 = new DateTime($fechad3);
+                    $abs_diff3 = ($date3->diff($d3)->days);
+                    $iabs3 = (int) $abs_diff3;
+
+                    if($iabs3 >= 20 ){
+                        $f3 = 'btn-success';
+                    }elseif($iabs3 < 20 && $iabs3 >= 10 ){
+                        $f3 = 'btn-warning';
+                    }elseif($iabs3 < 10){
+                        $f3 = 'btn-danger';
+                    }
+
+            @endphp
+            <div class="col-2">
+                <input type="text" class="form-alerta-readonly form-control {{$f3}}"
+                name="alerta1_expediente" value="FALTAN {{$abs_diff3}} DÍAS" disabled="">
             </div>
         </div>
     </div>
@@ -326,7 +376,7 @@
     <div class="row">
         <div class="col-6">
             <label class="col-sm-12 col-form-label" style="width:100%;"><small>
-                Fecha de Ampliación Admitida en Boletín: </small></label>
+                Fecha de Ampliación Admitida: </small></label>
                 <input type="date" value="{{ $expediente->fecha4 }}" name="fecha4" class="form-control"
                     id="floatingName" placeholder="Ingresar fecha4">
             @error('fecha4')
@@ -334,23 +384,42 @@
             @enderror
         </div>
         <div class="col-6">
-            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha de Vencimiento Para Contestar Ampliación:</small></label>
-            <div class="col-sm-12">
-                <input type="date" class="form-control" name="vencimiento1_expediente" value="2022-09-12" disabled="">
-            </div>
+            @php
+                $fechad4 = date("m/d/Y",strtotime($expediente->fecha4."+ 13 days"));
+                $fechaden4 = date("d/m/Y",strtotime($expediente->fecha4."+ 13 days"));
+            @endphp
+            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha de Vencimiento Para Contestar Ampliación:&nbsp; <label class="text-danger"><b> {{$fechaden4}} </label> </b></small></label>
+
+
             <br>
         </div>
     </div>
 
     <div class="row mb-3">
+
         <div class="col-12">
-        <label class="col-12 col-form-label">Estatus:</label>
-        <div class="col-12">
-            <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN X DÍAS" disabled="">
-        </div>
-    </div>
-    </div>
-    <hr>
+           <label class="col-12 col-form-label">Estatus:</label>
+            @php
+                $d4 = new DateTime(Carbon::now());
+                $date4 = new DateTime($fechad4);
+                $abs_diff4 = ($date4->diff($d4)->days);
+                $iabs4 = (int) $abs_diff4;
+
+                if($iabs4 >= 8 ){
+                    $f4 = 'btn-success';
+                }elseif($iabs4 < 8 && $iabs4 >= 4 ){
+                    $f4 = 'btn-warning';
+                }elseif($iabs4 < 4){
+                    $f4 = 'btn-danger';
+                }
+           @endphp
+           <div class="col-2">
+            <input type="text" class="form-alerta-readonly form-control {{$f4}}"
+            name="alerta1_expediente" value="FALTAN {{$abs_diff4}} DÍAS" disabled="">
+           </div>
+       </div>
+   </div>
+   <hr>
 
 
     <div class="row">
@@ -364,23 +433,42 @@
             @enderror
         </div>
         <div class="col-6">
-            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Vencimiento Para Amparo y/o Rec De Revisión:</small></label>
-            <div class="col-sm-12">
-                <input type="date" class="form-control" name="vencimiento1_expediente" value="2022-09-12" disabled="">
-            </div>
+            @php
+                $fechad5 = date("m/d/Y",strtotime($expediente->fecha4."+ 45 days"));
+                $fechaden5 = date("d/m/Y",strtotime($expediente->fecha4."+ 45 days"));
+            @endphp
             <br>
+            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Vencimiento Para Amparo y/o Rec De Revisión:&nbsp; <label class="text-danger"><b> {{$fechaden5}} </label> </b></small></label>
+
+
         </div>
     </div>
 
     <div class="row mb-3">
+
         <div class="col-12">
-        <label class="col-12 col-form-label">Estatus:</label>
-        <div class="col-12">
-            <input type="text" class="form-alerta-readonly form-control alert_green" name="alerta1_expediente" value="FALTAN X DÍAS" disabled="">
-        </div>
-    </div>
-    </div>
-    <hr>
+           <label class="col-12 col-form-label">Estatus:</label>
+            @php
+                $d5 = new DateTime(Carbon::now());
+                $date5 = new DateTime($fechad5);
+                $abs_diff5 = ($date5->diff($d5)->days);
+                $iabs5 = (int) $abs_diff5;
+
+                if($iabs5 >= 35 ){
+                    $f5 = 'btn-success';
+                }elseif($iabs5 < 35 && $iabs5 >= 15 ){
+                    $f5 = 'btn-warning';
+                }elseif($iabs5 < 15){
+                    $f5 = 'btn-danger';
+                }
+           @endphp
+           <div class="col-2">
+            <input type="text" class="form-alerta-readonly form-control {{$f5}}"
+            name="alerta1_expediente" value="FALTAN {{$abs_diff5}} DÍAS" disabled="">
+           </div>
+       </div>
+   </div>
+   <hr>
 
 
                 <div class="text-center">
