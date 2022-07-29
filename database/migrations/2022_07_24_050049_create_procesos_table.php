@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('procesos', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->unsignedBigInteger("expedientes_id");
-            $table->foreign("expedientes_id")->references('id')->on('expedientes');
+            $table->unsignedBigInteger("expedientes_id")->nullable();
+            $table->foreign("expedientes_id")->references('id')->on('expedientes')->onDelete('cascade');
             $table->date("fecha_de_ingreso");
             $table->date("fecha_cedula_notificacion");
             $table->string("numero_de_oficio");

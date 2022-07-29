@@ -17,8 +17,8 @@ return new class extends Migration
             $table->bigIncrements("id");
             $table->string("cobranza");
             $table->string("tipo");
-            $table->unsignedBigInteger("cuenta_id");
-            $table->foreign("cuenta_id")->references('id')->on('cuentas');
+            $table->unsignedBigInteger("cuenta_id")->nullable();
+            $table->foreign("cuenta_id")->references('id')->on('cuentas')->onDelete('cascade');
             $table->string("referencia");
             $table->date("fecha");
             $table->string("monto");

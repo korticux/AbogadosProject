@@ -47,4 +47,9 @@ class Expedientes extends Model
     {
         return $this->belongsTo(Peticiones::class);
     }
+
+    public function ArchivosExpedientes()
+    {
+        return $this->hasMany(ArchivosExpedientes::class, "expediente_id");
+    }
 }

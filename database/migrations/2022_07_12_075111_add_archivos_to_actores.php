@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('actores', function (Blueprint $table) {
             $table->unsignedBigInteger('archivos_actores_id')->nullable();
-            $table->foreign('archivos_actores_id')->references('id')->on('archivos_actores');
+            $table->foreign('archivos_actores_id')->references('id')->on('archivos_actores')->onDelete('cascade');
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     {
         Schema::table('actores', function (Blueprint $table) {
             $table->unsignedBigInteger('archivos_actores_id')->nullable();
-            $table->foreign('archivos_actores_id')->references('id')->on('archivos_actores');
+            $table->foreign('archivos_actores_id')->references('id')->on('archivos_actores')->onDelete('cascade');
         });
     }
 };

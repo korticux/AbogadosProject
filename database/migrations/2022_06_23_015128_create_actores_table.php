@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string("correo");
             $table->string("telefono");
             $table->string("domicilio");
-            $table->unsignedBigInteger("estado_id");
-            $table->foreign("estado_id")->references('id')->on('estados');
+            $table->unsignedBigInteger("estado_id")->nullable();
+            $table->foreign("estado_id")->references('id')->on('estados')->onDelete('cascade');
             $table->string("ciudad")->nullable();
             $table->string("comentarios");
             $table->timestamps();

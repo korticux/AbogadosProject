@@ -133,11 +133,10 @@
 
 
                 <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label">Dependencia: <b>
-                        {{ $expediente->dependencia->nombre }}</b></label>
+                    <label class="col-sm-4 col-form-label">Dependencia:</label>
                     <div class="form-floathing col-sm-5">
                         <select name="dependencia_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Selecciona Una Dependencia</option>
+                            <option selected disabled> {{ $expediente->dependencia->nombre }}</option>
                             @foreach ($dependencias as $dependencia)
                                 <option value="{{ $dependencia->id }}">{{ $dependencia->nombre }}</option>
                             @endforeach
