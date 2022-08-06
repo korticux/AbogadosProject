@@ -25,7 +25,7 @@
                             placeholder="Ingresar ano">
                         @error('ano')
                             <span class="text-danger"> {{ $message }} </span>
-                        @enderror
+                      @enderror
                         <label for="nombre">Año</label>
                     </div>
                 </div>
