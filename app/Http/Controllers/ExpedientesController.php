@@ -136,6 +136,18 @@ class ExpedientesController extends Controller
         return redirect()->route('expedientes.index')->with($notification);
     }
 
+    public function deleteExpedientes($id, $Expedienteid)
+    {
+        ArchivosExpedientes::where("id",$id)->where("expediente_id", $Expedienteid)->delete();
+
+        $notification = array(
+            'message' => "Archivo Expediente Eliminado Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('expedientes.index')->with($notification);
+    }
+
     public function edit($id)
     {
         $expediente = Expedientes::findOrFail($id);

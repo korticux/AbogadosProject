@@ -121,6 +121,8 @@ Route::controller(ExpedientesController::class)->group(function() {
     Route::post('/expedientes/store', 'store')->name('expedientes.store');
     Route::get('/expedientes/createPDF', 'createPDF')->name('expedientes.createPDF');
     Route::get('/expedientes/export', 'export')->name('expedientes.export');
+    Route::get('/archivosexpedientes/delete/{Id}/{ExpedienteId}', 'deleteExpedientes')->name('archivosexpedientes.delete');
+
 });
 
 Route::controller(FestivoController::class)->group(function() {
