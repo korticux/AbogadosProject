@@ -484,6 +484,38 @@
 
             {{-- Aqui empiza el segundo tab --}}
              <!-- Floating Labels Form -->
+               <!-- Table with stripped rows -->
+               <table class="table datatable">
+                <thead>
+                    <tr>
+                        <th scope="col">Num. Archivo</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">Expediente Id</th>
+                        <th scope="col">Fecha Creacion</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($archivos_expedientes as $archivos_expediente)
+                        <tr>
+                            <th>{{ $archivos_expediente->id }}</th>
+                            <th>{{ $archivos_expediente->nombre }}</th>
+                            <th>{{ $archivos_expediente->expediente_id }}</th>
+                            <th>{{ $archivos_expediente->created_at }}</th>
+
+                            <th class="row">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    @can('expedientes-delete')
+                                        <a class="btn btn-sm btn-outline-dark" id="delete"
+                                            href="{{ route('expedientes.delete', $expediente->id) }}"><i
+                                                class="bi bi-trash-fill"></i></a>
+                                    @endcan
+                                </div>
+                            </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
              <!-- End floating Labels Form -->
 
 
