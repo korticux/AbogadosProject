@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('archivos_expedientes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_archivo');
+            $table->string('nombre');
+            $table->string('nombre_archivos');
             $table->unsignedBigInteger('expediente_id')->nullable();
             $table->foreign('expediente_id')->references('id')->on('expedientes')->onDelete('cascade');
             $table->timestamps();

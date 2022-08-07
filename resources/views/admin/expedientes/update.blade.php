@@ -484,26 +484,34 @@
 
             {{-- Aqui empiza el segundo tab --}}
              <!-- Floating Labels Form -->
-             <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}">
-            <div class="col-md-12">
-                <div class="border p-3 rounded">
-                    <h6 class="mb-0 text-uppercase">Carga de Archivos Del Expediente<br><br><b>Archivos Soportados: .pdf, .xls, .xlsx, .doc, .docx, .png, .jpg, .jpeg, .bmp, .ppt, .pptx</b></h6>
-                    <hr>
-                    <div class="col-6">
-                        <label class="form-label">Título del Archivo:</label>
-                        <input type="text" name="nombre_earchivos" class="form-control" autocomplete="off" required="">
-                    </div>
-                    <br>
-                    <div class="col-6">
-                        <input type="file" name="archivo_earchivos" accept=".pdf, .xls, .xlsx, .doc, .docx, .png, .jpeg, .bmp, .jpg, .ppt, .pptx" required="">
-                    </div>
-                    <br>
-                    <div class="col-6">
-                        <input type="submit" name="submit2" class="btn btn-primary" value="Cargar Archivo">
+             <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="col-md-12 my-2 mx-2">
+                        <div class="border p-3 rounded">
+                            <h6 class="mb-0 text-uppercase">Carga de Archivos Del
+                                Expediente<br><br><b>Archivos Soportados:
+                                    .pdf, .xls, .xlsx, .doc, .docx, .png, .jpg, .jpeg, .bmp, .ppt, .pptx</b>
+                            </h6>
+                            <hr>
+                            <br>
+                            <div class="col-md-12">
+                                <label for="nombre_archivos">Documentación del Expediente</label>
+                                <input type="file" name="nombre_archivos[]" class="form-control" multiple>
+
+                            </div>
+                            <br>
+
+                            <div class="text-center mx-2">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a href="{{ route('expedientes.index') }}" type="reset"
+                                    class="btn btn-secondary">Regresar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </form><!-- End floating Labels Form -->
+
+
         </div>
     </div>
 </div>

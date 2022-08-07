@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Expedientes;
 use App\Models\Regiones;
 use App\Models\Actores;
+use App\Models\ArchivosExpedientes;
 use App\Models\Dependencias;
 use App\Models\Estatus;
 use App\Models\Tramites;
@@ -52,7 +53,7 @@ class ExpedientesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'numero' => 'required',
             'ano' => 'required',
             'region_id' => 'required',
@@ -72,7 +73,6 @@ class ExpedientesController extends Controller
             'fecha3' => 'required',
             'fecha4' => 'required',
             'fecha5' => 'required',
-
         ], [
             'numero.required' => 'El numero del expediente es requerido',
             'ano.required' => 'El año del expediente es requerido',
@@ -94,6 +94,23 @@ class ExpedientesController extends Controller
             'fecha4.required' => 'La fecha del expediente es requerida',
             'fecha5.required' => 'La fecha del expediente es requerida',
         ]);
+
+
+
+        $new_expediente = Expedientes::create($data);
+
+        if ($request->has('nombre_archivos')) {
+            foreach ($request->file('nombre_archivos') as $documento) {
+                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('expedientes_documentos'), $documento_nname);
+                ArchivosExpedientes::create([
+                    'expediente_id' => $new_expediente->id,
+                    'nombre_archivos' => $documento_nname,
+                    'nombre' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
 
 
         Expedientes::insert([
@@ -149,7 +166,8 @@ class ExpedientesController extends Controller
         $estatus = Estatus::latest()->get();
         $tramites = Tramites::latest()->get();
         $peticiones = Peticiones::latest()->get();
-        return View('admin.expedientes.update', compact("tramites", "estatus", "actores", "dependencias", "regiones", "peticiones", "expediente"));
+        $archivos_expedientes = ArchivosExpedientes::where('expediente_id', $expediente->id)->get();
+        return View('admin.expedientes.update', compact("tramites", "estatus", "actores", "dependencias", "regiones", "peticiones", "expediente", "archivos_expedientes"));
     }
 
     public function update($id, Request $request)
@@ -219,6 +237,8 @@ class ExpedientesController extends Controller
             'fecha5' => $request->fecha5,
             'updated_at' => \Carbon\Carbon::now(),
         ]);
+
+
 
 
         $notification = array(
