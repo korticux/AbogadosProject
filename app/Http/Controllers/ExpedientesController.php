@@ -101,7 +101,7 @@ class ExpedientesController extends Controller
 
         if ($request->has('nombre_archivos')) {
             foreach ($request->file('nombre_archivos') as $documento) {
-                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento_nname = $data['numero'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
                 $documento->move(public_path('expedientes_documentos'), $documento_nname);
                 ArchivosExpedientes::create([
                     'expediente_id' => $new_expediente->id,
@@ -113,28 +113,7 @@ class ExpedientesController extends Controller
         }
 
 
-        Expedientes::insert([
-            'numero' => $request->numero,
-            'ano' => $request->ano,
-            'region_id' => $request->region_id,
-            'sala' => $request->sala,
-            'ponencia' => $request->ponencia,
-            'peticion_id' => $request->peticion_id,
-            'fecha' => $request->fecha,
-            'actor_id' => $request->actor_id,
-            'dependencia_id' => $request->dependencia_id,
-            'estatus_id' => $request->estatus_id,
-            'tramite_id' => $request->tramite_id,
-            'comentarios' => $request->comentarios,
-            'honorario' => $request->honorario,
-            'pagoinicial' => $request->pagoinicial,
-            'fecha1' => $request->fecha1,
-            'fecha2' => $request->fecha2,
-            'fecha3' => $request->fecha3,
-            'fecha4' => $request->fecha4,
-            'fecha5' => $request->fecha5,
-            'created_at' => Carbon::now(),
-        ]);
+
 
         $notification  = array(
             'message' => "Expediente Agregado Correctamente",
