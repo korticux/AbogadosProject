@@ -1,7 +1,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="dashboard" class="logo d-flex align-items-center">
+        <a href="{{route('dashboard')}}" class="logo d-flex align-items-center">
             <img src="{{ asset('backend/assets/img/logo.png') }}" alt="">
             <span class="d-none d-lg-block">Abogados Díaz</span>
         </a>
@@ -26,7 +26,7 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">{{$user->email}}</span>
+                     <span class="d-none d-md-block dropdown-toggle ps-2">Abogados User</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

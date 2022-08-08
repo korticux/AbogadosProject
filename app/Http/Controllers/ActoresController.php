@@ -92,12 +92,25 @@ class ActoresController extends Controller
         return redirect()->route('actores.index')->with($notification);
     }
 
+    public function deleteActores($id, $ActoresId)
+    {
+        ArchivosActores::where("id", $id)->where("actor_id", $ActoresId)->delete();
+
+        $notification = array(
+            'message' => "Archivo Actor Eliminado Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('actores.index')->with($notification);
+    }
+
     public function edit($id)
     {
         $actor = Actores::findOrFail($id);
         $estados = Estados::latest()->get();
+        $archivos_actores = ArchivosActores::where('actor_id', $actor->id)->get();
 
-        return View('admin.actores.update', compact('actor', 'estados'));
+        return View('admin.actores.update', compact('actor', 'estados', 'archivos_actores'));
     }
 
     public function update($id, Request $request)

@@ -7,7 +7,7 @@
             <h5 class="card-title">Crear Expediente</h5>
 
             <!-- Floating Labels Form -->
-            <form class="row g-3" method="POST" action="{{ route('expedientes.store') }}">
+            <form class="row g-3" method="POST" action="{{ route('expedientes.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floating">
@@ -25,7 +25,7 @@
                             placeholder="Ingresar ano">
                         @error('ano')
                             <span class="text-danger"> {{ $message }} </span>
-                        @enderror
+                      @enderror
                         <label for="nombre">Año</label>
                     </div>
                 </div>
@@ -197,6 +197,12 @@
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                         <label for="nombre">Fecha Sentencia:</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="nombre_archivos">Documentación de Actores</label>
+                        <input type="file" name="nombre_archivos[]" class="form-control" multiple>
                     </div>
                 </div>
 

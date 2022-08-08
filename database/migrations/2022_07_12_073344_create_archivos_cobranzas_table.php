@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_archivo');
             $table->unsignedBigInteger('cobranza_id')->nullable();
-            $table->foreign('id')->references('id')->on('cobranzas')->onDelete('cascade')->onDelete('cascade');
+            $table->foreign('cobranza_id')->references('id')->on('cobranzas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,4 +31,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('archivos_cobranzas');
     }
+
 };
