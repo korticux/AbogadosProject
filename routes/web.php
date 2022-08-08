@@ -168,6 +168,7 @@ Route::controller(CobranzaController::class)->group(function() {
     Route::get('/cobranza/delete/{Id}', 'delete')->name('cobranza.delete');
     Route::get('/cobranza/export/', 'export')->name('cobranza.export');
     Route::get('/cobranza/createPDF', 'createPDF')->name('cobranza.createPDF');
+    Route::get('/archivoscobranza/delete/{id}/{CobranzasId}', 'deleteCobranzas')->name('archivoscobranza.delete');
 });
 
 Route::controller(PaisesController::class)->group(function() {

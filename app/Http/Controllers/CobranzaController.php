@@ -97,11 +97,24 @@ class CobranzaController extends Controller
         return redirect()->route('cobranza.index')->with($notification);
     }
 
+    public function deleteCobranzas($id, $CobranzasId)
+    {
+        ArchivosCobranza::where("id", $id)->where("cobranza_id", $CobranzasId)->delete();
+
+        $notification = array(
+            'message' => "Archivo Cobranza Eliminado Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('cobranza.index')->with($notification);
+    }
+
     public function edit($id)
     {
         $cobranza = Cobranza::findOrFail($id);
         $cuentas = Cuentas::latest()->get();
-        return View('admin.cobranza.update', compact('cobranza', 'cuentas'));
+        $archivos_cobranzas = ArchivosCobranza::where('cobranza_id', $cobranza->id)->get();
+        return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas'));
     }
 
     public function update($id, Request $request)
