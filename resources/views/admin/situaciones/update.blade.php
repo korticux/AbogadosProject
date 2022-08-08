@@ -7,11 +7,11 @@
             <h5 class="card-title">Actualizar Situacion</h5>
 
             <!-- Floating Labels Form -->
-            <form class="row g-3" method="POST" action="{{ route('situaciones.update',$situacion->id) }}">
+            <form class="row g-3" method="POST" action="{{ route('situaciones.store', $situacion->id) }}">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" name="expediente" value='{{$situacion->expediente}}' class="form-control" id="floatingName"
+                        <input type="text" value="{{ $situacion->expediente }}" name="expediente" class="form-control" id="floatingName"
                             placeholder="Ingresar Expediente">
                         @error('expediente')
                             <span class="text-danger"> {{ $message }} </span>
@@ -22,7 +22,7 @@
 
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" name="situacion" value='{{$situacion->situacion}}' class="form-control" id="floatingName"
+                        <input type="text" value="{{ $situacion->situacion }}" name="situacion" class="form-control" id="floatingName"
                             placeholder="Ingresar Situacion">
                         @error('situacion')
                             <span class="text-danger"> {{ $message }} </span>
@@ -33,7 +33,7 @@
 
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <textarea name="" id="" cols="10" rows="10" name="comentario" class="form-control" id="floatingName"
+                        <textarea id="" cols="10" value="{{ $situacion->comentario }}" rows="10" name="comentario" class="form-control" id="floatingName"
                             placeholder="Ingresar comentario"></textarea>
                         @error('comentario')
                             <span class="text-danger"> {{ $message }} </span>
@@ -44,7 +44,7 @@
 
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="date" name="fecha" value='{{$situacion->fecha}}' class="form-control" id="floatingName"
+                        <input type="date" name="fecha" class="form-control" id="floatingName"
                             placeholder="Ingresar Fecha">
                         @error('fecha')
                             <span class="text-danger"> {{ $message }} </span>
@@ -52,8 +52,6 @@
                         <label for="fecha">Fecha</label>
                     </div>
                 </div>
-
-
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
