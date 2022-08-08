@@ -40,7 +40,7 @@ return new class extends Migration
             $table->date("fecha3");
             $table->date("fecha4");
             $table->date("fecha5");
-            $table->date("fecha6");
+            $table->date("fecha6")->nullable();
             $table->timestamps();
         });
     }
