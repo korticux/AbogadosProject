@@ -46,7 +46,7 @@
                         <div class="col-md-4">
                             <div class="form-floathing">
                                 <select name="cuenta_id" class="form-select" aria-label="Default select example">
-                                    <option selected disabled>{{ $cobranza->cuenta->cuenta }}</option>
+                                    <option selected disabled>Selecciona una cuenta</option>
                                     @foreach ($cuentas as $cuenta)
                                         <option value="{{ $cuenta->id }}">{{ $cuenta->cuenta }}</option>
                                     @endforeach

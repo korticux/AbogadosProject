@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('archivos_actores', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre_archivo');
+            $table->bigIncrements('id')->nullable();
+            $table->string('nombre_archivo')->nullable();
             $table->unsignedBigInteger('actor_id')->nullable();
-            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade')->onDelete('cascade');
+            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }
