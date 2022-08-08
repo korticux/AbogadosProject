@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Estatus;
 use Maatwebsite\Excel\Facades\Excel;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 
 class EstatusController extends Controller
 {
@@ -102,6 +102,15 @@ class EstatusController extends Controller
     public function export()
     {
         return Excel::download(new EstatusExport, "estatus.xlsx");
+    }
+
+    public function downloadPdf()
+    {
+        $estatus = Estatus::all();
+
+        $pdf = PDF::loadView("admin.estatus.estatusPdf", compact("estatus"));
+
+        return $pdf->download("estatus.pdf");
     }
 
 }
