@@ -43,7 +43,7 @@
                                                     href="{{ route('estatus.edit', $estatuses->id) }}"><i
                                                         class="bi bi-pencil-fill"></i></a>
                                             @endcan
-                                            @can('es-delete')
+                                            @can('estatus-delete')
                                                 <a class="btn btn-sm btn-outline-dark" id="delete"
                                                     href="{{ route('estatus.delete', $estatuses->id) }}"><i
                                                         class="bi bi-trash-fill"></i></a>
