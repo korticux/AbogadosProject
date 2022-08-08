@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="password" value="{{ $user->password }}" name="confirm-password" class="form-control" id="floatingName"
+                        <input type="password" name="confirm-password" class="form-control" id="floatingName"
                             placeholder="Ingresar Contraseña">
                         @error('confirm-password')
                             <span class="text-danger"> {{ $message }} </span>

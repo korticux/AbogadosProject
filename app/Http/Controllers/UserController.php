@@ -100,7 +100,7 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with($notification);
     }
 
-    public function delere($id)
+    public function delete($id)
     {
         User::findOrFail($id)->delete();
         $notification = [
@@ -110,4 +110,6 @@ class UserController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+
 }

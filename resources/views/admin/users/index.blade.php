@@ -37,7 +37,7 @@
                                                 href="{{ route('users.edit', $user->id) }}"><i
                                                     class="bi bi-pencil-fill"></i></a>
                                             <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ route('users.destroy', $user->id) }}"><i
+                                                href="{{ route('users.delete', $user->id) }}"><i
                                                     class="bi bi-trash-fill"></i></a>
                                         </div>
                                     </th>

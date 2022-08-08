@@ -36,10 +36,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('login');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
-    return view('admin.index')->middleware(['auth']);
+    return view('admin.index');
 })->middleware(['auth'])->name('dashboard')->middleware(['auth']);
 
 Route::controller(DashboardController::class)->group(function(){
@@ -239,6 +239,17 @@ Route::controller(TramitesController::class)->group(function() {
     Route::post('/tramites/store', 'store')->name('tramites.store')->middleware(['auth']);
     Route::get('/tramites/export', 'export')->name('tramites.export')->middleware(['auth']);
     Route::get('/tramites/createPDF', 'createPDF')->name('tramites.createPDF')->middleware(['auth']);
+});
+
+Route::controller(UserController::class)->group(function() {
+    Route::get('/users/index', 'index')->name('users.index')->middleware(['auth']);
+    Route::get('/users/post', 'post')->name('users.post')->middleware(['auth']);
+    Route::get('/users/edit/{id}', 'edit')->name('users.edit')->middleware(['auth']);
+    Route::post('/users/update/{id}', 'update')->name('users.update')->middleware(['auth']);
+    Route::get('/users/delete/{Id}', 'delete')->name('users.delete')->middleware(['auth']);
+    Route::post('/users/store', 'store')->name('users.store')->middleware(['auth']);
+    Route::get('/users/export', 'export')->name('users.export')->middleware(['auth']);
+    Route::get('/users/createPDF', 'createPDF')->name('users.createPDF')->middleware(['auth']);
 });
 
 Route::group(['middleware' => ['auth']], function(){
