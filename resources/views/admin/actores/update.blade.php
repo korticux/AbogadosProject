@@ -5,100 +5,159 @@
         <div class="card-body">
             <h5 class="card-title">Actualizar Actor</h5>
 
-            <!-- Floating Labels Form -->
-            <form class="row g-3" method="POST" action="{{ route('actores.update', $actor->id) }}">
-                @csrf
-                <div class="col-md-4">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->nombre }}" name="nombre" class="form-control"
-                            id="floatingName" placeholder="Ingresar Nombre">
-                        <label for="Nombre">Nombre del Actor</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->curp }}" name="curp" class="form-control"
-                            id="floatingName" placeholder="Capturar Curp">
-                        <label for="Nombre">Curp</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating">
-                        <input type="email" value="{{ $actor->correo }}" name="correo" class="form-control"
-                            id="floatingName" placeholder="Ingresar Correo">
-                        <label for="Nombre">Correo</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->telefono }}" name="telefono" class="form-control"
-                            id="floatingName" placeholder="Ingresar Telefono">
-                        <label for="Nombre">Telefono</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->nocliente }}" name="nocliente" class="form-control"
-                            id="floatingName" placeholder="Ingresar # De Cliente">
-                        <label for="Nombre"># De Cliente</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->rfc }}" name="rfc" class="form-control"
-                            id="floatingName" placeholder="Ingresar RFC">
-                        <label for="Nombre">RFC</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->domicilio }}" name="domicilio" class="form-control"
-                            id="floatingName" placeholder="Ingresar Domicilio">
-                        <label for="Nombre">Domicilio</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floathing">
-                        <select name="estado_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>{{ $actor->estado->Nombre }}</option>
-                            @foreach ($estados as $estado)
-                                <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" value="{{ $actor->ciudad }}" name="ciudad" class="form-control"
-                            id="floatingName" placeholder="Ingresar Ciudad">
-                        <label for="Nombre">Ciudad</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floathing">
-                        <label for="nacimiento">Nacimiento</label>
-                        <input type="date" class="form-control" value="{{ $actor->nacimiento }}" name="nacimiento">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-floathing">
-                        <label for="comentarios">Comentarios</label>
-                        <textarea name="comentarios" class="form-control" cols="10" rows="2">
+
+            <!-- TABS -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                        role="tab" aria-controls="home" aria-selected="true">Actores</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                        role="tab" aria-controls="profile" aria-selected="false">Archivos de Actores</button>
+                </li>
+            </ul>
+
+            <div class="tab-content pt-2" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <!-- Floating Labels Form -->
+                    <form class="row g-3" method="POST" action="{{ route('actores.update', $actor->id) }}">
+                        @csrf
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->nombre }}" name="nombre" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Nombre">
+                                <label for="Nombre">Nombre del Actor</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->curp }}" name="curp" class="form-control"
+                                    id="floatingName" placeholder="Capturar Curp">
+                                <label for="Nombre">Curp</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="email" value="{{ $actor->correo }}" name="correo" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Correo">
+                                <label for="Nombre">Correo</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->telefono }}" name="telefono" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Telefono">
+                                <label for="Nombre">Telefono</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->nocliente }}" name="nocliente" class="form-control"
+                                    id="floatingName" placeholder="Ingresar # De Cliente">
+                                <label for="Nombre"># De Cliente</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->rfc }}" name="rfc" class="form-control"
+                                    id="floatingName" placeholder="Ingresar RFC">
+                                <label for="Nombre">RFC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->domicilio }}" name="domicilio" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Domicilio">
+                                <label for="Nombre">Domicilio</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floathing">
+                                <select name="estado_id" class="form-select" aria-label="Default select example">
+                                    <option selected disabled>{{ $actor->estado->Nombre }}</option>
+                                    @foreach ($estados as $estado)
+                                        <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" value="{{ $actor->ciudad }}" name="ciudad" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Ciudad">
+                                <label for="Nombre">Ciudad</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floathing">
+                                <label for="nacimiento">Nacimiento</label>
+                                <input type="date" class="form-control" value="{{ $actor->nacimiento }}"
+                                    name="nacimiento">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floathing">
+                                <label for="comentarios">Comentarios</label>
+                                <textarea name="comentarios" class="form-control" cols="10" rows="2">
                             {{ $actor->comentarios }}
                         </textarea>
-                    </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floathing">
+                                <input type="file" name="nombre_archivo[]" class="form-control">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a href="{{ route('actores.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-floathing">
-                        <input type="file" name="nombre_archivo[]" class="form-control">
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <a href="{{ route('actores.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
-                </div>
-            </form><!-- End floating Labels Form -->
+                <!-- End floating Labels Form -->
 
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                    {{-- Aqui empiza el segundo tab --}}
+                    <!-- Floating Labels Form -->
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Num. Archivo</th>
+                                <th scope="col">nombre</th>
+                                <th scope="col">Actor Id</th>
+                                <th scope="col">Fecha Creacion</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($archivos_actores as $archivos_actor)
+                                <tr>
+                                    <th>{{ $archivos_actor->id }}</th>
+                                    <th>{{ $archivos_actor->nombre }}</th>
+                                    <th>{{ $archivos_actor->actor_id }}</th>
+                                    <th>{{ $archivos_actor->created_at }}</th>
+
+                                    <th class="row">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            @can('actores-delete')
+                                                <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                href="{{ url('archivosactores/delete/' . $archivos_actor->id ."/" . $actor->id) }}"><i
+                                                        class="bi bi-trash-fill"></i></a>
+                                            @endcan
+                                        </div>
+                                    </th>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <!-- End floating Labels Form -->
+
+                </div>
+            </div>
         </div>
-    </div>
-@endsection
+    @endsection

@@ -58,26 +58,19 @@ class CobranzaController extends Controller
 
         ]);
 
-        // Cobranza::insert([
-        //     'cobranza' => $request->cobranza,
-        //     'tipo' => $request->tipo,
-        //     'cuenta_id' => $request->cuenta_id,
-        //     'referencia' => $request->referencia,
-        //     'fecha' => $request->fecha,
-        //     'monto' => $request->monto,
-        //     'created_at' => Carbon::now(),
-        // ]);
+
         $data['created_at'] = Carbon::now();
         $new_cobranza = Cobranza::create($data);
 
         if ($request->has('nombre_archivo')) {
             foreach ($request->file('nombre_archivo') as $documento) {
-                $documento_nname = '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento_nname = $data['cobranza'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
                 $documento->move(public_path('cobranza_documentos'), $documento_nname);
                 ArchivosCobranza::create([
                     'cobranza_id' => $new_cobranza->id,
                     'nombre_archivo' => $documento_nname,
-                    'created_at' => Carbon::now()
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
                 ]);
             }
         }

@@ -76,6 +76,7 @@ Route::controller(ActoresController::class)->group(function() {
     Route::get('/actores/delete/{Id}', 'delete')->name('actores.delete');
     Route::get('/actores/export/', 'export')->name('actores.export');
     Route::get('/actores/createPDF', 'createPDF')->name('actores.createPDF');
+    Route::get('/archivosactores/delete/{id}/{ActoresId}', 'deleteActores')->name('archivosactores.delete');
 });
 
 Route::controller(CuentasController::class)->group(function() {
