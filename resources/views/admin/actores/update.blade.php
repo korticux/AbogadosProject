@@ -77,7 +77,7 @@
                         <div class="col-md-6">
                             <div class="form-floathing">
                                 <select name="estado_id" class="form-select" aria-label="Default select example">
-                                    <option selected disabled>{{ $actor->estado->Nombre }}</option>
+                                    <option selected disabled>Selecciona un estado</option>
                                     @foreach ($estados as $estado)
                                         <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
                                     @endforeach
@@ -138,7 +138,7 @@
                             @foreach ($archivos_actores as $archivos_actor)
                                 <tr>
                                     <th>{{ $archivos_actor->id }}</th>
-                                    <th>{{ $archivos_actor->nombre }}</th>
+                                    <th>{{ $archivos_actor->nombre_archivo }}</th>
                                     <th>{{ $archivos_actor->actor_id }}</th>
                                     <th>{{ $archivos_actor->created_at }}</th>
 
