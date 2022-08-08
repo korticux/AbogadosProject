@@ -4,14 +4,14 @@
 @section('admin')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Crear Region</h5>
+            <h5 class="card-title">Actualizar Region</h5>
 
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('regiones.update', $regiones->id) }}">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" name="numero" class="form-control" id="floatingName"
+                        <input type="text" value="{{ $regiones->numero }}" name="numero" class="form-control" id="floatingName"
                             placeholder="Ingresar numero">
                         @error('numero')
                             <span class="text-danger"> {{ $message }} </span>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="text" name="nombre" class="form-control" id="floatingName"
+                        <input type="text" value="{{ $regiones->nombre }}" name="nombre" class="form-control" id="floatingName"
                             placeholder="Ingresar nombre">
                         @error('nombre')
                             <span class="text-danger"> {{ $message }} </span>

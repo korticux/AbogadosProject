@@ -15,7 +15,7 @@
                     @endcan
 
                     <a href="{{ route('proceso.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; proceso</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
 
                     <a href="{{ URL::to('/proceso/createPDF') }}" class="btn btn-secondary"> <i

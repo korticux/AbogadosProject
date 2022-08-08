@@ -34,7 +34,7 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        <>
+
                             @foreach ($notificaciones as $notificacion)
                                 <tr>
                                     <th>{{ $notificacion->nombre }}</th>

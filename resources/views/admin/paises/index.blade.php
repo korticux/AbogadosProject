@@ -14,7 +14,7 @@
                             Pais</a>
                     @endcan
                     <a href="{{ route('paises.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Paises</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
                     <a href="{{ URL::to('/paises/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 

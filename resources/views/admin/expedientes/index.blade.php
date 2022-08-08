@@ -16,7 +16,7 @@
                     @endcan
 
                     <a href="{{ route('expedientes.export') }}" class="btn btn-secondary"> <i
-                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Expedientes</a>
+                            class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/expedientes/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>

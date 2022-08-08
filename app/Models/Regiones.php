@@ -9,7 +9,7 @@ use App\Models\Expedientes;
 class Regiones extends Model
 {
     use HasFactory;
-    protected $filled = [];
+    protected $guarded = [];
 
     public function expedientes(){
         return $this->hasMany(Expedientes::class, 'region_id');

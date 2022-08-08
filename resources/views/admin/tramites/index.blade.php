@@ -14,6 +14,8 @@
                             Agregar
                             Tramite</a>
                     @endcan
+                    <a href="{{ route('tramites.export') }}" class="btn btn-secondary"> <i
+                        class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
 
                     <a href="{{ URL::to('/tramites/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
