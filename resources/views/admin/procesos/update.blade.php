@@ -30,10 +30,11 @@
                     <div class="col-md-6">
                         <div class="form-floathing">
                             <select name="expedientes_id" class="form-select" aria-label="Default select example">
-                                <option selected disabled>Selecciona Un Expediente</option>
+
                                 @foreach ($expedientes as $expediente)
                                     <option value="{{ $expediente->id }}">{{ $expediente->numero }}</option>
                                 @endforeach
+                                <option selected disabled>{{$proceso->expedientes->numero}}</option>
                             </select>
                         </div>
                     </div>

@@ -16,18 +16,19 @@ return new class extends Migration
     {
         Schema::create('actores', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("nocliente");
-            $table->string("nombre");
-            $table->string("curp");
-            $table->string("rfc");
-            $table->date("nacimiento");
-            $table->string("correo");
-            $table->string("telefono");
-            $table->string("domicilio");
+            $table->string("nocliente")->nullable();
+            $table->datetime("agregado")->nullable();
+            $table->string("nombre")->nullable();
+            $table->string("curp")->nullable();
+            $table->string("rfc")->nullable();
+            $table->date("nacimiento")->nullable();
+            $table->string("correo")->nullable();
+            $table->string("telefono")->nullable();
+            $table->string("domicilio")->nullable();
             $table->unsignedBigInteger("estado_id")->nullable();
-            $table->foreign("estado_id")->references('id')->on('estados')->onDelete('cascade');
+            $table->foreign("estado_id")->references('id')->on('estados')->onDelete('cascade')->nullable();
             $table->string("ciudad")->nullable();
-            $table->string("comentarios");
+            $table->string("comentarios")->nullable();
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ class CobranzaController extends Controller
     }
 
     public function index() {
-        $cobranzas = Cobranza::latest()->paginate(5);
+        $cobranzas = Cobranza::latest()->paginate(100);
         return View("admin.cobranza.index" , compact("cobranzas"));
     }
 
@@ -42,12 +42,12 @@ class CobranzaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'cobranza' => 'required',
-            'tipo' => 'required',
-            'cuenta_id' => 'required',
-            'referencia' => 'required',
-            'fecha' => 'required',
-            'monto' => 'required',
+            'cobranza' => '',
+            'tipo' => '',
+            'cuenta_id' => '',
+            'referencia' => '',
+            'fecha' => '',
+            'monto' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
@@ -121,12 +121,12 @@ class CobranzaController extends Controller
     {
 
         $request->validate([
-            'cobranza' => 'required',
-            'tipo' => 'required',
-            'cuenta_id' => 'required',
-            'referencia' => 'required',
-            'fecha' => 'required',
-            'monto' => 'required',
+            'cobranza' => '',
+            'tipo' => '',
+            'cuenta_id' => '',
+            'referencia' => '',
+            'fecha' => '',
+            'monto' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',

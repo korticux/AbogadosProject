@@ -27,7 +27,6 @@
                             <tr>
                                 <th scope="col">Núm. Exp.</th>
                                 <th scope="col">Año</th>
-                                <th scope="col">Región</th>
                                 <th scope="col">Sala</th>
                                 <th scope="col">Ponencia</th>
                                 <th scope="col">Actor</th>
@@ -39,10 +38,9 @@
                                 <tr>
                                     <th>{{ $expediente->numero }}</th>
                                     <th>{{ $expediente->ano }}</th>
-                                    <th>{{ $expediente->region->nombre }}</th>
                                     <th>{{ $expediente->sala }}</th>
                                     <th>{{ $expediente->ponencia }}</th>
-                                    <th>{{ $expediente->actor->nombre }}</th>
+                                    <th>{{ $expediente->actor->nombre ?? 'Ninguno' }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('expedientes-edit')

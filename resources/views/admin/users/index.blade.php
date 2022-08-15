@@ -33,9 +33,6 @@
                                     <th>{{ $user->created_at }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a class="btn  btn-sm btn-outline-dark"
-                                                href="{{ route('users.edit', $user->id) }}"><i
-                                                    class="bi bi-pencil-fill"></i></a>
                                             <a class="btn btn-sm btn-outline-dark" id="delete"
                                                 href="{{ route('users.delete', $user->id) }}"><i
                                                     class="bi bi-trash-fill"></i></a>

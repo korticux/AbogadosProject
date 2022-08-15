@@ -74,12 +74,16 @@
                                 <label for="Nombre">Domicilio</label>
                             </div>
                         </div>
+                        @php
+                            use App\Models\Actores;
+                            $actor = Actores::findOrFail($id);
+                        @endphp
                         <div class="col-md-6">
                             <div class="form-floathing">
+                                <label>Estado actual: <b>{{$actor->estado->Nombre ?? 'Ninguno'}}</b></label>
                                 <select name="estado_id" class="form-select" aria-label="Default select example">
-                                    <option selected disabled>Selecciona un estado</option>
                                     @foreach ($estados as $estado)
-                                        <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
+                                        <option value="{{$estado->id}}" selected="selected">{{$estado->Nombre}}</option>
                                     @endforeach
                                 </select>
                             </div>

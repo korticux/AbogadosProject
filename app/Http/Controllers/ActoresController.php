@@ -30,7 +30,7 @@ class ActoresController extends Controller
 
     public function index()
     {
-        $actores = Actores::latest()->paginate(5);
+        $actores = Actores::latest()->paginate(5000);
         return View("admin.actores.index", compact("actores"));
     }
 
@@ -43,17 +43,17 @@ class ActoresController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nombre' => 'required',
-            'curp' => 'required',
-            'correo' => 'required',
-            'telefono' => 'required',
-            'nocliente' => 'required',
-            'rfc' => 'required',
-            'domicilio' => 'required',
-            'ciudad' => 'required',
-            'comentarios' => 'required',
-            'nacimiento' => 'required',
-            'estado_id' => 'required',
+            'nombre' => '',
+            'curp' => '',
+            'correo' => '',
+            'telefono' => '',
+            'nocliente' => '',
+            'rfc' => '',
+            'domicilio' => '',
+            'ciudad' => '',
+            'comentarios' => '',
+            'nacimiento' => '',
+            'estado_id' => '',
         ]);
 
         $new_actor = Actores::create($data);
@@ -110,23 +110,23 @@ class ActoresController extends Controller
         $estados = Estados::latest()->get();
         $archivos_actores = ArchivosActores::where('actor_id', $actor->id)->get();
 
-        return View('admin.actores.update', compact('actor', 'estados', 'archivos_actores'));
+        return View('admin.actores.update', compact('actor', 'estados', 'archivos_actores','id'));
     }
 
     public function update($id, Request $request)
     {
 
         $validatedData = $request->validate([
-            'nombre' => 'required',
-            'curp' => 'required',
-            'correo' => 'required',
-            'telefono' => 'required',
-            'nocliente' => 'required',
-            'domicilio' => 'required',
-            'ciudad' => 'required',
-            'comentarios' => 'required',
-            'nacimiento' => 'required',
-            'estado_id' => 'required',
+            'nombre' => '',
+            'curp' => '',
+            'correo' => '',
+            'telefono' => '',
+            'nocliente' => '',
+            'domicilio' => '',
+            'ciudad' => '',
+            'comentarios' => '',
+            'nacimiento' => '',
+            'estado_id' => '',
         ]);
 
         Actores::findOrFail($id)->update([
