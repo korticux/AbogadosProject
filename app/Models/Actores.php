@@ -26,4 +26,9 @@ class Actores extends Model
     {
         return $this->hasMany(ArchivosActores::class, 'actor_id');
     }
+
+    public function dependencia()
+    {
+        return $this->belongsTo(Dependencias::class);
+    }
 }
