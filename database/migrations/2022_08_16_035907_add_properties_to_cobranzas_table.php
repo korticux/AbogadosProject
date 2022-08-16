@@ -29,7 +29,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('cobranzas', function (Blueprint $table) {
-            //
+            $table->string("total")->nullable();
+            $table->unsignedBigInteger('actor_id')->nullable();
+            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade');
         });
     }
 };
