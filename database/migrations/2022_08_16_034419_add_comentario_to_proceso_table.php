@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('proceso', function (Blueprint $table) {
+            $table->string("comentario")->nullable();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('proceso', function (Blueprint $table) {
+            $table->string("comentario")->nullable();
+        });
     }
 };
