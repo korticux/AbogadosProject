@@ -27,17 +27,7 @@
                <!-- Floating Labels Form -->
                 <form class="row g-3" method="POST" action="{{ route('proceso.update', $proceso->id) }}">
                     @csrf
-                    <div class="col-md-6">
-                        <div class="form-floathing">
-                            <select name="expedientes_id" class="form-select" aria-label="Default select example">
 
-                                @foreach ($expedientes as $expediente)
-                                    <option value="{{ $expediente->id }}">{{ $expediente->numero }}</option>
-                                @endforeach
-                                <option selected disabled>{{$proceso->expedientes->numero}}</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input type="date" value="{{$proceso->fecha_de_ingreso}}" name="fecha_de_ingreso" class="form-control" id="floatingName"
@@ -138,16 +128,7 @@
                             <label for="nombre">Fecha De Demanda</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="text" value="{{$proceso->numero_expediente}}" name="numero_expediente" class="form-control" id="floatingName"
-                                placeholder="Ingresar numero_expediente">
-                            @error('numero_expediente')
-                                <span class="text-danger"> {{ $message }} </span>
-                            @enderror
-                            <label for="nombre">Numero de expediente</label>
-                        </div>
-                    </div>
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         <a href="{{ route('proceso.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
