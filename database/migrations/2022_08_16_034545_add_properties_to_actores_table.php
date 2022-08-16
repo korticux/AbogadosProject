@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('actores', function (Blueprint $table) {
             $table->string("honorario")->nullable();
             $table->date("fecha1")->nullable();
-            $table->string("Abonado")->nullable();
+            $table->string("abonado")->nullable();
             $table->unsignedBigInteger("dependencia_id")->nullable();
             $table->foreign("dependencia_id")->references('id')->on('dependencias')->onDelete('cascade');
         });
@@ -30,7 +30,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('actores', function (Blueprint $table) {
-            //
+            $table->string("honorario")->nullable();
+            $table->date("fecha1")->nullable();
+            $table->string("abonado")->nullable();
+            $table->unsignedBigInteger("dependencia_id")->nullable();
+            $table->foreign("dependencia_id")->references('id')->on('dependencias')->onDelete('cascade');
         });
     }
 };

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pagos_cobranza', function (Blueprint $table) {
-            $table->bigIncrements("id");
-            $table->string('nombre_pago');
-            $table->unsignedBigInteger('cobranza_id')->nullable();
-            $table->foreign('cobranza_id')->references('id')->on('cobranzas')->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('cobranzas', function (Blueprint $table) {
+            $table->string("total")->nullable();
+            $table->unsignedBigInteger('actor_id')->nullable();
+            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade');
+
         });
     }
 
@@ -29,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagos_cobranza');
+        Schema::table('cobranzas', function (Blueprint $table) {
+            //
+        });
     }
 };

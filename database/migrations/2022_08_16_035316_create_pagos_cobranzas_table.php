@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('proceso', function (Blueprint $table) {
-            $table->string("comentario")->nullable();
+        Schema::create('pagos_cobranzas', function (Blueprint $table) {
+            $table->bigIncrements("id");
+            $table->string('nombre_pagos');
+            $table->unsignedBigInteger('cobranza_id')->nullable();
+            $table->foreign('cobranza_id')->references('id')->on('cobranzas')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('proceso', function (Blueprint $table) {
-            $table->string("comentario")->nullable();
-        });
+        Schema::dropIfExists('pagos_cobranzas');
     }
 };
