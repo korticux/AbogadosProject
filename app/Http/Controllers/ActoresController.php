@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\ActoresExport;
 use App\Models\Actores;
+use App\Models\Dependencias;
 use App\Models\ArchivosActores;
 use App\Models\Estados;
 use Carbon\Carbon;
@@ -37,7 +38,8 @@ class ActoresController extends Controller
     public function post()
     {
         $estados = Estados::latest()->get();
-        return View('admin.actores.create', compact('estados'));
+        $dependencias = Dependencias::latest()->get();
+        return View('admin.actores.create', compact('estados', 'dependencias'));
     }
 
     public function store(Request $request)
@@ -54,6 +56,11 @@ class ActoresController extends Controller
             'comentarios' => '',
             'nacimiento' => '',
             'estado_id' => '',
+            'honorario' => '',
+            'fecha1' => '',
+            'abonado' => '',
+            'dependencia_id' => '',
+
         ]);
 
         $new_actor = Actores::create($data);
@@ -108,9 +115,10 @@ class ActoresController extends Controller
     {
         $actor = Actores::findOrFail($id);
         $estados = Estados::latest()->get();
+        $dependencias = Dependencias::latest()->get();
         $archivos_actores = ArchivosActores::where('actor_id', $actor->id)->get();
 
-        return View('admin.actores.update', compact('actor', 'estados', 'archivos_actores','id'));
+        return View('admin.actores.update', compact('actor', 'estados', 'dependencias', 'archivos_actores','id'));
     }
 
     public function update($id, Request $request)
@@ -127,6 +135,10 @@ class ActoresController extends Controller
             'comentarios' => '',
             'nacimiento' => '',
             'estado_id' => '',
+            'honorario' => '',
+            'fecha1' => '',
+            'abonado' => '',
+            'dependencia_id' => '',
         ]);
 
         Actores::findOrFail($id)->update([
@@ -141,6 +153,10 @@ class ActoresController extends Controller
             'estado_id' => $request->estado_id,
             'ciudad' => $request->ciudad,
             'comentarios' => $request->comentarios,
+            'honorario' => $request->honorario,
+            'fecha1' => $request->fecha1,
+            'abonado' => $request->abonado,
+            'dependencia_id' => $request->dependencia_id,
             'updated_at' => \Carbon\Carbon::now()
         ]);
 
