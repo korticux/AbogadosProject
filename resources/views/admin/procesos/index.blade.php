@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach ($procesos as $proceso)
                                 <tr>
-                                    <th>{{ $proceso->expedientes->numero ?? 'ninguno' }}</th>
+                                    <th>{{ $proceso->expedientes->numero_exp ?? 'ninguno' }}</th>
                                     <th>{{ $proceso->fecha_de_ingreso }}</th>
                                     <th>{{ $proceso->numero_de_oficio }}</th>
                                     <th>{{ $proceso->quien_recibio }}</th>

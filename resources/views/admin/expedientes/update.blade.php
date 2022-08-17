@@ -3,7 +3,13 @@
 
 @section('admin')
     <div class="card-body">
-        <h5 class="mb-0">Actualización del Expediente <b>No. ({{ $expediente->numero }})
+        @php
+            if (empty($expediente->region->numero))
+            $rn = "";
+            elseif ($expediente->region->numero != null)
+            $rn = $expediente->region->numero;
+        @endphp
+        <h5 class="mb-0">Actualización del Expediente <b>No. ({{$expediente->numero . " / " . $expediente->ano . " - " . $rn . " - " . $expediente->sala . " - " . $expediente->ponencia}})
                 {{ $expediente->actor->nombre ?? 'Ninguno'}}</b></h5>
         <hr>
 
@@ -100,27 +106,14 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Lugar de Petición: <b>
-                                {{ $expediente->peticion->lugar ?? 'Ninguno' }}</b></label>
-                        <div class="form-floathing col-sm-5">
-                            <select name="peticion_id" class="form-select" aria-label="Default select example">
-                                <option>{{$expediente->peticion->id ?? 'Ninguno'}}</option>
-                                @foreach ($peticiones as $peticion)
-                                    <option value="{{ $peticion->id }}">{{ $peticion->lugar }}</option>
-                                @endforeach
-                                <option value="">Ninguno</option>
 
-                            </select>
-                        </div>
-                    </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Actor: <b>
+                        <label class="col-sm-4 col-form-label">Actor actual: <b>
                                 {{ $expediente->actor->nombre ?? 'Ninguno'}}</b></label>
                         <div class="form-floathing col-sm-5">
                             <select name="actor_id" class="form-select" aria-label="Default select example">
-                                <option>{{$expediente->actor->id ?? 'Ninguno'}}</option>
+                                <option value="{{$expediente->actor->id ?? ''}}">Selecciona un actor</option>
                                 @foreach ($actores as $actor)
                                     <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
                                 @endforeach
@@ -130,11 +123,11 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Tramite: <b>
+                        <label class="col-sm-4 col-form-label">Tramite actual: <b>
                                 {{ $expediente->tramite->nombre ?? 'Ninguno'}}</b></label>
                         <div class="form-floathing col-sm-5">
                             <select name="tramite_id" class="form-select" aria-label="Default select example">
-                                <option>{{$expediente->tramite->id ?? 'Ninguno'}}</option>
+                                <option value="{{$expediente->tramite->id ?? ''}}">Selecciona un tramite</option>
                                 @foreach ($tramites as $tramite)
                                     <option value="{{ $tramite->id }}">{{ $tramite->nombre }}</option>
                                 @endforeach
@@ -144,11 +137,11 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Estatus: <b>
+                        <label class="col-sm-4 col-form-label">Estatus actual: <b>
                                 {{ $expediente->estatus->nombre  ?? 'Ninguno'}}</b></label>
                         <div class="form-floathing col-sm-5">
                             <select name="estatus_id" class="form-select" aria-label="Default select example">
-                               <option>{{$expediente->estatus->id ?? 'Ninguno'}}</option>
+                               <option value="{{$expediente->estatus->id ?? ''}}">Selecciona un estatus</option>
                                 @foreach ($estatus as $estatus)
                                     <option value="{{ $estatus->id }}">{{ $estatus->nombre }}</option>
                                 @endforeach
@@ -156,30 +149,6 @@
                             </select>
                         </div>
                         <br> <br>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" value="{{ $expediente->honorario }}" name="honorario"
-                                    class="form-control" id="floatingName" placeholder="Ingresar honorario">
-                                @error('honorario')
-                                    <span class="text-danger"> {{ $message }} </span>
-                                @enderror
-                                <label for="nombre">Honorario</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" value="{{ $expediente->pagoinicial }}" name="pagoinicial"
-                                    class="form-control" id="floatingName" placeholder="Ingresar pago inicial">
-                                @error('pagoinicial')
-                                    <span class="text-danger"> {{ $message }} </span>
-                                @enderror
-                                <label for="nombre">Pago Inicial</label>
-                            </div>
-                        </div>
                     </div>
                     <hr>
 
@@ -890,8 +859,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <hr>
 
 
@@ -1460,7 +1427,7 @@
                             <label>El actor es: <b>{{$expediente->tipo_actor}}</b></label>
                             <br>
                             <select name="tipo_actor" class="form-select" aria-label="Default select example">
-                                <option value="{{$expediente->region->id ?? ''}}">Selecciona el tipo</option>
+                                <option value="{{$expediente->tipo_actor ?? ''}}">Selecciona el tipo</option>
                                 <option value="Actor en decimo transitorio">Actor en decimo transitorio</option>
                                 <option value="Actor en cuentas individuales">Actor en cuentas individuales</option>
 
@@ -1475,6 +1442,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <hr>
 
 

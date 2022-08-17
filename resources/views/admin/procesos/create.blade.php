@@ -14,7 +14,7 @@
                         <select name="expedientes_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Selecciona Un Expediente</option>
                             @foreach ($expedientes as $expediente)
-                                <option value="{{ $expediente->id }}">{{ $expediente->numero }}</option>
+                                <option value="{{ $expediente->id }}">{{ $expediente->numero_exp }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -131,6 +131,14 @@
                         <label for="nombre">Fecha De Demanda</label>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-floathing">
+                        <label for="comentario1">Comentarios</label>
+                        <textarea name="comentario1" class="form-control" cols="10" rows="2"></textarea>
+                    </div>
+                    <br>
+                </div>
+                <hr>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>

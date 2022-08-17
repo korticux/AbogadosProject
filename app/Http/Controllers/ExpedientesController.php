@@ -73,7 +73,9 @@ class ExpedientesController extends Controller
             'fecha3' => '',
             'fecha4' => '',
             'fecha5' => '',
-        ], [
+        ],
+
+        [
             'numero.required' => 'El numero del expediente es requerido',
             'ano.required' => 'El año del expediente es requerido',
             'region_id.required' => 'La region del expediente es requerida',
@@ -95,9 +97,11 @@ class ExpedientesController extends Controller
             'fecha5.required' => 'La fecha del expediente es requerida',
         ]);
 
+        $new_expediente = Expedientes::create($data)->update([
+            'numero_exp' => $request->numero . " / " . $request->ano . " - " .$request->region_id . " - " . $request->sala . " - " . $request->ponencia,
+        ]);
 
 
-        $new_expediente = Expedientes::create($data);
 
         if ($request->has('nombre_archivos')) {
             foreach ($request->file('nombre_archivos') as $documento) {
@@ -112,15 +116,14 @@ class ExpedientesController extends Controller
             }
         }
 
-
-
-
         $notification  = array(
             'message' => "Expediente Agregado Correctamente",
             'alert-type' => "success",
         );
 
+
         return redirect()->route('expedientes.index')->with($notification);
+
     }
 
     public function delete($id)
@@ -207,6 +210,8 @@ class ExpedientesController extends Controller
             'fecha5.required' => 'La fecha del expediente es requerida',
         ]);
 
+
+
         Expedientes::findOrFail($id)->update([
             'numero' => $request->numero,
             'ano' => $request->ano,
@@ -253,13 +258,11 @@ class ExpedientesController extends Controller
             'comentario14' => $request->comentario14,
             'comentario15' => $request->comentario15,
             'tipo_actor' => $request->tipo_actor,
-            'numero_exp' => $request->numero_exp,
+            'numero_exp' => $request->numero . " / " . $request->ano . " - " .$request->region_id . " - " . $request->sala . " - " . $request->ponencia,
             'tipo_expediente' => $request->tipo_expediente,
-
             'updated_at' => \Carbon\Carbon::now(),
+
         ]);
-
-
 
 
         $notification = array(

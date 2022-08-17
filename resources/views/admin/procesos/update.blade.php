@@ -128,18 +128,20 @@
                             <label for="nombre">Fecha De Demanda</label>
                         </div>
                     </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <a href="{{ route('proceso.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
+                    <div class="col-md-6">
+                        <div class="form-floathing">
+                            <label for="comentario1">Comentarios</label>
+                            <textarea name="comentario1" class="form-control" cols="10" rows="2">{{$proceso->comentario1}}</textarea>
+                        </div>
+                        <br>
                     </div>
-                </form><!-- End floating Labels Form -->
+                    <hr>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
                {{-- Aqui empiza ell segundo tab --}}
                 <!-- Floating Labels Form -->
-                <form class="row g-3" method="POST" action="{{ route('proceso.update', $proceso->id) }}">
+                <div class="row g-3">
                <div class="col-md-6">
                 <div class="form-floating">
                     <input type="date" name="fecha_contestacion_del_tribunal" class="form-control" id="floatingName"
@@ -267,24 +269,27 @@
                     @error('recursos_para_seguimiento')
                         <span class="text-danger"> {{ $message }} </span>
                     @enderror
-                    <label for="nombre">Recuersos Para Seguimiento</label>
+                    <label for="nombre">Recursos Para Seguimiento</label>
                 </div>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <a href="{{ route('proceso.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
-            </div>
-        </form><!-- End floating Labels Form -->
 
+            <div class="col-md-6">
+                <div class="form-floathing">
+                    <label for="comentario2">Comentarios</label>
+                    <textarea name="comentario2" class="form-control" cols="10" rows="2">{{$proceso->comentario2}}</textarea>
+                </div>
+                <br>
+            </div>
+            <hr>
 
                 {{-- Aqui termina ell segundo tab --}}
             </div>
+        </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
 
                 {{-- Aqui empiza ell tercero tab --}}
                 <!-- Floating Labels Form -->
-                <form class="row g-3" method="POST" action="{{ route('proceso.update', $proceso->id) }}">
+                <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input type="date" value="{{$proceso->fecha_admision_de_ampliacion_de_demanda}}" name="fecha_admision_de_ampliacion_de_demanda" class="form-control" id="floatingName"
@@ -516,16 +521,25 @@
                         </div>
                     </div>
 
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <a href="{{ route('proceso.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
+                    <div class="col-md-6">
+                        <div class="form-floathing">
+                            <label for="comentario3">Comentarios</label>
+                            <textarea name="comentario3" class="form-control" cols="10" rows="2">{{$proceso->comentario3}}</textarea>
+                        </div>
+                        <br>
                     </div>
-                </form><!-- End floating Labels Form -->
+                    <hr>
 
 
                  {{-- Aqui termina ell tercero tab --}}
             </div>
+        </div>
         </div><!-- End Default Tabs -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{{ route('proceso.index') }}" type="reset" class="btn btn-secondary">Regresar</a>
+            </div>
+        </form><!-- End floating Labels Form -->
+        </div>
 
-    </div>
 @endsection
