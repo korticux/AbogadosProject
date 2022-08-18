@@ -140,6 +140,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
+                            <input type="text" value="{{$proceso->comentario}}" name="comentario" class="form-control" id="floatingName"
+                                placeholder="Ingresar comentario">
+                            @error('comentario')
+                                <span class="text-danger"> {{ $message }} </span>
+                            @enderror
+                            <label for="comentario">Comentario</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
                             <input type="text" value="{{$proceso->numero_expediente}}" name="numero_expediente" class="form-control" id="floatingName"
                                 placeholder="Ingresar numero_expediente">
                             @error('numero_expediente')

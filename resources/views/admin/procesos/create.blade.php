@@ -131,6 +131,12 @@
                         <label for="nombre">Fecha De Demanda</label>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="comentarios">Comentarios</label>
+                        <textarea name="comentarios" class="form-control" cols="10" rows="2"></textarea>
+                    </div>
+                </div>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
