@@ -16,9 +16,13 @@
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
                         role="tab" aria-controls="profile" aria-selected="false">Archivos De Cobranza</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button"
+                        role="tab" aria-controls="payment" aria-selected="false">Archivos De Cobranza</button>
+                </li>
             </ul>
 
-            <div class="tab-content pt-2" id="myTabContent">
+            <div class="tab-content pt-3" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <!-- Floating Labels Form -->
                     <form class="row g-3" method="POST" action="{{ route('cobranza.update', $cobranza->id) }}">
@@ -106,8 +110,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">Num. Archivo</th>
-                                <th scope="col">nombre</th>
-                                <th scope="col">Actor Id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Cobranza Id</th>
                                 <th scope="col">Fecha Creacion</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -135,5 +139,25 @@
                     </table>
                     <!-- End floating Labels Form -->
                 </div>
+                <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                    {{-- Aqui empieza la tercera tab --}}
+                   <!-- Floating Labels Form -->
+                   <!-- Table with stripped rows -->
+                   <table class="table datatable">
+                       <thead>
+                           <tr>
+                               <th scope="col">Num. Pagos</th>
+                               <th scope="col">Nombre de pagos</th>
+                               <th scope="col">Cobranza Id</th>
+                               <th scope="col">Fecha Creacion</th>
+                               <th scope="col">Acciones</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+
+                       </tbody>
+                   </table>
+                   <!-- End floating Labels Form -->
+               </div>
             </div>
         @endsection
