@@ -34,9 +34,18 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             @foreach ($expedientes as $expediente)
+                            @php
+                            if (empty($expediente->region->numero))
+                            $rn = "";
+                            elseif ($expediente->region->numero != null)
+                            $rn = $expediente->region->numero;
+                            @endphp
                                 <tr>
-                                    <th>{{ $expediente->numero }}</th>
+                                    <th>
+                                    {{$expediente->numero . " / " . $expediente->ano . " - " . $rn . " - " . $expediente->sala . " - " . $expediente->ponencia}}
+                                    </th>
                                     <th>{{ $expediente->ano }}</th>
                                     <th>{{ $expediente->sala }}</th>
                                     <th>{{ $expediente->ponencia }}</th>

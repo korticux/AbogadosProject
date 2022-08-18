@@ -68,7 +68,6 @@ return new class extends Migration
             $table->string("tipo_actor")->nullable();
             $table->string("numero_exp")->nullable();
             $table->timestamps();
-
         });
     }
 

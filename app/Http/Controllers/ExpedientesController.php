@@ -73,7 +73,9 @@ class ExpedientesController extends Controller
             'fecha3' => '',
             'fecha4' => '',
             'fecha5' => '',
-        ], [
+        ],
+
+        [
             'numero.required' => 'El numero del expediente es requerido',
             'ano.required' => 'El año del expediente es requerido',
             'region_id.required' => 'La region del expediente es requerida',
@@ -95,9 +97,11 @@ class ExpedientesController extends Controller
             'fecha5.required' => 'La fecha del expediente es requerida',
         ]);
 
+        $new_expediente = Expedientes::create($data)->update([
+            'numero_exp' => $request->numero . " / " . $request->ano . " - " .$request->region_id . " - " . $request->sala . " - " . $request->ponencia,
+        ]);
 
 
-        $new_expediente = Expedientes::create($data);
 
         if ($request->has('nombre_archivos')) {
             foreach ($request->file('nombre_archivos') as $documento) {
@@ -112,15 +116,14 @@ class ExpedientesController extends Controller
             }
         }
 
-
-
-
         $notification  = array(
             'message' => "Expediente Agregado Correctamente",
             'alert-type' => "success",
         );
 
+
         return redirect()->route('expedientes.index')->with($notification);
+
     }
 
     public function delete($id)
@@ -184,6 +187,7 @@ class ExpedientesController extends Controller
             'fecha3' => '',
             'fecha4' => '',
             'fecha5' => '',
+
         ], [
             'numero.required' => 'El numero del expediente es requerido',
             'ano.required' => 'El año del expediente es requerido',
@@ -206,6 +210,8 @@ class ExpedientesController extends Controller
             'fecha5.required' => 'La fecha del expediente es requerida',
         ]);
 
+
+
         Expedientes::findOrFail($id)->update([
             'numero' => $request->numero,
             'ano' => $request->ano,
@@ -226,10 +232,37 @@ class ExpedientesController extends Controller
             'fecha3' => $request->fecha3,
             'fecha4' => $request->fecha4,
             'fecha5' => $request->fecha5,
+            'fecha6' => $request->fecha6,
+            'fecha7' => $request->fecha7,
+            'fecha8' => $request->fecha8,
+            'fecha9' => $request->fecha9,
+            'fecha10' => $request->fecha10,
+            'fecha11' => $request->fecha11,
+            'fecha12' => $request->fecha12,
+            'fecha13' => $request->fecha13,
+            'fecha14' => $request->fecha14,
+            'fecha15' => $request->fecha15,
+            'comentario1' => $request->comentario1,
+            'comentario2' => $request->comentario2,
+            'comentario3' => $request->comentario3,
+            'comentario4' => $request->comentario4,
+            'comentario5' => $request->comentario5,
+            'comentario6' => $request->comentario6,
+            'comentario7' => $request->comentario7,
+            'comentario8' => $request->comentario8,
+            'comentario9' => $request->comentario9,
+            'comentario10' => $request->comentario10,
+            'comentario11' => $request->comentario11,
+            'comentario12' => $request->comentario12,
+            'comentario13' => $request->comentario13,
+            'comentario14' => $request->comentario14,
+            'comentario15' => $request->comentario15,
+            'tipo_actor' => $request->tipo_actor,
+            'numero_exp' => $request->numero . " / " . $request->ano . " - " .$request->region_id . " - " . $request->sala . " - " . $request->ponencia,
+            'tipo_expediente' => $request->tipo_expediente,
             'updated_at' => \Carbon\Carbon::now(),
+
         ]);
-
-
 
 
         $notification = array(
