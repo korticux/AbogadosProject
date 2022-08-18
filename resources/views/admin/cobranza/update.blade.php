@@ -154,21 +154,68 @@
                 <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
                     {{-- Aqui empieza la tercera tab --}}
                    <!-- Floating Labels Form -->
-                   <!-- Table with stripped rows -->
-                   <table class="table datatable">
-                       <thead>
-                           <tr>
-                               <th scope="col">Num. Pagos</th>
-                               <th scope="col">Nombre de pagos</th>
-                               <th scope="col">Cobranza</th>
-                               <th scope="col">Fecha Creacion</th>
-                               <th scope="col">Acciones</th>
-                           </tr>
-                       </thead>
-                       <tbody>
 
-                       </tbody>
-                   </table>
+                   <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Pagos Cobranza</h5>
+                                @can('cobranza-create')
+                                    <a class="btn btn-primary" href="{{ route('pagoscobranza.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+                                        Agregar
+                                        Pago </a>
+                                @endcan
+
+                                {{-- <a href="{{ route('cobranza.export') }}" class="btn btn-secondary"> <i
+                                        class="bi bi-file-earmark-excel-fill"></i> &nbsp; Excel</a>
+
+                                <a href="{{ URL::to('/cobranza/createPDF') }}" class="btn btn-secondary"> <i
+                                        class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a> --}}
+
+                                <!-- Table with stripped rows -->
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Num. Pago</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Cobranza</th>
+                                            <th scope="col">Fecha Creacion</th>
+                                            <th scope="col">Acciones</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($pagoscobranzas as $pagoscobranza)
+                                            <tr>
+                                                <th>{{ $pagoscobranza->id }}</th>
+                                                <th>{{ $pagoscobranza->nombre_pagos }}</th>
+                                                <th>{{ $pagoscobranza->cobranza_id }}</th>
+                                                <th>{{ $pagoscobranza->created_at }}</th>
+                                                <th class="row">
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                            <a class="btn  btn-sm btn-outline-dark"
+                                                                href="{{ route('pagoscobranza.edit', $pagoscobranza->id) }}"><i
+                                                                    class="bi bi-pencil-fill"></i></a>
+
+                                                            <a class="btn btn-sm btn-outline-dark" id="delete"
+                                                                href="{{ route('pagoscobranza.delete', $pagoscobranza->id) }}"><i
+                                                                    class="bi bi-trash-fill"></i></a>
+
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <!-- End Table with stripped rows -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                    <!-- End floating Labels Form -->
                </div>
             </div>

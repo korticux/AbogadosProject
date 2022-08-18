@@ -62,10 +62,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating my-3">
-                        <input type="text" name="monto" class="form-control" id="floatingName"
-                            placeholder="Ingresar monto">
+                        <input type="number" name="monto" class="form-control" id="floatingName"
+                            placeholder="Ingresar monto numerico">
                         @error('monto')
-                            <span class="text-danger"> {{ $message }} </span>
+                            <span class="number-danger"> {{ $message }} </span>
                         @enderror
                         <label for="monto">Monto</label>
                     </div>

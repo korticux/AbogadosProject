@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign("cuenta_id")->references('id')->on('cuentas')->onDelete('cascade');
             $table->string("referencia");
             $table->date("fecha");
-            $table->string("monto");
+            $table->float("monto");
             $table->timestamps();
         });
     }

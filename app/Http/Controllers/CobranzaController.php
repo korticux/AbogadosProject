@@ -8,6 +8,7 @@ use App\Models\Cuentas;
 use App\Models\Actores;
 use Illuminate\Http\Request;
 use App\Models\Cobranza;
+use App\Models\PagosCobranzas;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
@@ -118,8 +119,9 @@ class CobranzaController extends Controller
         $cobranza = Cobranza::findOrFail($id);
         $cuentas = Cuentas::latest()->get();
         $actores = Actores::latest()->get();
+        $pagoscobranzas = PagosCobranzas::latest()->get();
         $archivos_cobranzas = ArchivosCobranza::where('cobranza_id', $cobranza->id)->get();
-        return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas', 'actores'));
+        return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas', 'actores', 'pagoscobranzas'));
     }
 
     public function update($id, Request $request)
