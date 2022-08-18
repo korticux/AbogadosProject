@@ -90,6 +90,8 @@ class CobranzaController extends Controller
             'created_at' => Carbon::now()
         ]);
 
+
+
         $notification  = array(
             'message' => "Cobranza Agregada Correctamente",
             'alert-type' => "success",

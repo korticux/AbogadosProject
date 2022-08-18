@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PagosCobranzas;
 use App\Models\Cobranza;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
 
 class PagosCobranzaController extends Controller
 {
@@ -26,7 +26,7 @@ class PagosCobranzaController extends Controller
             'nombre_pagos' => '',
             'cobranza_id' => '',
             'monto' => '',
-            'total' => '',
+
             'comentario' => '',
 
         ], [
@@ -34,16 +34,19 @@ class PagosCobranzaController extends Controller
             'cobranza_id.required' => 'El medio de cobranza es requerido',
             'nombre_pagos.required' => 'El nombre del pago es requerido',
             'monto.required' => 'El monto es requerido',
-            'total.required' => 'El total es requerido',
+
             'comentario.required' => 'El comentario es requerido',
 
+        ]);
+
+        Cobranza::findOrFail($request->cobranza_id)->update([
+            'monto_percibido' => $request->monto
         ]);
 
         PagosCobranzas::insert([
             'nombre_pagos' => $request->nombre_pagos,
             'cobranza_id' => $request->cobranza_id,
             'monto' => $request->monto,
-            'total' => $request->total,
             'comentario' => $request->comentario,
             'created_at' => \Carbon\Carbon::now()
         ]);

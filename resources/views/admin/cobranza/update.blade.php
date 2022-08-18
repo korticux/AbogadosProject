@@ -91,7 +91,7 @@
 
                         <div class="col-md-4">
                             <div class="form-floating my-3">
-                                <input type="number"  value={{$cobranza->monto_percibido}} name="monto_percibido" class="form-control" id="floatingName"
+                                <input type="number" disabled value={{$cobranza->monto_percibido}} name="monto_percibido" class="form-control" id="floatingName"
                                     placeholder="Ingresar monto percibido">
                                 @error('monto_percibido')
                                     <span class="text-danger"> {{ $message }} </span>
