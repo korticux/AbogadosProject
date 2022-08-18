@@ -13,7 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('procesos', function (Blueprint $table) {
+        Schema::table('pagos_cobranzas', function (Blueprint $table) {
+            $table->float("monto")->nullable();
             $table->string("comentario")->nullable();
         });
     }
@@ -25,7 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('procesos', function (Blueprint $table) {
+        Schema::table('pagos_cobranzas', function (Blueprint $table) {
+            $table->float("monto")->nullable();
             $table->string("comentario")->nullable();
         });
     }

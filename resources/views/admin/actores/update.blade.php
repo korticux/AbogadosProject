@@ -68,10 +68,14 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" value="{{ $actor->domicilio }}" name="domicilio" class="form-control"
-                                    id="floatingName" placeholder="Ingresar Domicilio">
-                                <label for="Nombre">Domicilio</label>
+                            <div class="form-floathing">
+                                <label>Dependencia actual: <b>{{$actor->dependencia->nombre ?? 'Ninguno'}}</b></label>
+                                <select name="dependencia_id" class="form-select" aria-label="Default select example">
+                                    <option selected disabled>Selecciona Una Dependencia</option>
+                                    @foreach ($dependencias as $dependencia)
+                                        <option value="{{ $dependencia->id }}"selected="selected">{{ $dependencia->nombre }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         @php
@@ -90,6 +94,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
+                                <input type="text" value="{{ $actor->domicilio }}" name="domicilio" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Domicilio">
+                                <label for="Nombre">Domicilio</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
                                 <input type="text" value="{{ $actor->ciudad }}" name="ciudad" class="form-control"
                                     id="floatingName" placeholder="Ingresar Ciudad">
                                 <label for="Nombre">Ciudad</label>
@@ -100,6 +111,12 @@
                                 <label for="nacimiento">Nacimiento</label>
                                 <input type="date" class="form-control" value="{{ $actor->nacimiento }}"
                                     name="nacimiento">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floathing">
+                                <label for="fecha1">Fecha de peticion</label>
+                                <input type="date" class="form-control" value="{{ $actor->fecha1 }}" name="fecha1">
                             </div>
                         </div>
                         <div class="col-md-12">

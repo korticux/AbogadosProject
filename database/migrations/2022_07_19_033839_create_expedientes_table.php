@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("numero");
-            $table->string("ano");
+            $table->string("numero")->nullable();
+            $table->string("ano")->nullable();
             $table->unsignedBigInteger("region_id")->nullable();
             $table->foreign("region_id")->references('id')->on('regiones')->onDelete('cascade');
-            $table->string("sala");
-            $table->string("ponencia");
+            $table->string("sala")->nullable();
+            $table->string("ponencia")->nullable();
             $table->unsignedBigInteger("peticion_id")->nullable();
             $table->foreign("peticion_id")->references('id')->on('peticiones')->onDelete('cascade');
-            $table->date("fecha");
+            $table->date("fecha")->nullable();
             $table->unsignedBigInteger("actor_id")->nullable();
             $table->foreign("actor_id")->references('id')->on('actores')->onDelete('cascade');
             $table->unsignedBigInteger("dependencia_id")->nullable();
@@ -32,17 +32,18 @@ return new class extends Migration
             $table->foreign("estatus_id")->references('id')->on('estatuses')->onDelete('cascade');
             $table->unsignedBigInteger("tramite_id")->nullable();
             $table->foreign("tramite_id")->references('id')->on('tramites')->onDelete('cascade');
-            $table->string("comentarios");
-            $table->string("honorario");
-            $table->string("pagoinicial");
-            $table->date("fecha1");
-            $table->date("fecha2");
-            $table->date("fecha22");
-            $table->date("fecha3");
-            $table->date("fecha4");
-            $table->date("fecha5");
-            $table->date("fecha6")->nullable;
-            $table->date("fecha7")->nullable;
+            $table->string("comentarios")->nullable();
+            $table->string("honorario")->nullable();
+            $table->string("pagoinicial")->nullable();
+            $table->date("fecha1")->nullable();
+            $table->date("fecha2")->nullable();
+            $table->date("fecha22")->nullable();
+            $table->date("fecha3")->nullable();
+            $table->date("fecha4")->nullable();
+            $table->date("fecha5")->nullable();
+            $table->date("fecha6")->nullable();
+            $table->date("fecha7")->nullable();
+
             $table->timestamps();
         });
     }

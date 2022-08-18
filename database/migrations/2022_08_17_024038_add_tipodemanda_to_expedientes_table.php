@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('expedientes', function (Blueprint $table) {
-            $table->string("tipo_expediente")->nullable;
+            $table->string("tipo_expediente")->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('expedientes', function (Blueprint $table) {
-            $table->string("tipo_expediente")->nullable;
+            $table->string("tipo_expediente")->nullable();
         });
     }
 };

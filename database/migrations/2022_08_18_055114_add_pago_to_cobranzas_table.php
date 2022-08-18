@@ -14,10 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('cobranzas', function (Blueprint $table) {
-            $table->float("total")->nullable();
-            $table->unsignedBigInteger('actor_id')->nullable();
-            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade');
-
+            $table->unsignedBigInteger('pagos_cobranza_id')->nullable();
+            $table->foreign('pagos_cobranza_id')->references('id')->on('pagos_cobranzas')->onDelete('cascade');
         });
     }
 
@@ -29,9 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('cobranzas', function (Blueprint $table) {
-            $table->float("total")->nullable();
-            $table->unsignedBigInteger('actor_id')->nullable();
-            $table->foreign('actor_id')->references('id')->on('actores')->onDelete('cascade');
+            $table->unsignedBigInteger('pagos_cobranza_id')->nullable();
+            $table->foreign('pagos_cobranza_id')->references('id')->on('pagos_cobranzas')->onDelete('cascade');
         });
     }
 };

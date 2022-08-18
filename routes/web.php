@@ -12,6 +12,7 @@ use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\CobranzaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PagosCobranzaController;
 use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PeticionesController;
 use App\Http\Controllers\ProcesosController;
@@ -250,6 +251,17 @@ Route::controller(UserController::class)->group(function() {
     Route::post('/users/store', 'store')->name('users.store')->middleware(['auth']);
     Route::get('/users/export', 'export')->name('users.export')->middleware(['auth']);
     Route::get('/users/createPDF', 'createPDF')->name('users.createPDF')->middleware(['auth']);
+});
+
+Route::controller(PagosCobranzaController::class)->group(function() {
+    Route::get('/pagoscobranza/index', 'index')->name('pagoscobranza.index')->middleware(['auth']);
+    Route::get('/pagoscobranza/post', 'post')->name('pagoscobranza.post')->middleware(['auth']);
+    Route::post('/pagoscobranza/store', 'store')->name('pagoscobranza.store')->middleware(['auth']);
+    Route::get('/pagoscobranza/edit/{id}', 'edit')->name('pagoscobranza.edit')->middleware(['auth']);
+    Route::post('/pagoscobranza/update/{id}', 'update')->name('pagoscobranza.update')->middleware(['auth']);
+    Route::get('/pagoscobranza/delete/{Id}', 'delete')->name('pagoscobranza.delete')->middleware(['auth']);
+    Route::get('/pagoscobranza/export/', 'export')->name('pagoscobranza.export')->middleware(['auth']);
+    Route::get('/pagoscobranza/createPDF', 'createPDF')->name('pagoscobranza.createPDF')->middleware(['auth']);
 });
 
 Route::group(['middleware' => ['auth']], function(){

@@ -9,12 +9,22 @@
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('cobranza.store') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-floathing my-3">
                         <select name="cuenta_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Selecciona una cuenta</option>
                             @foreach ($cuentas as $cuenta)
                                 <option value="{{ $cuenta->id }}">{{ $cuenta->cuenta }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floathing my-3">
+                        <select name="actor_id" class="form-select" aria-label="Default select example">
+                            <option selected disabled>Selecciona una actor</option>
+                            @foreach ($actores as $actor)
+                                <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -52,15 +62,26 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating my-3">
-                        <input type="text" name="monto" class="form-control" id="floatingName"
-                            placeholder="Ingresar monto">
-                        @error('monto')
+                        <input type="number"  name="total" class="form-control" id="floatingName"
+                            placeholder="Ingresar total">
+                        @error('total')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="monto">Monto</label>
+                        <label for="total">Total</label>
                     </div>
                 </div>
+
                 <div class="col-md-4">
+                    <div class="form-floating my-3">
+                        <input type="number"   name="monto_percibido" class="form-control" id="floatingName"
+                            placeholder="Ingresar monto percibido">
+                        @error('monto_percibido')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        <label for="monto_percibido">Monto percibido</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <label for="fecha">Fecha</label>
                         <input type="date" class="form-control" name="fecha">

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pagos_cobranzas', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string('nombre_pagos');
+            $table->string('nombre_pagos')->nullable();
             $table->unsignedBigInteger('cobranza_id')->nullable();
             $table->foreign('cobranza_id')->references('id')->on('cobranzas')->onDelete('cascade');
             $table->timestamps();
