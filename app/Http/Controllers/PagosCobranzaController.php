@@ -86,13 +86,11 @@ class PagosCobranzaController extends Controller
             'nombre_pagos' => '',
             'cobranza_id' => '',
             'monto' => '',
-            'total' => '',
             'comentario' => '',
         ], [
             'cobranza_id.required' => 'El medio de cobranza es requerido',
             'nombre_pagos.required' => 'El nombre del pago es requerido',
             'monto.required' => 'El monto es requerido',
-            'total.required' => 'El total es requerido',
             'comentario.required' => 'El comentario es requerido',
         ]);
 
@@ -100,7 +98,6 @@ class PagosCobranzaController extends Controller
             'nombre_pagos' => $request->nombre_pagos,
             'cobranza_id' => $request->cobranza_id,
             'monto' => $request->monto,
-            'total' => $request->total,
             'comentario' => $request->comentario,
             'updated_at' => Carbon::now(),
         ]);

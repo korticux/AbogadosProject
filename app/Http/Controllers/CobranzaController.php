@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Cobranza;
 use App\Models\PagosCobranzas;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -50,16 +51,18 @@ class CobranzaController extends Controller
             'cuenta_id' => '',
             'referencia' => '',
             'fecha' => '',
-            'monto' => '',
+            'total' => '',
             'actor_id' => '',
+            'monto_percibido' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
             'cuenta_id.required' => 'Seleccionar la cuenta es requerida',
             'referencia.required' => 'Se necesita una referencia',
             'fecha.required' => 'La fecha es requerida',
-            'monto.required' => 'El monto debe ser especifico',
+            'total.required' => 'El total debe ser especifico',
             'actor_id.required' => 'Seleccionar el actor es requerido',
+            'monto_percibido.required' => 'monto percibido es requerido',
 
         ]);
 
@@ -79,6 +82,13 @@ class CobranzaController extends Controller
                 ]);
             }
         }
+
+
+        PagosCobranzas::create([
+            'nombre_pagos' => $new_cobranza->cobranza . '-' . 'pago',
+            'cobranza_id' => $new_cobranza->id,
+            'created_at' => Carbon::now()
+        ]);
 
         $notification  = array(
             'message' => "Cobranza Agregada Correctamente",
@@ -119,7 +129,7 @@ class CobranzaController extends Controller
         $cobranza = Cobranza::findOrFail($id);
         $cuentas = Cuentas::latest()->get();
         $actores = Actores::latest()->get();
-        $pagoscobranzas = PagosCobranzas::latest()->get();
+        $pagoscobranzas = DB::table('pagos_cobranzas')->where('cobranza_id', $id)->get();
         $archivos_cobranzas = ArchivosCobranza::where('cobranza_id', $cobranza->id)->get();
         return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas', 'actores', 'pagoscobranzas'));
     }
@@ -133,16 +143,18 @@ class CobranzaController extends Controller
             'cuenta_id' => '',
             'referencia' => '',
             'fecha' => '',
-            'monto' => '',
+            'total' => '',
             'actor_id' => '',
+            'monto_percibido' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
             'cuenta_id.required' => 'Seleccionar la cuenta es requerida',
             'referencia.required' => 'Se necesita una referencia',
             'fecha.required' => 'La fecha es requerida',
-            'monto.required' => 'El monto debe ser especifico',
+            'total.required' => 'El total debe ser especifico',
             'actor_id.required' => 'Seleccionar el actor es requerido',
+            'monto_percibido.required' => 'monto percibido es requerido',
         ]);
 
         Cobranza::findOrFail($id)->update([
@@ -151,8 +163,9 @@ class CobranzaController extends Controller
             'cuenta_id' => $request->cuenta_id,
             'referencia' => $request->referencia,
             'fecha' => $request->fecha,
-            'monto' => $request->monto,
+            'total' => $request->total,
             'actor_id' => $request->actor_id,
+            'monto_percibido' => $request->monto_percibido,
             'updated_at' => Carbon::now(),
         ]);
 

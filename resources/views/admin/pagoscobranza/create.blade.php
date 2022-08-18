@@ -41,16 +41,6 @@
                         <label for="monto">Monto</label>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-floating my-3">
-                        <input type="number" name="total" class="form-control" id="floatingName"
-                            placeholder="Ingresar nombre del pago ">
-                        @error('total')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="total">Total</label>
-                    </div>
-                </div>
 
                 <div class="col-md-6">
                     <div class="form-floathing">

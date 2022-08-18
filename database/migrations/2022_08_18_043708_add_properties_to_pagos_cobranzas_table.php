@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::table('pagos_cobranzas', function (Blueprint $table) {
             $table->float("monto")->nullable();
-            $table->float("total")->nullable();
             $table->string("comentario")->nullable();
         });
     }
@@ -29,7 +28,6 @@ return new class extends Migration
     {
         Schema::table('pagos_cobranzas', function (Blueprint $table) {
             $table->float("monto")->nullable();
-            $table->float("total")->nullable();
             $table->string("comentario")->nullable();
         });
     }

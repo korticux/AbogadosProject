@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('cobranzas', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("cobranza");
-            $table->string("tipo");
+            $table->string("cobranza")->nullable();
+            $table->string("tipo")->nullable();
             $table->unsignedBigInteger("cuenta_id")->nullable();
             $table->foreign("cuenta_id")->references('id')->on('cuentas')->onDelete('cascade');
-            $table->string("referencia");
-            $table->date("fecha");
-            $table->float("monto");
+            $table->string("referencia")->nullable();
+            $table->date("fecha")->nullable();
+            $table->float("monto_percibido")->nullable();
             $table->timestamps();
         });
     }

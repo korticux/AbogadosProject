@@ -62,12 +62,23 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating my-3">
-                        <input type="number" name="monto" class="form-control" id="floatingName"
-                            placeholder="Ingresar monto numerico">
-                        @error('monto')
-                            <span class="number-danger"> {{ $message }} </span>
+                        <input type="number"  name="total" class="form-control" id="floatingName"
+                            placeholder="Ingresar total">
+                        @error('total')
+                            <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="monto">Monto</label>
+                        <label for="total">Total</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-floating my-3">
+                        <input type="number"   name="monto_percibido" class="form-control" id="floatingName"
+                            placeholder="Ingresar monto percibido">
+                        @error('monto_percibido')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        <label for="monto_percibido">Monto percibido</label>
                     </div>
                 </div>
                 <div class="col-md-12">
