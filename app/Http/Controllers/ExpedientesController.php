@@ -149,7 +149,7 @@ class ExpedientesController extends Controller
         );
 
         return redirect()->route('expedientes.index')->with($notification);
-    }
+        }
 
     public function edit($id)
     {
