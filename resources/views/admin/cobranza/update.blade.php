@@ -32,7 +32,7 @@
                                 <select name="cuenta_id"  class="form-select" aria-label="Default select example">
                                     <option selected disabled>Selecciona una cuenta</option>
                                     @foreach ($cuentas as $cuenta)
-                                        <option value="{{ $cuenta->id }}">{{ $cuenta->cuenta }}</option>
+                                        <option value="{{ $cuenta->id }}">{{ $cuenta->banco }}</option>
                                     @endforeach
                                 </select>
                             </div>
