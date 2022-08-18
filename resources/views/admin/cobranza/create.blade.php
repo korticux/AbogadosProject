@@ -71,16 +71,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="form-floating my-3">
-                        <input type="number"   name="monto_percibido" class="form-control" id="floatingName"
-                            placeholder="Ingresar monto percibido">
-                        @error('monto_percibido')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="monto_percibido">Monto percibido</label>
-                    </div>
-                </div>
+
                 <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <label for="fecha">Fecha</label>
