@@ -7,6 +7,7 @@ use App\Models\Actores;
 use App\Models\Dependencias;
 use App\Models\ArchivosActores;
 use App\Models\Estados;
+use App\Models\Expedientes;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -76,6 +77,12 @@ class ActoresController extends Controller
                 ]);
             }
         }
+
+        Expedientes::create([
+            'numero' => $new_actor->nombre . '-' . 'expediente',
+            'actor_id' => $new_actor->id,
+            'created_at' => Carbon::now()
+        ]);
 
         $notification  = array(
             'message' => "Actor Agregado Correctamente",

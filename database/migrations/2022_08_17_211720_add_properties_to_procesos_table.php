@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('procesos', function (Blueprint $table) {
-            $table->string("comentario1")->nullable;
-            $table->string("comentario2")->nullable;
-            $table->string("comentario3")->nullable;
+            $table->string("comentario1")->nullable();
+            $table->string("comentario2")->nullable();
+            $table->string("comentario3")->nullable();
         });
     }
 
@@ -28,9 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('procesos', function (Blueprint $table) {
-            $table->string("comentario1")->nullable;
-            $table->string("comentario2")->nullable;
-            $table->string("comentario3")->nullable;
+            $table->string("comentario1")->nullable();
+            $table->string("comentario2")->nullable();
+            $table->string("comentario3")->nullable();
         });
     }
 };
