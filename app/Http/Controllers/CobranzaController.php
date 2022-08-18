@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\CobranzasExport;
 use App\Models\ArchivosCobranza;
 use App\Models\Cuentas;
+use App\Models\Actores;
 use Illuminate\Http\Request;
 use App\Models\Cobranza;
 use Carbon\Carbon;
@@ -36,7 +37,8 @@ class CobranzaController extends Controller
     public function post()
     {
         $cuentas = Cuentas::latest()->get();
-        return View('admin.cobranza.create', compact("cuentas"));
+        $actores = Actores::latest()->get();
+        return View('admin.cobranza.create', compact("cuentas", "actores"));
     }
 
     public function store(Request $request)
@@ -48,6 +50,7 @@ class CobranzaController extends Controller
             'referencia' => '',
             'fecha' => '',
             'monto' => '',
+            'actor_id' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
@@ -55,6 +58,7 @@ class CobranzaController extends Controller
             'referencia.required' => 'Se necesita una referencia',
             'fecha.required' => 'La fecha es requerida',
             'monto.required' => 'El monto debe ser especifico',
+            'actor_id.required' => 'Seleccionar el actor es requerido',
 
         ]);
 
@@ -113,8 +117,9 @@ class CobranzaController extends Controller
     {
         $cobranza = Cobranza::findOrFail($id);
         $cuentas = Cuentas::latest()->get();
+        $actores = Actores::latest()->get();
         $archivos_cobranzas = ArchivosCobranza::where('cobranza_id', $cobranza->id)->get();
-        return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas'));
+        return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas', 'actores'));
     }
 
     public function update($id, Request $request)
@@ -127,6 +132,7 @@ class CobranzaController extends Controller
             'referencia' => '',
             'fecha' => '',
             'monto' => '',
+            'actor_id' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
@@ -134,6 +140,7 @@ class CobranzaController extends Controller
             'referencia.required' => 'Se necesita una referencia',
             'fecha.required' => 'La fecha es requerida',
             'monto.required' => 'El monto debe ser especifico',
+            'actor_id.required' => 'Seleccionar el actor es requerido',
         ]);
 
         Cobranza::findOrFail($id)->update([
@@ -143,6 +150,7 @@ class CobranzaController extends Controller
             'referencia' => $request->referencia,
             'fecha' => $request->fecha,
             'monto' => $request->monto,
+            'actor_id' => $request->actor_id,
             'updated_at' => Carbon::now(),
         ]);
 

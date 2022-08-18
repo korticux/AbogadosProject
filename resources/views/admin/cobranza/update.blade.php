@@ -18,7 +18,7 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button"
-                        role="tab" aria-controls="payment" aria-selected="false">Archivos De Cobranza</button>
+                        role="tab" aria-controls="payment" aria-selected="false">Pagos De Cobranza</button>
                 </li>
             </ul>
 
@@ -27,29 +27,9 @@
                     <!-- Floating Labels Form -->
                     <form class="row g-3" method="POST" action="{{ route('cobranza.update', $cobranza->id) }}">
                         @csrf
-                        <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" value="{{ $cobranza->cobranza }}" name="cobranza"
-                                    class="form-control" id="floatingName" placeholder="Ingresar cobranza">
-                                @error('cobranza')
-                                    <span class="text-danger"> {{ $message }} </span>
-                                @enderror
-                                <label for="cobranza">Cobranza</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" name="tipo" value="{{ $cobranza->tipo }}" class="form-control"
-                                    id="floatingName" placeholder="Ingresar tipo">
-                                @error('tipo')
-                                    <span class="text-danger"> {{ $message }} </span>
-                                @enderror
-                                <label for="tipo">Tipo</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-floathing">
-                                <select name="cuenta_id" class="form-select" aria-label="Default select example">
+                        <div class="col-md-6">
+                            <div class="form-floathing my-3">
+                                <select name="cuenta_id"  class="form-select" aria-label="Default select example">
                                     <option selected disabled>Selecciona una cuenta</option>
                                     @foreach ($cuentas as $cuenta)
                                         <option value="{{ $cuenta->id }}">{{ $cuenta->cuenta }}</option>
@@ -57,10 +37,41 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-floathing my-3">
+                                <select name="actor_id" class="form-select" aria-label="Default select example">
+                                    <option selected disabled>Selecciona una actor</option>
+                                    @foreach ($actores as $actor)
+                                        <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" value="{{ $cobranza->referencia }}" name="referencia"
-                                    class="form-control" id="floatingName" placeholder="Ingresar referencia">
+                            <div class="form-floating my-3">
+                                <input type="text" value={{$cobranza->cobranza}}  name="cobranza" class="form-control" id="floatingName"
+                                    placeholder="Ingresar cobranza">
+                                @error('cobranza')
+                                    <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                                <label for="cobranza">Cobranza</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating my-3">
+                                <input type="text" value={{$cobranza->tipo}} name="tipo" class="form-control" id="floatingName"
+                                    placeholder="Ingresar tipo">
+                                @error('tipo')
+                                    <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                                <label for="tipo">Tipo</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating my-3">
+                                <input type="text"  value={{$cobranza->referencia}} name="referencia" class="form-control" id="floatingName"
+                                    placeholder="Ingresar referencia">
                                 @error('referencia')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -68,19 +79,19 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" name="monto" value="{{ $cobranza->monto }}" class="form-control"
-                                    id="floatingName" placeholder="Ingresar monto">
+                            <div class="form-floating my-3">
+                                <input type="text"  value={{$cobranza->monto}} name="monto" class="form-control" id="floatingName"
+                                    placeholder="Ingresar monto">
                                 @error('monto')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
                                 <label for="monto">Monto</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-floathing">
+                        <div class="col-md-12">
+                            <div class="form-floathing my-3">
                                 <label for="fecha">Fecha</label>
-                                <input type="date" value="{{ $cobranza->fecha }}" class="form-control" name="fecha">
+                                <input type="date" class="form-control" name="fecha">
                                 @error('fecha')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -89,7 +100,8 @@
 
                         <div class="col-md-12">
                             <div class="form-floathing">
-                                <input type="file" name="nombre_archivo[]" class="form-control">
+                                <label for="nombre_archivo">Documentación de Cobranza</label>
+                                <input type="file" name="nombre_archivo[]" class="form-control" multiple>
                             </div>
                         </div>
 
@@ -111,7 +123,7 @@
                             <tr>
                                 <th scope="col">Num. Archivo</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Cobranza Id</th>
+                                <th scope="col">Cobranza</th>
                                 <th scope="col">Fecha Creacion</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -148,7 +160,7 @@
                            <tr>
                                <th scope="col">Num. Pagos</th>
                                <th scope="col">Nombre de pagos</th>
-                               <th scope="col">Cobranza Id</th>
+                               <th scope="col">Cobranza</th>
                                <th scope="col">Fecha Creacion</th>
                                <th scope="col">Acciones</th>
                            </tr>

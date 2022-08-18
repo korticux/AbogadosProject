@@ -9,12 +9,22 @@
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('cobranza.store') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-floathing my-3">
                         <select name="cuenta_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Selecciona una cuenta</option>
                             @foreach ($cuentas as $cuenta)
                                 <option value="{{ $cuenta->id }}">{{ $cuenta->cuenta }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floathing my-3">
+                        <select name="actor_id" class="form-select" aria-label="Default select example">
+                            <option selected disabled>Selecciona una actor</option>
+                            @foreach ($actores as $actor)
+                                <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -60,7 +70,7 @@
                         <label for="monto">Monto</label>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <label for="fecha">Fecha</label>
                         <input type="date" class="form-control" name="fecha">

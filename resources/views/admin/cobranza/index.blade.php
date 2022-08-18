@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Cobranza</th>
-                                <th scope="col">Tipo</th>
+                                <th scope="col">Actor</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Monto</th>
                                 <th scope="col">Acciones</th>
@@ -36,7 +36,7 @@
                             @foreach ($cobranzas as $cobranza)
                                 <tr>
                                     <th>{{ $cobranza->cobranza }}</th>
-                                    <th>{{ $cobranza->tipo }}</th>
+                                    <th>{{ $cobranza->actor_id }}</th>
                                     <th>{{ $cobranza->fecha }}</th>
                                     <th>$ {{ $cobranza->monto }}</th>
                                     <th class="row">
