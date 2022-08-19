@@ -38,6 +38,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+
                             <div class="form-floathing my-3">
                                 <select name="actor_id" class="form-select" aria-label="Default select example">
                                     <option selected disabled>Selecciona una actor</option>

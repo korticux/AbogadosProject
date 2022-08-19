@@ -11,8 +11,10 @@
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floathing my-3">
+                        <label class="col-sm-4 col-form-label">Actor actual: <b>
+                            {{ $cobranza->actor->nombre ?? 'Ninguno'}}</b></label>
                         <select name="cobranza_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Seleccionar el id del actor </option>
+                            <option>Seleccionar el id del actor </option>
                             @foreach ($cobranzas as $cobranza)
                                 <option value="{{ $cobranza->id }}">{{ $cobranza->actor_id }}</option>
                             @endforeach

@@ -17,8 +17,21 @@ class cobranza extends Model
         return $this->belongsTo(Cuentas::class);
     }
 
+    public function PagosCobranza()
+    {
+        return $this->belongsTo(ArchivosCobranza::class);
+        return $this->hasMany(PagosCobranzas::class, 'cobranza_id');
+    }
+
+    public function actor()
+    {
+        return $this->belongsTo(Actores::class);
+    }
+
     public function ArchivosCobranza()
     {
+        return $this->belongsTo(ArchivosCobranza::class);
         return $this->hasMany(ArchivosCobranza::class, 'cobranza_id');
     }
+
 }

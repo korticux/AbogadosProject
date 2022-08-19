@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Expedientes;
+use App\Models\cobranza;
 
 class Actores extends Model
 {
@@ -30,5 +31,10 @@ class Actores extends Model
     public function dependencia()
     {
         return $this->belongsTo(Dependencias::class);
+    }
+
+    public function cobranzas()
+    {
+        return $this->hasMany(cobranza::class, 'cobranza_id');
     }
 }

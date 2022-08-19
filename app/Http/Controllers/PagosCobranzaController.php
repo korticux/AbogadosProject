@@ -105,6 +105,18 @@ class PagosCobranzaController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
+        Cobranza::findOrFail($request->cobranza_id)->update([
+            'monto_percibido' => $request->monto
+        ]);
+
+        PagosCobranzas::insert([
+            'nombre_pagos' => $request->nombre_pagos,
+            'cobranza_id' => $request->cobranza_id,
+            'monto' => $request->monto,
+            'comentario' => $request->comentario,
+            'updated_at' => Carbon::now(),
+        ]);
+
         $notification = array(
             'message' => "Pago Actualizado Correctamente",
             'alert-type' => "success",

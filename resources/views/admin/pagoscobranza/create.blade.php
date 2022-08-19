@@ -11,8 +11,9 @@
                 @csrf
                 <div class="col-md-12">
                     <div class="form-floathing my-3">
+
                         <select name="cobranza_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Seleccionar el id del actor </option>
+                            <option >Seleccionar el id del actor </option>
                             @foreach ($cobranzas as $cobranza)
                                 <option value="{{ $cobranza->id }}">{{ $cobranza->actor_id }}</option>
                             @endforeach
