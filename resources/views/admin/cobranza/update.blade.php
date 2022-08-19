@@ -29,6 +29,8 @@
                         @csrf
                         <div class="col-md-6">
                             <div class="form-floathing my-3">
+                        <label class="col-sm-4 col-form-label">Cuenta actual: <b>
+                            {{ $cobranza->cuenta->banco ?? 'Ninguno'}}</b></label>
                                 <select name="cuenta_id"  class="form-select" aria-label="Default select example">
                                     <option selected disabled>Selecciona una cuenta</option>
                                     @foreach ($cuentas as $cuenta)
@@ -39,6 +41,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floathing my-3">
+                        <label class="col-sm-4 col-form-label">Actor actual: <b>
+                            {{ $cobranza->actor->nombre ?? 'Ninguno'}}</b></label>
                                 <select name="actor_id" class="form-select" aria-label="Default select example">
                                     <option selected disabled>Selecciona una actor</option>
                                     @foreach ($actores as $actor)
@@ -108,6 +112,8 @@
                                 @enderror
                             </div>
                         </div>
+
+
 
                         <div class="col-md-12">
                             <div class="form-floathing">

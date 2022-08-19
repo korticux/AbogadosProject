@@ -27,7 +27,7 @@
                                 <th scope="col">Cobranza</th>
                                 <th scope="col">Actor</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Monto</th>
+                                <th scope="col">Total</th>
                                 <th scope="col">Acciones</th>
 
                             </tr>
@@ -38,7 +38,7 @@
                                     <th>{{ $cobranza->cobranza }}</th>
                                     <th>{{ $cobranza->actor->nombre ?? ''}}</th>
                                     <th>{{ $cobranza->fecha }}</th>
-                                    <th>$ {{number_format($cobranza->total, 2) }}</th>
+                                    <th>$ {{ $cobranza->monto }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('cobranza-edit')
