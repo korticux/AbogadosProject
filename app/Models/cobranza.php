@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cuentas;
+use App\Models\Actores;
 
 class cobranza extends Model
 {
@@ -15,6 +16,11 @@ class cobranza extends Model
     public function cuenta()
     {
         return $this->belongsTo(Cuentas::class);
+    }
+
+    public function actor()
+    {
+        return $this->belongsTo(Actores::class);
     }
 
     public function ArchivosCobranza()

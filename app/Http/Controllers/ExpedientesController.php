@@ -35,7 +35,7 @@ class ExpedientesController extends Controller
 
     public function index()
     {
-        $expedientes = Expedientes::latest()->paginate(5);
+        $expedientes = Expedientes::latest()->paginate(5000);
         return View("admin.expedientes.index", compact("expedientes"));
     }
 

@@ -40,7 +40,7 @@ class CobranzaController extends Controller
     {
         $cuentas = Cuentas::latest()->get();
         $actores = Actores::latest()->get();
-        return View('admin.cobranza.create', compact("cuentas", "actores"));
+        return View('admin.cobranza.create', compact("cuentas","actores"));
     }
 
     public function store(Request $request)

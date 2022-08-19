@@ -14,7 +14,7 @@
                         <select name="cobranza_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Seleccionar el id del actor </option>
                             @foreach ($cobranzas as $cobranza)
-                                <option value="{{ $cobranza->id }}">{{ $cobranza->actor_id }}</option>
+                                <option value="{{ $cobranza->id }}">{{ $cobranza->actor->nombre ?? '' }}</option>
                             @endforeach
                         </select>
                     </div>

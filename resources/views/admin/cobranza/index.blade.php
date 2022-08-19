@@ -36,9 +36,9 @@
                             @foreach ($cobranzas as $cobranza)
                                 <tr>
                                     <th>{{ $cobranza->cobranza }}</th>
-                                    <th>{{ $cobranza->actor_id }}</th>
+                                    <th>{{ $cobranza->actor->nombre ?? ''}}</th>
                                     <th>{{ $cobranza->fecha }}</th>
-                                    <th>$ {{ $cobranza->monto }}</th>
+                                    <th>$ {{number_format($cobranza->total, 2) }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('cobranza-edit')

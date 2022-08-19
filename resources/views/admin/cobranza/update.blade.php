@@ -101,8 +101,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-floathing my-3">
-                                <label for="fecha">Fecha</label>
-                                <input type="date" class="form-control" name="fecha">
+                                <label for="fecha" >Fecha</label>
+                                <input type="date" value="{{$cobranza->fecha}}" class="form-control" name="fecha">
                                 @error('fecha')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror

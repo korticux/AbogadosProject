@@ -12,9 +12,9 @@
                 <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <select name="cobranza_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Seleccionar el id del actor </option>
+                            <option value="">Seleccionar el id del actor </option>
                             @foreach ($cobranzas as $cobranza)
-                                <option value="{{ $cobranza->id }}">{{ $cobranza->actor_id }}</option>
+                                <option value="{{ $cobranza->id }}">{{ $cobranza->actor->nombre ?? '' }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="col-md-6">
                     <div class="form-floathing">
                         <label for="comentario">Comentarios</label>
-                        <textarea name="comentario" class="form-control" cols="10" rows="2"></textarea>
+                        <textarea name="comentario" class="form-control" cols="10" rows="2">{{$pagoscobranzas->comentario}}</textarea>
                     </div>
                     <br>
                 </div>
