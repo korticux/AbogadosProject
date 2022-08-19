@@ -14,7 +14,7 @@
                         <label class="col-sm-4 col-form-label">Actor actual: <b>
                             {{ $cobranza->actor->nombre ?? 'Ninguno'}}</b></label>
                         <select name="cobranza_id" class="form-select" aria-label="Default select example">
-                            <option>Seleccionar el id del actor </option>
+                            <option>Es necesario seleccionar Actor </option>
                             @foreach ($cobranzas as $cobranza)
                                 <option value="{{ $cobranza->id }}">{{ $cobranza->actor->nombre }}</option>
                             @endforeach

@@ -13,7 +13,7 @@
                     <h5 class="card-title">Estados</h5>
                     @can('estados-create')
                         <a class="btn btn-primary" href="{{ route('estados.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
-                            Add
+                            Agregar
                             Estado</a>
                     @endcan
 
