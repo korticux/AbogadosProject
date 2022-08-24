@@ -36,7 +36,7 @@
                         @error('cobranza')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="cobranza">Cobranza</label>
+                        <label for="cobranza">Nombre de cobranza</label>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -46,7 +46,7 @@
                         @error('tipo')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="tipo">Tipo</label>
+                        <label for="tipo">Tipo de cobranza</label>
                     </div>
                 </div>
 
@@ -62,12 +62,12 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating my-3">
-                        <input type="number"  name="total" class="form-control" id="floatingName"
+                        <input type="number"  name="total" class="form-control" id="total"
                             placeholder="Ingresar total">
                         @error('total')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="total">Total</label>
+                        <label for="total">Honorario negociado</label>
                     </div>
                 </div>
 
@@ -94,4 +94,41 @@
             </form><!-- End floating Labels Form -->
         </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"\
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+       $('select[name="actor_id"]').on('change',function(){
+            var actor_id = $(this).val();
+            if (actor_id) {
+
+              $.ajax({
+                url: "{{ url('/cobranza/post') }}/"+actor_id,
+                type:"GET",
+                dataType:"json",
+                success:function(data) {
+                var d =$('select[name="total"]').empty();
+
+                $.each(data, function(key, value){
+                    console.log(value.honorario);
+                $('#total').append(value.honorario);
+                $('#total').val(value.honorario);
+
+
+                });
+                },
+              });
+
+            }else{
+              alert('danger');
+            }
+
+              });
+
+        });
+
+   </script>
 @endsection

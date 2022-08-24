@@ -128,13 +128,6 @@ $route = Route::current()->getName();
         </li><!-- End Blank Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link {{ $route == 'respaldo.index' ? '' : 'collapsed' }}" href="{{ route('respaldo.index') }}">
-                <i class="bi bi-cloud-arrow-up"></i>
-                <span>Respaldo</span>
-            </a>
-        </li><!-- End Blank Page Nav -->
-
-        <li class="nav-item">
             <a class="nav-link {{ $route == 'situaciones.index' ? '' : 'collapsed' }}" href="{{ route('situaciones.index') }}">
                 <i class="bi bi-brush"></i>
                 <span>Situaciones</span>

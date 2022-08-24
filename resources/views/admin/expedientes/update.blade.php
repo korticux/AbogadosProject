@@ -150,8 +150,54 @@
                         </div>
                         <br> <br>
                     </div>
-                    <hr>
+                    @php
+                        use App\Models\Cobranzas;
+                        $abonado = DB::table("cobranzas")->where("actor_id","=",$expediente->actor->id)->get();
+                        $conteo = count($abonado);
+                        if($conteo >= 1){
+                            $abon = $abonado[0]->monto_percibido;
+                            $pendiente = $expediente->actor->honorario - $abonado[0]->monto_percibido;
+                        }elseif($conteo == 0){
+                            $abon = '0';
+                            $pendiente = '0';
+                        }else{
+                            $abon = '0';
+                            $pendiente = '0';
+                        }
 
+
+
+                    @endphp
+
+                    <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="number" disabled value="{{$expediente->actor->honorario}}" name="honorario" class="form-control" id="floatingName"
+                            placeholder="Ingresar honorario negociado">
+                            @error('honorario')
+                                <span class="text-danger"> {{ $message }} </span>
+                            @enderror
+                            <label for="honorario">Honorario negociado</label>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" disabled value="{{$abon}}" name="percibido" class="form-control"
+                                id="floatingName" placeholder="Ingresar">
+                            <label for="Nombre">Monto percibido</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" disabled value="{{number_format($pendiente, 2)}}" name="pendiente" class="form-control"
+                                id="floatingName" placeholder="Ingresar pendiente">
+                            <label for="Nombre">Monto pendiente</label>
+                        </div>
+                    </div>
+                    </div>
+                    <br><br>
+                    <hr>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Comentarios del Expediente:</label>
                         <div class="col-md-9">
@@ -223,7 +269,7 @@
                                     if($date > $cd){
                                         $abs_diff = $cd->diff($date)->days;
                                         $iabs = (int) $abs_diff;
-                                        $iabst = $iabs+1+$fcount1;
+                                        $iabst = $iabs+2+$fcount1;
                                         if ($iabs >= 20) {
                                             $fuga = 'btn-success';
                                         } elseif ($iabs < 20 && $iabs >= 10) {
@@ -360,7 +406,7 @@
                             <label>El tipo es: <b>{{$expediente->tipo_expediente}}</b></label>
                             <br>
                             <select name="tipo_expediente" class="form-select" aria-label="Default select example">
-                                <option value="{{$expediente->region->id ?? ''}}">Selecciona el tipo</option>
+                                <option value="{{$expediente->tipo_expediente ?? ''}}">Selecciona el tipo</option>
                                 <option value="Desechada">Desechada</option>
                                 <option value="Sobreseimiento">Sobreseimiento</option>
                                 <option value="Requerimiento">Requerimiento</option>
@@ -434,7 +480,7 @@
                                     if($date6 > $d6){
                                         $abs_diff6 = $d6->diff($date6)->days;
                                         $iabs6 = (int) $abs_diff6;
-                                        $iabst6 = $iabs6+1+$fcount6;
+                                        $iabst6 = $iabs6+2+$fcount6;
                                         if ($iabs6 >= 10) {
                                             $f6 = 'btn-success';
                                         } elseif ($iabs6 < 10 && $iabs6 >= 5) {
@@ -527,7 +573,7 @@
                                     if($date3 > $d3){
                                         $abs_diff3 = $date3->diff($d3)->days;
                                         $iabs3 = (int) $abs_diff3;
-                                        $iabst3 = $iabs3+1+$fcount3;
+                                        $iabst3 = $iabs3+2+$fcount3;
                                     if ($iabs3 >= 20) {
                                         $f3 = 'btn-success';
                                     } elseif ($iabs3 < 20 && $iabs3 >= 10) {
@@ -767,7 +813,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label class="col-sm-12 col-form-label" style="width:100%;"><small>
-                                    Fecha de Ampliación Admitida: </small></label>
+                                    Ampliación Admitida: </small></label>
                             <input type="date" value="{{ $expediente->fecha4 }}" name="fecha4" class="form-control"
                                 id="floatingName" placeholder="Ingresar fecha4">
                             @error('fecha4')
@@ -913,7 +959,7 @@
                                     if($date9 > $d9){
                                         $abs_diff9 = $date9->diff($d9)->days;
                                         $iabs9 = (int) $abs_diff9;
-                                        $iabst9 = $iabs9+1+$fcount9;
+                                        $iabst9 = $iabs9+2+$fcount9;
                                     if ($iabs9 >= 12) {
                                         $f9 = 'btn-success';
                                     } elseif ($iabs9 < 8 && $iabs9 >= 4) {
@@ -1444,6 +1490,101 @@
                     </div>
 
 
+                    <hr>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="col-sm-12 col-form-label" style="width:100%;"><small>
+                                   Amparo: </small></label>
+                            <input type="date" value="{{ $expediente->fecha14 }}" name="fecha14" class="form-control"
+                                id="floatingName" placeholder="Ingresar fecha14">
+                            @error('fecha14')
+                                <span class="text-danger"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-6">
+                            @php
+                                $fechad14 = date('m/d/Y', strtotime($expediente->fecha14 . '+ 15 days'));
+                                $fechao14 = date('Y/m/d', strtotime($expediente->fecha14));
+                                $fechao14t = date('Y/m/d', strtotime($expediente->fecha14 . '+ 15 days'));
+                            @endphp
+                            <br>
+
+                            @php
+                                $festivos14 = Festivos::orderBy('fecha')->where([
+                                    ['fecha', '>' , "$fechao14"],
+                                    ['fecha', '<' , "$fechao14t"],
+                                    ])->get();
+                                $fcount14 = count($festivos14);
+                                $fechaden14 = date('d/m/Y', strtotime($expediente->fecha14 . '+ 15 days' . ' + ' .$fcount14. ' days'  ));
+                            @endphp
+
+                            <label class="col-sm-12 col-form-label" style="width:100%;"><small>Fecha de vencimiento:&nbsp;
+                                    <label class="text-danger"><b>
+                                        @if ($fechao14 != "1970/01/01" )
+                                            {{ $fechaden14 }}
+                                        @elseif($fechao14 == "1970/01/01" )
+
+                                        @endif
+                                    </label> </b></small></label>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-6">
+                            <label class="col-6 col-form-label">Estatus:</label>
+                            @php
+                                $d14 = new DateTime(Carbon::now());
+                                $date14 = new DateTime($fechad14);
+
+                                if($fechao14 != "1970/01/01"){
+                                    if($date14 > $d14){
+                                        $abs_diff14 = $date14->diff($d14)->days;
+                                        $iabs14 = (int) $abs_diff14;
+                                        $iabst14 = $iabs14+1+$fcount14;
+                                    if ($iabs14 >= 10) {
+                                        $f14 = 'btn-success';
+                                    } elseif ($iabs14 < 10 && $iabs14 >= 5) {
+                                        $f14 = 'btn-warning';
+                                    } elseif ($iabs14 < 5) {
+                                        $f14 = 'btn-danger';
+                                    }
+
+                                    } elseif($date14 < $d14){
+                                        $f14 = 'btn-danger';
+                                    }
+                                }
+                                elseif($fechao14 == "1970/01/01"){
+                                    $f14 = null;
+                            }
+
+
+                            @endphp
+                            <div class="col-4">
+                                <input type="text" class="form-alerta-readonly form-control {{ $f14 }}"
+                                    name="alerta1_expediente" value=
+                                    @if($fechao14 != "1970/01/01")
+                                    @if($date14 > $d14)
+                                        "FALTAN {{$iabst14 ?? 'La fecha ya pasó'}} DÍAS"
+                                    @elseif($date14 < $d14)
+                                        "La fecha ya pasó"
+                                    @endif
+                                    @elseif($fechao14 == "1970/01/01")
+                                        "Introduce una fecha"
+                                    @endif
+                                    disabled="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floathing">
+                                <label for="comentario14">Comentarios</label>
+                                <textarea name="comentario14" class="form-control" cols="10" rows="2">{{$expediente->comentario14}}</textarea>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
 
 

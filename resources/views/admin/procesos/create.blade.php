@@ -12,23 +12,20 @@
                 <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <select name="expedientes_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Selecciona Un Expediente</option>
+                            <option value="{{$expediente->numero_exp ?? ''}}">Selecciona un expediente</option>
                             @foreach ($expedientes as $expediente)
-                                <option value="{{ $expediente->id }}">{{ $expediente->numero_exp }}</option>
+                            @php
+                                if (empty($expediente->region->numero))
+                                $rn = "";
+                                elseif ($expediente->region->numero != null)
+                                $rn = $expediente->region->numero;
+                            @endphp
+                                <option value="{{$expediente->id}}">{{$expediente->numero . " / " . $expediente->ano . " - " . $rn . " - " . $expediente->sala . " - " . $expediente->ponencia}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-floating my-3">
-                        <input type="text" name="numero_expediente" class="form-control" id="floatingName"
-                            placeholder="Ingresar numero_expediente">
-                        @error('numero_expediente')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                        <label for="nombre">Numero de expediente</label>
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <div class="form-floating my-3">
                         <input type="text" name="numero_de_oficio" class="form-control" id="floatingName"

@@ -97,11 +97,11 @@ class ExpedientesController extends Controller
             'fecha5.required' => 'La fecha del expediente es requerida',
         ]);
 
-        $new_expediente = Expedientes::create($data)->update([
+        $new_expediente = Expedientes::create($data);
+
+        $new_expediente->update([
             'numero_exp' => $request->numero . " / " . $request->ano . " - " .$request->region_id . " - " . $request->sala . " - " . $request->ponencia,
         ]);
-
-
 
         if ($request->has('nombre_archivos')) {
             foreach ($request->file('nombre_archivos') as $documento) {

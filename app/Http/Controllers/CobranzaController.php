@@ -32,7 +32,8 @@ class CobranzaController extends Controller
     }
 
     public function index() {
-        $cobranzas = Cobranza::latest()->paginate(100);
+
+        $cobranzas = Cobranza::latest()->paginate(1000);
         return View("admin.cobranza.index" , compact("cobranzas"));
     }
 
@@ -41,6 +42,11 @@ class CobranzaController extends Controller
         $cuentas = Cuentas::latest()->get();
         $actores = Actores::latest()->get();
         return View('admin.cobranza.create', compact("cuentas","actores"));
+    }
+
+    public function gethonorario($actor_id){
+        $cat = DB::table('actores')->where('id','=',$actor_id)->get();
+        return json_encode($cat);
     }
 
     public function store(Request $request)
@@ -84,11 +90,11 @@ class CobranzaController extends Controller
         }
 
 
-        PagosCobranzas::create([
-            'nombre_pagos' => $new_cobranza->cobranza . '-' . 'pago',
-            'cobranza_id' => $new_cobranza->id,
-            'created_at' => Carbon::now()
-        ]);
+        // PagosCobranzas::create([
+        //     'nombre_pagos' => $new_cobranza->cobranza . '-' . 'pago',
+        //     'cobranza_id' => $new_cobranza->id,
+        //     'created_at' => Carbon::now()
+        // ]);
 
 
 
@@ -159,6 +165,8 @@ class CobranzaController extends Controller
             'monto_percibido.required' => 'monto percibido es requerido',
         ]);
 
+
+
         Cobranza::findOrFail($id)->update([
             'cobranza' => $request->cobranza,
             'tipo' => $request->tipo,
@@ -167,9 +175,9 @@ class CobranzaController extends Controller
             'fecha' => $request->fecha,
             'total' => $request->total,
             'actor_id' => $request->actor_id,
-            'monto_percibido' => $request->monto_percibido,
             'updated_at' => Carbon::now(),
         ]);
+
 
         $notification = array(
             'message' => "Cobranza Actualizada Correctamente",

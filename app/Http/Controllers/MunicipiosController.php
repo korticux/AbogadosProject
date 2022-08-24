@@ -28,7 +28,7 @@ class MunicipiosController extends Controller
     }
 
     public function index() {
-        $municipios = Municipios::latest()->paginate(5);
+        $municipios = Municipios::latest()->paginate(2000);
         return View("admin.municipios.index" , compact("municipios"));
     }
 

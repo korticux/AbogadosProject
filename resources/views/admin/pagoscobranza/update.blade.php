@@ -9,10 +9,11 @@
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('pagoscobranza.update', $pagoscobranzas->id ) }}" enctype="multipart/form-data">
                 @csrf
+
                 <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <select name="cobranza_id" class="form-select" aria-label="Default select example">
-                            <option value="">Seleccionar el id del actor </option>
+                            <option value="{{$pagoscobranzas->cobranza_id}}">Seleccionar el id del actor </option>
                             @foreach ($cobranzas as $cobranza)
                                 <option value="{{ $cobranza->id }}">{{ $cobranza->actor->nombre ?? '' }}</option>
                             @endforeach

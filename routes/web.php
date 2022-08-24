@@ -170,6 +170,7 @@ Route::controller(CobranzaController::class)->group(function() {
     Route::get('/cobranza/export/', 'export')->name('cobranza.export')->middleware(['auth']);
     Route::get('/cobranza/createPDF', 'createPDF')->name('cobranza.createPDF')->middleware(['auth']);
     Route::get('/archivoscobranza/delete/{id}/{CobranzasId}', 'deleteCobranzas')->name('archivoscobranza.delete')->middleware(['auth']);
+    Route::get('cobranza/post/{actor_id}', 'gethonorario')->name('cobranza.gethonorario')->middleware(['auth']);
 });
 
 Route::controller(PaisesController::class)->group(function() {

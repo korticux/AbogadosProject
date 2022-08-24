@@ -32,7 +32,7 @@
                         <label class="col-sm-4 col-form-label">Cuenta actual: <b>
                             {{ $cobranza->cuenta->banco ?? 'Ninguno'}}</b></label>
                                 <select name="cuenta_id"  class="form-select" aria-label="Default select example">
-                                    <option selected disabled>Selecciona una cuenta</option>
+                                    <option value="{{$cobranza->cuenta->id ?? ''}}">Selecciona una cuenta</option>
                                     @foreach ($cuentas as $cuenta)
                                         <option value="{{ $cuenta->id }}">{{ $cuenta->banco }}</option>
                                     @endforeach
@@ -44,7 +44,7 @@
                         <label class="col-sm-4 col-form-label">Actor actual: <b>
                             {{ $cobranza->actor->nombre ?? 'Ninguno'}}</b></label>
                                 <select name="actor_id" class="form-select" aria-label="Default select example">
-                                    <option selected disabled>Selecciona una actor</option>
+                                    <option value="{{$cobranza->actor->id ?? ''}}">Selecciona una actor</option>
                                     @foreach ($actores as $actor)
                                         <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
                                     @endforeach
@@ -93,6 +93,7 @@
                             </div>
                         </div>
 
+
                         <div class="col-md-4">
                             <div class="form-floating my-3">
                                 <input type="number" disabled value={{$cobranza->monto_percibido}} name="monto_percibido" class="form-control" id="floatingName"
@@ -103,6 +104,7 @@
                                 <label for="monto_percibido">Monto percibido</label>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="form-floathing my-3">
                                 <label for="fecha" >Fecha</label>
@@ -179,8 +181,21 @@
                             <div class="card-body">
 
                                 <h5 class="card-title">Pagos Cobranza</h5>
+
+                                @php
+                                        if($cobranza->monto_percibido >= $cobranza->total){
+                                            $rt = route('cobranza.edit', $cobranza->id);
+                                            $bt = 'btn-secondary';
+
+                                        }elseif($cobranza->monto_percbidio < $cobranza->total){
+                                            $rt = route('pagoscobranza.post');
+                                            $bt = 'btn-primary';
+                                        }
+                                @endphp
+
                                 @can('cobranza-create')
-                                    <a class="btn btn-primary" href="{{ route('pagoscobranza.post') }}"> <i class="bi bi-plus-circle"></i> &nbsp;
+
+                                    <a class="btn {{$bt}}" href="{{ $rt }}"> <i class="bi bi-plus-circle"></i> &nbsp;
                                         Agregar
                                         Pago </a>
                                 @endcan
@@ -203,12 +218,14 @@
 
                                         </tr>
                                     </thead>
+
+
                                     <tbody>
                                         @foreach ($pagoscobranzas as $pagoscobranza)
                                             <tr>
                                                 <th>{{ $pagoscobranza->id }}</th>
                                                 <th>{{ $pagoscobranza->nombre_pagos }}</th>
-                                                <th>{{ $pagoscobranza->cobranza_id }}</th>
+                                                <th>{{ $cobranza->cobranza}}</th>
                                                 <th>{{ $pagoscobranza->created_at }}</th>
                                                 <th class="row">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -223,6 +240,17 @@
                                                     </div>
                                                 </th>
                                             </tr>
+                                            @php
+                                            $mt = DB::table('pagos_cobranzas')->where('cobranza_id', '=', $pagoscobranza->id)->get();
+                                            $mtt = $mt->sum('monto');
+                                            if($mtt > 0){
+                                                DB::table("cobranzas")->update([
+                                                    'monto_percibido' => $mtt,
+                                                ]);
+                                            }elseif($mtt == 0){
+
+                                            }
+                                            @endphp
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -67,14 +67,27 @@
                                 <label for="Nombre">RFC</label>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" value="{{ number_format($actor->honorario) }}" name="honorario" class="form-control" id="floatingName"
+                                    placeholder="Ingresar Honorario">
+                                <label for="honorario">Honorario</label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-floathing">
                                 <label>Dependencia actual: <b>{{$actor->dependencia->nombre ?? 'Ninguno'}}</b></label>
                                 <select name="dependencia_id" class="form-select" aria-label="Default select example">
-                                    <option selected disabled>Selecciona Una Dependencia</option>
+                                    <option value="{{$actor->dependencia->id ?? ''}}">Selecciona una dependencia</option>
                                     @foreach ($dependencias as $dependencia)
-                                        <option value="{{ $dependencia->id }}"selected="selected">{{ $dependencia->nombre }}</option>
+                                        <option value="{{ $dependencia->id }}">{{ $dependencia->nombre }}</option>
                                     @endforeach
+                                    <option value="">Ninguno</option>
                                 </select>
                             </div>
                         </div>
@@ -86,9 +99,11 @@
                             <div class="form-floathing">
                                 <label>Estado actual: <b>{{$actor->estado->Nombre ?? 'Ninguno'}}</b></label>
                                 <select name="estado_id" class="form-select" aria-label="Default select example">
+                                    <option value="{{$actor->estado->id ?? ''}}">Selecciona un estado</option>
                                     @foreach ($estados as $estado)
                                         <option value="{{$estado->id}}" selected="selected">{{$estado->Nombre}}</option>
                                     @endforeach
+                                    <option value="">Ninguno</option>
                                 </select>
                             </div>
                         </div>

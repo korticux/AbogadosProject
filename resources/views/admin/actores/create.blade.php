@@ -85,13 +85,7 @@
                         <label for="honorario">Honorario</label>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" name="abonado" class="form-control" id="floatingName"
-                            placeholder="Ingresar abonado">
-                        <label for="abonado">Abonado del dia de hoy</label>
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input type="text" name="ciudad" class="form-control" id="floatingName"

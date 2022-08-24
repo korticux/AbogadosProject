@@ -25,7 +25,7 @@ class TramitesController extends Controller
     }
 
     public function index() {
-        $tramites = Tramites::latest()->paginate(5);
+        $tramites = Tramites::latest()->paginate(100);
         return View("admin.tramites.index" , compact("tramites"));
     }
 

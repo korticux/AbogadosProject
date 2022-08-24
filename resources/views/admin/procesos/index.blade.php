@@ -35,7 +35,15 @@
                         <tbody>
                             @foreach ($procesos as $proceso)
                                 <tr>
-                                    <th>{{ $proceso->expedientes->numero_exp ?? 'ninguno' }}</th>
+                                    <th>
+                                        @php
+                                            if (empty($proceso->expedientes->region->numero))
+                                            $rn = "";
+                                            elseif ($proceso->expedientes->region->numero != null)
+                                            $rn = $proceso->expedientes->region->numero;
+                                        @endphp
+                                        {{$proceso->expedientes->numero . " / " . $proceso->expedientes->ano . " - " . $rn . " - " . $proceso->expedientes->sala . " - " . $proceso->expedientes->ponencia}}
+                                    </th>
                                     <th>{{ $proceso->fecha_de_ingreso }}</th>
                                     <th>{{ $proceso->numero_de_oficio }}</th>
                                     <th>{{ $proceso->quien_recibio }}</th>

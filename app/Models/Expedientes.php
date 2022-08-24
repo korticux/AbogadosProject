@@ -52,4 +52,9 @@ class Expedientes extends Model
     {
         return $this->hasMany(ArchivosExpedientes::class, "expediente_id");
     }
+
+    public function proceso()
+    {
+        return $this->hasMany(Proceso::class, "expediente_id");
+    }
 }

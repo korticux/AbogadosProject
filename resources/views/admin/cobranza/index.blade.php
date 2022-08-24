@@ -20,25 +20,39 @@
                     <a href="{{ URL::to('/cobranza/createPDF') }}" class="btn btn-secondary"> <i
                             class="bi bi-file-earmark-pdf"></i> &nbsp; PDF</a>
 
+
+
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col">Cobranza</th>
-                                <th scope="col">Actor</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Acciones</th>
+                                <th class="text-center" scope="col lg-4">Cobranza</th>
+                                <th class="text-center" scope="col lg-4">Actor</th>
+                                <th class="text-center" scope="col lg-4">Fecha</th>
+                                <th class="text-center" scope="col lg-4">Monto percibido</th>
+                                <th class="text-center" scope="col lg-4">Total</th>
+                                <th class="text-center" scope="col lg-4">Acciones</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cobranzas as $cobranza)
+
+                            @php
+                                $mt = DB::table('pagos_cobranzas')->where('cobranza_id', '=', $cobranza->id)->get();
+                                $mtt = $mt->sum('monto');
+
+                                    DB::table("cobranzas")->where('id','=',$cobranza->id)->update([
+                                        'monto_percibido' => $mtt,
+                                    ]);
+
+                            @endphp
                                 <tr>
-                                    <th>{{ $cobranza->cobranza }}</th>
-                                    <th>{{ $cobranza->actor->nombre ?? ''}}</th>
-                                    <th>{{ $cobranza->fecha }}</th>
-                                    <th>$ {{ $cobranza->monto }}</th>
+                                    <th class="text-center" scope="col lg-4">{{ $cobranza->cobranza }}</th>
+                                    <th class="text-center" scope="col lg-4">{{ $cobranza->actor->nombre ?? ''}}</th>
+                                    <th class="text-center" scope="col lg-4">{{ $cobranza->fecha }}</th>
+                                    <th class="text-center" scope="col lg-4">$ {{ number_format($cobranza->monto_percibido, 2) }}</th>
+                                    <th class="text-center" scope="col lg-4">$ {{ number_format($cobranza->total, 2) }}</th>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             @can('cobranza-edit')

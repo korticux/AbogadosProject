@@ -19,7 +19,7 @@ class ProcesosController extends Controller
     }
 
     public function index() {
-        $procesos = Proceso::latest()->paginate(5);
+        $procesos = Proceso::latest()->paginate(2000);
         return View("admin.procesos.index" , compact("procesos"));
     }
 
@@ -113,7 +113,6 @@ class ProcesosController extends Controller
     {
 
         $request->validate([
-            'expedientes_id' => '',
             'fecha_de_ingreso' => '',
             'fecha_cedula_notificacion' => '',
             'numero_de_oficio' => '',
@@ -126,7 +125,6 @@ class ProcesosController extends Controller
             'fecha_demanda' => '',
             'numero_expediente' => '',
         ], [
-            'expedientes_id.required' => 'El expediente del proceso es requerido',
             'fecha_de_ingreso.required' => 'La fecha de ingreso es requerida',
             'fecha_cedula_notificacion.required' => 'La fecha de cedula es requerida',
             'numero_de_oficio.required' => 'El numero de oficio es requerido',
@@ -141,7 +139,6 @@ class ProcesosController extends Controller
         ]);
 
         Proceso::findOrFail($id)->update([
-            'expedientes_id' => $request->expedientes_id,
             'fecha_de_ingreso' => $request->fecha_de_ingreso,
             'fecha_cedula_notificacion' => $request->fecha_cedula_notificacion,
             'numero_de_oficio' => $request->numero_de_oficio,
