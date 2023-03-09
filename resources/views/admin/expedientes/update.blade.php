@@ -36,7 +36,7 @@
                 <br>
 
                 <!-- Floating Labels Form -->
-                <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}">
+                <form class="row g-3" method="POST" action="{{ route('expedientes.update', $expediente->id) }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row mb-3">
@@ -194,6 +194,14 @@
                                 id="floatingName" placeholder="Ingresar pendiente">
                             <label for="Nombre">Monto pendiente</label>
                         </div>
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" disabled value="{{$expediente->actor->tipodemanda ?? ''}}" name="pendiente" class="form-control"
+                                id="floatingName" placeholder="Ingresar pendiente">
+                            <label for="Nombre">Tipo de demanda</label>
+                        </div>
                     </div>
                     </div>
                     <br><br>
@@ -270,11 +278,11 @@
                                         $abs_diff = $cd->diff($date)->days;
                                         $iabs = (int) $abs_diff;
                                         $iabst = $iabs+2+$fcount1;
-                                        if ($iabs >= 20) {
+                                        if ($iabst >= 20) {
                                             $fuga = 'btn-success';
-                                        } elseif ($iabs < 20 && $iabs >= 10) {
+                                        } elseif ($iabst < 20 && $iabst >= 10) {
                                             $fuga = 'btn-warning';
-                                        } elseif ($iabs < 10) {
+                                        } elseif ($iabst < 10) {
                                             $fuga = 'btn-danger';
                                         }
                                     } elseif($date < $cd){
@@ -369,11 +377,11 @@
                                         $abs_diff2 = $date2->diff($d2)->days;
                                         $iabs2 = (int) $abs_diff2;
                                         $iabst2 = $iabs2+1+$fcount2;
-                                        if ($iabs2 >= 8) {
+                                        if ($iabst2 >= 8) {
                                             $f2 = 'btn-success';
-                                        } elseif ($iabs2 < 8 && $iabs2 >= 4) {
+                                        } elseif ($iabst2 < 8 && $iabst2 >= 4) {
                                             $f2 = 'btn-warning';
-                                        } elseif ($iabs2 < 4) {
+                                        } elseif ($iabst2 < 4) {
                                             $f2 = 'btn-danger';
                                         }
 
@@ -481,11 +489,11 @@
                                         $abs_diff6 = $d6->diff($date6)->days;
                                         $iabs6 = (int) $abs_diff6;
                                         $iabst6 = $iabs6+2+$fcount6;
-                                        if ($iabs6 >= 10) {
+                                        if ($iabst6 >= 10) {
                                             $f6 = 'btn-success';
-                                        } elseif ($iabs6 < 10 && $iabs6 >= 5) {
+                                        } elseif ($iabst6 < 10 && $iabst6 >= 5) {
                                             $f6 = 'btn-warning';
-                                        } elseif ($iabs6 < 5) {
+                                        } elseif ($iabst6 < 5) {
                                             $f6 = 'btn-danger';
                                         }
                                     } elseif($date6 < $d6){
@@ -574,11 +582,11 @@
                                         $abs_diff3 = $date3->diff($d3)->days;
                                         $iabs3 = (int) $abs_diff3;
                                         $iabst3 = $iabs3+2+$fcount3;
-                                    if ($iabs3 >= 20) {
+                                    if ($iabst3 >= 20) {
                                         $f3 = 'btn-success';
-                                    } elseif ($iabs3 < 20 && $iabs3 >= 10) {
+                                    } elseif ($iabst3 < 20 && $iabst3 >= 10) {
                                         $f3 = 'btn-warning';
-                                    } elseif ($iabs3 < 10) {
+                                    } elseif ($iabst3 < 10) {
                                         $f3 = 'btn-danger';
                                     }
 
@@ -670,11 +678,11 @@
                                         $abs_diff7 = $date7->diff($d7)->days;
                                         $iabs7 = (int) $abs_diff7;
                                         $iabst7 = $iabs7+2+$fcount7;
-                                    if ($iabs7 >= 20) {
+                                    if ($iabst7 >= 20) {
                                         $f7 = 'btn-success';
-                                    } elseif ($iabs7 < 20 && $iabs7 >= 10) {
+                                    } elseif ($iabst7 < 20 && $iabst7 >= 10) {
                                         $f7 = 'btn-warning';
-                                    } elseif ($iabs7 < 10) {
+                                    } elseif ($iabst7 < 10) {
                                         $f7 = 'btn-danger';
                                     }
 
@@ -766,11 +774,11 @@
                                         $abs_diff8 = $date8->diff($d8)->days;
                                         $iabs8 = (int) $abs_diff8;
                                         $iabst8 = $iabs8+1+$fcount8;
-                                    if ($iabs8 >= 8) {
+                                    if ($iabst8 >= 8) {
                                         $f8 = 'btn-success';
-                                    } elseif ($iabs8 < 8 && $iabs8 >= 4) {
+                                    } elseif ($iabst8 < 8 && $iabst8 >= 4) {
                                         $f8 = 'btn-warning';
-                                    } elseif ($iabs8 < 4) {
+                                    } elseif ($iabst8 < 4) {
                                         $f8 = 'btn-danger';
                                     }
 
@@ -864,11 +872,11 @@
                                         $abs_diff4 = $date4->diff($d4)->days;
                                         $iabs4 = (int) $abs_diff4;
                                         $iabst4 = $iabs4+1+$fcount4;
-                                    if ($iabs4 >= 8) {
+                                    if ($iabst4 >= 8) {
                                         $f4 = 'btn-success';
-                                    } elseif ($iabs4 < 8 && $iabs4 >= 4) {
+                                    } elseif ($iabst4 < 8 && $iabst4 >= 4) {
                                         $f4 = 'btn-warning';
-                                    } elseif ($iabs4 < 4) {
+                                    } elseif ($iabst4 < 4) {
                                         $f4 = 'btn-danger';
                                     }
 
@@ -960,11 +968,11 @@
                                         $abs_diff9 = $date9->diff($d9)->days;
                                         $iabs9 = (int) $abs_diff9;
                                         $iabst9 = $iabs9+2+$fcount9;
-                                    if ($iabs9 >= 12) {
+                                    if ($iabst9 >= 12) {
                                         $f9 = 'btn-success';
-                                    } elseif ($iabs9 < 8 && $iabs9 >= 4) {
+                                    } elseif ($iabst9 < 8 && $iabst9 >= 4) {
                                         $f9 = 'btn-warning';
-                                    } elseif ($iabs9 < 4) {
+                                    } elseif ($iabst9 < 4) {
                                         $f9 = 'btn-danger';
                                     }
 
@@ -979,7 +987,7 @@
 
                             @endphp
                             <div class="col-4">
-                                <input type="text" class="form-alerta-readonly form-control {{ $f9 }}"
+                                <input type="text" class="form-alerta-readonly form-control {{$f9}}"
                                     name="alerta1_expediente" value=
                                     @if($fechao9 != "1970/01/01")
                                     @if($date9 > $d9)
@@ -1056,11 +1064,11 @@
                                         $abs_diff10 = $date10->diff($d10)->days;
                                         $iabs10 = (int) $abs_diff10;
                                         $iabst10 = $iabs10+1+$fcount10;
-                                    if ($iabs10 >= 4) {
+                                    if ($iabst10 >= 4) {
                                         $f10 = 'btn-success';
-                                    } elseif ($iabs10 < 4 && $iabs10 >= 2) {
+                                    } elseif ($iabst10 < 4 && $iabst10 >= 2) {
                                         $f10 = 'btn-warning';
-                                    } elseif ($iabs10 < 2) {
+                                    } elseif ($iabst10 < 2) {
                                         $f10 = 'btn-danger';
                                     }
 
@@ -1152,11 +1160,11 @@
                                         $abs_diff11 = $date11->diff($d11)->days;
                                         $iabs11 = (int) $abs_diff11;
                                         $iabst11 = $iabs11+1+$fcount11;
-                                    if ($iabs11 >= 20) {
+                                    if ($iabst11 >= 20) {
                                         $f11 = 'btn-success';
-                                    } elseif ($iabs11 < 20 && $iabs11 >= 10) {
+                                    } elseif ($iabst11 < 20 && $iabst11 >= 10) {
                                         $f11 = 'btn-warning';
-                                    } elseif ($iabs11 < 10) {
+                                    } elseif ($iabst11 < 10) {
                                         $f11 = 'btn-danger';
                                     }
 
@@ -1336,11 +1344,11 @@
                                         $abs_diff12 = $date12->diff($d12)->days;
                                         $iabs12 = (int) $abs_diff12;
                                         $iabst12 = $iabs12+1+$fcount12;
-                                    if ($iabs12 >= 10) {
+                                    if ($iabst12 >= 10) {
                                         $f12 = 'btn-success';
-                                    } elseif ($iabs12 < 10 && $iabs12 >= 5) {
+                                    } elseif ($iabst12 < 10 && $iabst12 >= 5) {
                                         $f12 = 'btn-warning';
-                                    } elseif ($iabs12 < 5) {
+                                    } elseif ($iabst12 < 5) {
                                         $f12 = 'btn-danger';
                                     }
 
@@ -1435,11 +1443,11 @@
                                         $abs_diff13 = $date13->diff($d13)->days;
                                         $iabs13 = (int) $abs_diff13;
                                         $iabst13 = $iabs13+1+$fcount13;
-                                    if ($iabs13 >= 12) {
+                                    if ($iabst13 >= 12) {
                                         $f13 = 'btn-success';
-                                    } elseif ($iabs13 < 12 && $iabs13 >= 6) {
+                                    } elseif ($iabst13 < 12 && $iabst13 >= 6) {
                                         $f13 = 'btn-warning';
-                                    } elseif ($iabs13 < 6) {
+                                    } elseif ($iabst13 < 6) {
                                         $f13 = 'btn-danger';
                                     }
 
@@ -1545,11 +1553,11 @@
                                         $abs_diff14 = $date14->diff($d14)->days;
                                         $iabs14 = (int) $abs_diff14;
                                         $iabst14 = $iabs14+1+$fcount14;
-                                    if ($iabs14 >= 10) {
+                                    if ($iabst14 >= 10) {
                                         $f14 = 'btn-success';
-                                    } elseif ($iabs14 < 10 && $iabs14 >= 5) {
+                                    } elseif ($iabst14 < 10 && $iabst14 >= 5) {
                                         $f14 = 'btn-warning';
-                                    } elseif ($iabs14 < 5) {
+                                    } elseif ($iabst14 < 5) {
                                         $f14 = 'btn-danger';
                                     }
 
@@ -1632,6 +1640,10 @@
 
                                 <th class="row">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a class="btn btn-sm btn-outline-dark" id="download"
+                                        href="{{ url('expedientes/download', $archivos_expediente->id) }}"><i
+                                            class="bi bi-eye-fill"></i></a>
+
                                         @can('expedientes-delete')
                                             <a class="btn btn-sm btn-outline-dark" id="delete"
                                                 href="{{ url('archivosexpedientes/delete/' . $archivos_expediente->id ."/" . $expediente->id) }}"><i

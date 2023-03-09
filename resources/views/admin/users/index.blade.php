@@ -43,7 +43,9 @@
                         @endforeach
                     </table>
                     <!-- End Table with stripped rows -->
-
+                    <div class="d-flex">
+                        {!! $users->links() !!}
+                    </div>
                 </div>
             </div>
         </div>

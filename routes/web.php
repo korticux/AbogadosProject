@@ -74,6 +74,7 @@ Route::controller(ActoresController::class)->group(function() {
     Route::post('/actores/store', 'store')->name('actores.store')->middleware(['auth']);
     Route::get('/actores/edit/{id}', 'edit')->name('actores.edit')->middleware(['auth']);
     Route::post('/actores/update/{id}', 'update')->name('actores.update')->middleware(['auth']);
+    Route::get('/actores/download/{id}', 'download')->name('actores.download')->middleware(['auth']);
     Route::get('/actores/delete/{Id}', 'delete')->name('actores.delete')->middleware(['auth']);
     Route::get('/actores/export/', 'export')->name('actores.export')->middleware(['auth']);
     Route::get('/actores/createPDF', 'createPDF')->name('actores.createPDF')->middleware(['auth']);
@@ -120,6 +121,7 @@ Route::controller(ExpedientesController::class)->group(function() {
     Route::get('/expedientes/edit/{id}', 'edit')->name('expedientes.edit')->middleware(['auth']);
     Route::post('/expedientes/update/{id}', 'update')->name('expedientes.update')->middleware(['auth']);
     Route::get('/expedientes/delete/{Id}', 'delete')->name('expedientes.delete')->middleware(['auth']);
+    Route::get('/expedientes/download/{Id}', 'download')->name('expedientes.download')->middleware(['auth']);
     Route::post('/expedientes/store', 'store')->name('expedientes.store')->middleware(['auth']);
     Route::get('/expedientes/createPDF', 'createPDF')->name('expedientes.createPDF')->middleware(['auth']);
     Route::get('/expedientes/export', 'export')->name('expedientes.export')->middleware(['auth']);
@@ -165,6 +167,7 @@ Route::controller(CobranzaController::class)->group(function() {
     Route::get('/cobranza/post', 'post')->name('cobranza.post')->middleware(['auth']);
     Route::post('/cobranza/store', 'store')->name('cobranza.store')->middleware(['auth']);
     Route::get('/cobranza/edit/{id}', 'edit')->name('cobranza.edit')->middleware(['auth']);
+    Route::get('/cobranza/download/{id}', 'download')->name('cobranza.download')->middleware(['auth']);
     Route::post('/cobranza/update/{id}', 'update')->name('cobranza.update')->middleware(['auth']);
     Route::get('/cobranza/delete/{Id}', 'delete')->name('cobranza.delete')->middleware(['auth']);
     Route::get('/cobranza/export/', 'export')->name('cobranza.export')->middleware(['auth']);

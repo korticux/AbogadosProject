@@ -23,7 +23,7 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                     <!-- Floating Labels Form -->
-                    <form class="row g-3" method="POST" action="{{ route('actores.update', $actor->id) }}">
+                    <form class="row g-3" method="POST" action="{{ route('actores.update', $actor->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-4">
                             <div class="form-floating">
@@ -69,21 +69,34 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <input type="text" value="{{ number_format($actor->honorario) }}" name="honorario" class="form-control" id="floatingName"
-                                    placeholder="Ingresar Honorario">
+                                <input type="text" value="{{ $actor->honorario }}" name="honorario" class="form-control"
+                                    id="floatingName" placeholder="Ingresar Honorario">
                                 <label for="honorario">Honorario</label>
+                                @error('honorario')
+                                    <span class="text-danger"> {{ $message }} </span>
+                                @enderror
                             </div>
                         </div>
-                        <div class="col-md-8">
+
+                        <div class="col-md-4">
+
                             <div class="form-floating">
 
+                                <select name="tipodemanda" class="form-select" aria-label="Default select example">
+                                    <option value="{{ $actor->tipodemanda ?? '' }}">Selecciona el tipo</option>
+                                    @foreach ($tramites as $tramite)
+                                        <option value="{{ $tramite->nombre }}">{{ $tramite->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <label>El tipo es: <b>{{ $actor->tipodemanda ?? '' }}</b></label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floathing">
-                                <label>Dependencia actual: <b>{{$actor->dependencia->nombre ?? 'Ninguno'}}</b></label>
+                                <label>Dependencia actual: <b>{{ $actor->dependencia->nombre ?? 'Ninguno' }}</b></label>
                                 <select name="dependencia_id" class="form-select" aria-label="Default select example">
-                                    <option value="{{$actor->dependencia->id ?? ''}}">Selecciona una dependencia</option>
+                                    <option value="{{ $actor->dependencia->id ?? '' }}">Selecciona una dependencia
+                                    </option>
                                     @foreach ($dependencias as $dependencia)
                                         <option value="{{ $dependencia->id }}">{{ $dependencia->nombre }}</option>
                                     @endforeach
@@ -94,14 +107,15 @@
                         @php
                             use App\Models\Actores;
                             $actor = Actores::findOrFail($id);
+                            $i = 1;
                         @endphp
                         <div class="col-md-6">
                             <div class="form-floathing">
-                                <label>Estado actual: <b>{{$actor->estado->Nombre ?? 'Ninguno'}}</b></label>
+                                <label>Estado actual: <b>{{ $actor->estado->Nombre ?? 'Ninguno' }}</b></label>
                                 <select name="estado_id" class="form-select" aria-label="Default select example">
-                                    <option value="{{$actor->estado->id ?? ''}}">Selecciona un estado</option>
+                                    <option value="{{ $actor->estado->id ?? '' }}">Selecciona un estado</option>
                                     @foreach ($estados as $estado)
-                                        <option value="{{$estado->id}}" selected="selected">{{$estado->Nombre}}</option>
+                                        <option value="{{ $estado->id }}">{{ $estado->Nombre }}</option>
                                     @endforeach
                                     <option value="">Ninguno</option>
                                 </select>
@@ -109,8 +123,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" value="{{ $actor->domicilio }}" name="domicilio" class="form-control"
-                                    id="floatingName" placeholder="Ingresar Domicilio">
+                                <input type="text" value="{{ $actor->domicilio }}" name="domicilio"
+                                    class="form-control" id="floatingName" placeholder="Ingresar Domicilio">
                                 <label for="Nombre">Domicilio</label>
                             </div>
                         </div>
@@ -173,18 +187,27 @@
                         <tbody>
                             @foreach ($archivos_actores as $archivos_actor)
                                 <tr>
-                                    <th>{{ $archivos_actor->id }}</th>
+                                    <th>{{ $i++ }}</th>
                                     <th>{{ $archivos_actor->nombre_archivo }}</th>
                                     <th>{{ $archivos_actor->actor_id }}</th>
                                     <th>{{ $archivos_actor->created_at }}</th>
 
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
+
+                                            <a class="btn btn-sm btn-outline-dark" id="download"
+                                            href="{{ url('actores/download', $archivos_actor->id) }}"><i
+                                                class="bi bi-eye-fill"></i></a>
+
+
                                             @can('actores-delete')
                                                 <a class="btn btn-sm btn-outline-dark" id="delete"
-                                                href="{{ url('archivosactores/delete/' . $archivos_actor->id ."/" . $actor->id) }}"><i
+                                                    href="{{ url('archivosactores/delete/' . $archivos_actor->id . '/' . $actor->id) }}"><i
                                                         class="bi bi-trash-fill"></i></a>
                                             @endcan
+
+
+
                                         </div>
                                     </th>
                                 </tr>

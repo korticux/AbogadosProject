@@ -14,6 +14,7 @@ use App\Models\Estatus;
 use App\Models\Tramites;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Peticiones;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 
 class ExpedientesController extends Controller
@@ -44,7 +45,7 @@ class ExpedientesController extends Controller
 
         $regiones = Regiones::latest()->get();
         $dependencias = Dependencias::latest()->get();
-        $actores = Actores::latest()->get();
+        $actores = Actores::orderBy('nombre', 'asc')->get();
         $estatus = Estatus::latest()->get();
         $tramites = Tramites::latest()->get();
         $peticiones = Peticiones::latest()->get();
@@ -156,7 +157,7 @@ class ExpedientesController extends Controller
         $expediente = Expedientes::findOrFail($id);
         $regiones = Regiones::latest()->get();
         $dependencias = Dependencias::latest()->get();
-        $actores = Actores::latest()->get();
+        $actores = Actores::orderBy('nombre', 'asc')->get();
         $estatus = Estatus::latest()->get();
         $tramites = Tramites::latest()->get();
         $peticiones = Peticiones::latest()->get();
@@ -264,6 +265,20 @@ class ExpedientesController extends Controller
 
         ]);
 
+        $data = $request;
+
+        if ($request->has('nombre_archivos')) {
+            foreach ($request->file('nombre_archivos') as $documento) {
+                $documento_nname = $data['numero'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('expedientes_documentos'), $documento_nname);
+                ArchivosExpedientes::create([
+                    'expediente_id' => $id,
+                    'nombre_archivos' => $documento_nname,
+                    'nombre' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
 
         $notification = array(
             'message' => "Expediente Actualizado Correctamente",
@@ -276,5 +291,12 @@ class ExpedientesController extends Controller
     public function export()
     {
         return Excel::download(new ExpedientesExport, "expedientes.xlsx");
+    }
+
+    public function download($id)
+    {
+        $archivo =  ArchivosExpedientes::where('id','=',$id)->get();
+        
+        return  response()->download(public_path("expedientes_documentos/" . $archivo[0]->nombre_archivos), null, [], null);
     }
 }

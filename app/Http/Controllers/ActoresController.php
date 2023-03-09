@@ -8,9 +8,11 @@ use App\Models\Dependencias;
 use App\Models\ArchivosActores;
 use App\Models\Estados;
 use App\Models\Expedientes;
+use App\Models\Tramites;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -40,7 +42,8 @@ class ActoresController extends Controller
     {
         $estados = Estados::latest()->get();
         $dependencias = Dependencias::latest()->get();
-        return View('admin.actores.create', compact('estados', 'dependencias'));
+        $tramites = Tramites::latest()->get();
+        return View('admin.actores.create', compact('estados', 'tramites', 'dependencias'));
     }
 
     public function store(Request $request)
@@ -123,15 +126,16 @@ class ActoresController extends Controller
         $actor = Actores::findOrFail($id);
         $estados = Estados::latest()->get();
         $dependencias = Dependencias::latest()->get();
+        $tramites = Tramites::latest()->get();
         $archivos_actores = ArchivosActores::where('actor_id', $actor->id)->get();
 
-        return View('admin.actores.update', compact('actor', 'estados', 'dependencias', 'archivos_actores','id'));
+        return View('admin.actores.update', compact('actor', 'tramites' , 'estados', 'dependencias', 'archivos_actores','id'));
     }
 
     public function update($id, Request $request)
     {
 
-        $validatedData = $request->validate([
+        $request->validate([
             'nombre' => '',
             'curp' => '',
             'correo' => '',
@@ -142,10 +146,14 @@ class ActoresController extends Controller
             'comentarios' => '',
             'nacimiento' => '',
             'estado_id' => '',
-            'honorario' => '',
+            'honorario' => 'required|numeric',
             'fecha1' => '',
             'abonado' => '',
             'dependencia_id' => '',
+            'tipodemanda' => '',
+        ],
+        [
+            'honorario.numeric' => 'Digitar sólo números',
         ]);
 
         Actores::findOrFail($id)->update([
@@ -164,8 +172,23 @@ class ActoresController extends Controller
             'fecha1' => $request->fecha1,
             'abonado' => $request->abonado,
             'dependencia_id' => $request->dependencia_id,
+            'tipodemanda' => $request->tipodemanda,
             'updated_at' => \Carbon\Carbon::now()
         ]);
+
+        $data = $request;
+
+        if ($request->has('nombre_archivo')) {
+            foreach ($request->file('nombre_archivo') as $documento) {
+                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('actores_documentos'), $documento_nname);
+                ArchivosActores::create([
+                    'actor_id' => $id,
+                    'nombre_archivo' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
 
         $notification  = array(
             'message' => "Actor Actualizado Correctamente",
@@ -178,6 +201,15 @@ class ActoresController extends Controller
     public function export()
     {
         return Excel::download(new ActoresExport, "actores.xlsx");
+    }
+
+    public function download($id)
+    {
+        $archivo =  ArchivosActores::where('id','=',$id)->get();
+
+
+
+        return  response()->download(public_path("actores_documentos/" . $archivo[0]->nombre_archivo), null, [], null);
     }
 
     public function downloadPdf()

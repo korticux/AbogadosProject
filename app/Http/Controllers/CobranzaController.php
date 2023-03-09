@@ -11,6 +11,7 @@ use App\Models\Cobranza;
 use App\Models\PagosCobranzas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
@@ -40,7 +41,7 @@ class CobranzaController extends Controller
     public function post()
     {
         $cuentas = Cuentas::latest()->get();
-        $actores = Actores::latest()->get();
+        $actores = Actores::orderBy('nombre', 'asc')->get();
         return View('admin.cobranza.create', compact("cuentas","actores"));
     }
 
@@ -63,7 +64,6 @@ class CobranzaController extends Controller
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
-            'cuenta_id.required' => 'Seleccionar la cuenta es requerida',
             'referencia.required' => 'Se necesita una referencia',
             'fecha.required' => 'La fecha es requerida',
             'total.required' => 'El total debe ser especifico',
@@ -136,7 +136,7 @@ class CobranzaController extends Controller
     {
         $cobranza = Cobranza::findOrFail($id);
         $cuentas = Cuentas::latest()->get();
-        $actores = Actores::latest()->get();
+        $actores = Actores::orderBy('nombre', 'asc')->get();
         $pagoscobranzas = DB::table('pagos_cobranzas')->where('cobranza_id', $id)->get();
         $archivos_cobranzas = ArchivosCobranza::where('cobranza_id', $cobranza->id)->get();
         return View('admin.cobranza.update', compact('cobranza', 'cuentas', 'archivos_cobranzas', 'actores', 'pagoscobranzas'));
@@ -154,10 +154,11 @@ class CobranzaController extends Controller
             'total' => '',
             'actor_id' => '',
             'monto_percibido' => '',
+            'comentario' => '',
         ], [
             'cobranza.required' => 'El medio de cobranza es requerido',
             'tipo.required' => 'El tipo de cobranza es requerido',
-            'cuenta_id.required' => 'Seleccionar la cuenta es requerida',
+
             'referencia.required' => 'Se necesita una referencia',
             'fecha.required' => 'La fecha es requerida',
             'total.required' => 'El total debe ser especifico',
@@ -175,8 +176,23 @@ class CobranzaController extends Controller
             'fecha' => $request->fecha,
             'total' => $request->total,
             'actor_id' => $request->actor_id,
+            'comentario' => $request->comentario,
             'updated_at' => Carbon::now(),
         ]);
+
+        $data = $request;
+
+        if ($request->has('nombre_archivo')) {
+            foreach ($request->file('nombre_archivo') as $documento) {
+                $documento_nname = "cobranza" . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('cobranza_documentos'), $documento_nname);
+                ArchivosCobranza::create([
+                    'cobranza_id' => $id,
+                    'nombre_archivo' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
 
 
         $notification = array(
@@ -185,6 +201,13 @@ class CobranzaController extends Controller
         );
 
         return redirect()->route('cobranza.index')->with($notification);
+    }
+
+    public function download($id)
+    {
+        $archivo =  ArchivosCobranza::where('id','=',$id)->get();
+
+        return  response()->download(public_path("cobranza_documentos/" . $archivo[0]->nombre_archivo), null, [], null);
     }
 
     public function export()

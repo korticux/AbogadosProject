@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PagosCobranzas;
 use App\Models\Cobranza;
+use App\Models\Cuentas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +19,8 @@ class PagosCobranzaController extends Controller
     public function post()
     {
         $cobranzas = Cobranza::latest()->get();
-        return View('admin.pagoscobranza.create', compact("cobranzas"));
+        $cuentas = Cuentas::latest()->get();
+        return View('admin.pagoscobranza.create', compact("cuentas","cobranzas"));
     }
 
     public function store(Request $request)
@@ -28,7 +30,7 @@ class PagosCobranzaController extends Controller
 
 
         $request->validate([
-            'nombre_pagos' => '',
+
             'cobranza_id' => '',
             'monto' => "required|numeric|lte:{$montot}",
             'comentario' => '',
@@ -43,10 +45,14 @@ class PagosCobranzaController extends Controller
         ]);
 
         PagosCobranzas::insert([
-            'nombre_pagos' => $request->nombre_pagos,
+
             'cobranza_id' => $request->cobranza_id,
             'monto' => $request->monto,
             'comentario' => $request->comentario,
+            'cuentas_id' => $request->cuentas_id,
+            'tipo_pago' => $request->tipo_pago,
+            'referencia' => $request->referencia,
+            'fecha_pago' => $request->fecha_pago,
 
             'created_at' => \Carbon\Carbon::now()
         ]);
@@ -99,7 +105,7 @@ class PagosCobranzaController extends Controller
     {
 
         $request->validate([
-            'nombre_pagos' => '',
+
             'cobranza_id' => '',
             'monto' => '',
             'comentario' => '',
@@ -111,10 +117,15 @@ class PagosCobranzaController extends Controller
         ]);
 
         PagosCobranzas::findOrFail($id)->update([
-            'nombre_pagos' => $request->nombre_pagos,
-            'cobranza_id' => $request->cobranza_id,
+
+
             'monto' => $request->monto,
             'comentario' => $request->comentario,
+            'cuentas_id' => $request->cuentas_id,
+            'tipo_pago' => $request->tipo_pago,
+            'referencia' => $request->referencia,
+            'fecha_pago' => $request->fecha_pago,
+
             'updated_at' => Carbon::now(),
         ]);
 

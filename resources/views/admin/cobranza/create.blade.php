@@ -9,17 +9,8 @@
             <!-- Floating Labels Form -->
             <form class="row g-3" method="POST" action="{{ route('cobranza.store') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="col-md-6">
-                    <div class="form-floathing my-3">
-                        <select name="cuenta_id" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Selecciona una cuenta</option>
-                            @foreach ($cuentas as $cuenta)
-                                <option value="{{ $cuenta->id }}">{{ $cuenta->banco }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
+
+                <div class="col-md-12">
                     <div class="form-floathing my-3">
                         <select name="actor_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Selecciona una actor</option>

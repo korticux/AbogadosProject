@@ -25,9 +25,9 @@
             <div class="tab-content pt-3" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <!-- Floating Labels Form -->
-                    <form class="row g-3" method="POST" action="{{ route('cobranza.update', $cobranza->id) }}">
+                    <form class="row g-3" method="POST" action="{{ route('cobranza.update', $cobranza->id) }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-floathing my-3">
                         <label class="col-sm-4 col-form-label">Cuenta actual: <b>
                             {{ $cobranza->cuenta->banco ?? 'Ninguno'}}</b></label>
@@ -38,8 +38,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div> --}}
+                        <div class="col-md-8">
                             <div class="form-floathing my-3">
                         <label class="col-sm-4 col-form-label">Actor actual: <b>
                             {{ $cobranza->actor->nombre ?? 'Ninguno'}}</b></label>
@@ -52,16 +52,17 @@
                             </div>
                         </div>
                         <div class="col-md-4">
+                            <br>
                             <div class="form-floating my-3">
                                 <input type="text" value={{$cobranza->cobranza}}  name="cobranza" class="form-control" id="floatingName"
                                     placeholder="Ingresar cobranza">
                                 @error('cobranza')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
-                                <label for="cobranza">Cobranza</label>
+                                <label for="cobranza">Nombre cobranza</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-floating my-3">
                                 <input type="text" value={{$cobranza->tipo}} name="tipo" class="form-control" id="floatingName"
                                     placeholder="Ingresar tipo">
@@ -70,9 +71,9 @@
                                 @enderror
                                 <label for="tipo">Tipo</label>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-floating my-3">
                                 <input type="text"  value={{$cobranza->referencia}} name="referencia" class="form-control" id="floatingName"
                                     placeholder="Ingresar referencia">
@@ -81,7 +82,7 @@
                                 @enderror
                                 <label for="referencia">Referencia</label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-4">
                             <div class="form-floating my-3">
                                 <input type="number"  value={{$cobranza->total}} name="total" class="form-control" id="floatingName"
@@ -101,7 +102,22 @@
                                 @error('monto_percibido')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
-                                <label for="monto_percibido">Monto percibido</label>
+                                <label for="monto_percibido">Monto abonado</label>
+                            </div>
+                        </div>
+
+                        @php
+                            $dif = $cobranza->total - $cobranza->monto_percibido;
+                        @endphp
+
+                        <div class="col-md-4">
+                            <div class="form-floating my-3">
+                                <input type="number" disabled value={{$dif}} class="form-control" id="floatingName"
+                                    placeholder="Ingresar monto percibido">
+                                @error('monto_percibido')
+                                    <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                                <label for="monto_percibido">Monto pendiente</label>
                             </div>
                         </div>
 
@@ -112,6 +128,13 @@
                                 @error('fecha')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floathing">
+                                <label for="comentario">Comentarios</label>
+                                <textarea name="comentario" class="form-control" cols="10" rows="2">{{$cobranza->comentario}}</textarea>
                             </div>
                         </div>
 
@@ -149,14 +172,22 @@
                         </thead>
                         <tbody>
                             @foreach ($archivos_cobranzas as $archivos_cobranza)
+                          
                                 <tr>
                                     <th>{{ $archivos_cobranza->id }}</th>
                                     <th>{{ $archivos_cobranza->nombre_archivo }}</th>
                                     <th>{{ $archivos_cobranza->cobranza_id }}</th>
                                     <th>{{ $archivos_cobranza->created_at }}</th>
 
+                                    
+
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
+
+                                            <a class="btn btn-sm btn-outline-dark" id="download"
+                                            href="{{ url('cobranza/download', $archivos_cobranza->id) }}"><i
+                                                class="bi bi-eye-fill"></i></a>
+
                                             @can('actores-delete')
                                                 <a class="btn btn-sm btn-outline-dark" id="delete"
                                                 href="{{ url('archivoscobranza/delete/' . $archivos_cobranza->id ."/" . $cobranza->id) }}"><i
@@ -183,6 +214,7 @@
                                 <h5 class="card-title">Pagos Cobranza</h5>
 
                                 @php
+                                        $i = 1;
                                         if($cobranza->monto_percibido >= $cobranza->total){
                                             $rt = route('cobranza.edit', $cobranza->id);
                                             $bt = 'btn-secondary';
@@ -191,6 +223,8 @@
                                             $rt = route('pagoscobranza.post');
                                             $bt = 'btn-primary';
                                         }
+
+
                                 @endphp
 
                                 @can('cobranza-create')
@@ -211,27 +245,34 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Num. Pago</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Cobranza</th>
-                                            <th scope="col">Fecha Creacion</th>
+
+                                            <th scope="col">Cuenta</th>
+                                            <th scope="col">Monto</th>
+                                            <th scope="col">Fecha de pago</th>
                                             <th scope="col">Acciones</th>
 
                                         </tr>
                                     </thead>
-
+@php
+    use App\Models\Cuentas;
+@endphp
 
                                     <tbody>
                                         @foreach ($pagoscobranzas as $pagoscobranza)
+                                            @php
+                                                $bank = Cuentas::where('id', '=', $pagoscobranza->cuentas_id)->get();
+                                            @endphp
                                             <tr>
-                                                <th>{{ $pagoscobranza->id }}</th>
-                                                <th>{{ $pagoscobranza->nombre_pagos }}</th>
-                                                <th>{{ $cobranza->cobranza}}</th>
-                                                <th>{{ $pagoscobranza->created_at }}</th>
+                                                <th>{{ $i++; }}</th>
+
+                                                <th>{{ $bank[0]->banco ?? ''}}</th>
+                                                <th>{{"$ " .number_format($pagoscobranza->monto, 2) }}</th>
+                                                <th>{{ $pagoscobranza->fecha_pago }}</th>
                                                 <th class="row">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                             <a class="btn  btn-sm btn-outline-dark"
                                                                 href="{{ route('pagoscobranza.edit', $pagoscobranza->id) }}"><i
-                                                                    class="bi bi-pencil-fill"></i></a>
+                                                                    class="bi bi-eye-fill"></i></a>
 
                                                             <a class="btn btn-sm btn-outline-dark" id="delete"
                                                                 href="{{ route('pagoscobranza.delete', $pagoscobranza->id) }}"><i
