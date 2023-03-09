@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\ActoresController;
+use App\Http\Controllers\BuscadorController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\DependenciasController;
 use App\Http\Controllers\EstatusController;
@@ -266,6 +267,17 @@ Route::controller(PagosCobranzaController::class)->group(function() {
     Route::get('/pagoscobranza/delete/{Id}', 'delete')->name('pagoscobranza.delete')->middleware(['auth']);
     Route::get('/pagoscobranza/export/', 'export')->name('pagoscobranza.export')->middleware(['auth']);
     Route::get('/pagoscobranza/createPDF', 'createPDF')->name('pagoscobranza.createPDF')->middleware(['auth']);
+});
+
+Route::controller(BuscadorController::class)->group(function() {
+    Route::get('/buscador/index', 'index')->name('buscador.index')->middleware(['auth']);
+    Route::get('/buscador/post', 'post')->name('buscador.post')->middleware(['auth']);
+    Route::post('/buscador/store', 'store')->name('buscador.store')->middleware(['auth']);
+    Route::get('/buscador/edit/{id}', 'edit')->name('buscador.edit')->middleware(['auth']);
+    Route::post('/buscador/update/{id}', 'update')->name('buscador.update')->middleware(['auth']);
+    Route::get('/buscador/delete/{Id}', 'delete')->name('buscador.delete')->middleware(['auth']);
+    Route::get('/buscador/export/', 'export')->name('buscador.export')->middleware(['auth']);
+    Route::get('/buscador/createPDF', 'createPDF')->name('buscador.createPDF')->middleware(['auth']);
 });
 
 Route::group(['middleware' => ['auth']], function(){

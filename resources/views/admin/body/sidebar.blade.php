@@ -142,6 +142,13 @@ $route = Route::current()->getName();
             </a>
         </li><!-- End Blank Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link {{ $route == 'buscador.index' ? '' : 'collapsed' }}" href="{{ route('buscador.index') }}">
+                <i class="bi bi-clipboard"></i>
+                <span>Buscador</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
 
     </ul>
 
