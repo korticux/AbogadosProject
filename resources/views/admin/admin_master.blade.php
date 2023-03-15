@@ -32,6 +32,59 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/datatable-responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+    <!-- banpro CSS files -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/search-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/aos2.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/lightcase.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/styles.css') }}">
+    <link rel="stylesheet" id="color" href="{{ asset('backend/assets/BCSS/colors/dark-gray.css') }}">
+
+     <!-- ARCHIVES JS -->
+     <script src="{{ asset('backend/assets/BJS/jquery-3.5.1.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/rangeSlider.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/tether.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/moment.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/bootstrap.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/mmenu.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/mmenu.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/aos.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/aos2.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/slick.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/fitvids.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/jquery.waypoints.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/jquery.counterup.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/imagesloaded.pkgd.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/isotope.pkgd.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/smooth-scroll.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/lightcase.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/search.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/owl.carousel.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/jquery.magnific-popup.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/ajaxchimp.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/newsletter.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/jquery.form.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/jquery.validate.min.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/searched.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/forms-2.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/range.js') }}"></script>
+     <script src="{{ asset('backend/assets/BJS/color-switcher.js') }}"></script>
+
+
+
+
+
+     <!-- MAIN JS -->
+     <script src="{{ asset('backend/assets/BJS/script.js') }}"></script>
+
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
@@ -76,6 +129,53 @@
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Template Main JS File -->
+
+        <!-- banpro js File -->
+    <script>
+        $('.slick-lancers').slick({
+            infinite: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            dots: true,
+            arrows: false,
+            adaptiveHeight: true,
+            responsive: [{
+                breakpoint: 1292,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    dots: true,
+                    arrows: false
+                }
+            }, {
+                breakpoint: 993,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
+            }, {
+                breakpoint: 769,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
+            }]
+        });
+
+    </script>
+
+    <script>
+        $(".dropdown-filter").on('click', function() {
+
+            $(".explore__form-checkbox-list").toggleClass("filter-block");
+
+        });
+
+    </script>
 
     <script>
         @if (Session::has('message'))

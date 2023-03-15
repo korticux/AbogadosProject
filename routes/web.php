@@ -44,6 +44,12 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth'])->name('dashboard')->middleware(['auth']);
 
+Route::prefix('busqueda')->group(function () {
+    Route::get('/resultados', [BuscadorController::class, 'resultados'])->name('resultados');
+    Route::post('/busqueda', [BuscadorController::class, 'busqueda'])->name('busqueda');
+    Route::get('/descargapdf', [BuscadorController::class, 'downloadPdf'])->name('descargapdf');
+});
+
 Route::controller(DashboardController::class)->group(function(){
     Route::get('/', 'EstadosTotal')->middleware(['auth']);
     Route::get('/', 'ActoresTotal')->middleware(['auth']);
