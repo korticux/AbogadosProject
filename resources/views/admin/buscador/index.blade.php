@@ -5,7 +5,7 @@
 
 
                 <!-- Search Form -->
-                <div class="col-12">
+                <div class="col-8">
                     <form action="{{ route('busqueda') }}" method="POST">
                         @method('POST')
                         @csrf
@@ -33,13 +33,31 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <br><br>
 
 
-                                        <div class="col-xl-3 col-lg-2 col-md-4">
-                                            <button class="btn" type='submit' value="busk" name="buscar"
-                                                href="{{ route('busqueda') }}">Buscar</button>
-                                        </div>
+
+                                            <div class="col-6">
+                                                <label class="col-sm-8 col-form-label" style="width:100%; padding-left:200px;"><small>Desde</small></label>
+                                                <input type="date" value="" name="from_date" class="form-control"
+                                                    id="from_date" placeholder="Ingresar fecha1">
+                                                @error('from_date')
+                                                    <span class="text-danger"> {{ $message }} </span>
+                                                @enderror
+                                            </div>
+
+
+
+                                            <div class="col-6">
+                                                <label class="col-sm-6 col-form-label" style="width:100%; padding-left:200px;"><small>Hasta</small></label>
+                                                <input type="date" value="" name="to_date" class="form-control"
+                                                    id="to_date" placeholder="Ingresar to_date">
+                                                @error('to_date')
+                                                    <span class="text-danger"> {{ $message }} </span>
+                                                @enderror
+                                            </div>
+
+
+
 
                                             </div>
                                         </div>
@@ -48,7 +66,10 @@
                             </div>
                         </div>
                 <!--/ End Search Form -->
-
+                <div class="col-xl-3 col-lg-2 col-md-4">
+                    <button class="btn" type='submit' value="busk" name="buscar"
+                        href="{{ route('busqueda') }}">Buscar</button>
+                </div>
 
 @endsection
 
