@@ -13,13 +13,15 @@ use App\Models\Buscador;
 use App\Models\Estatus;
 use App\Models\Expedientes;
 use Illuminate\Support\Facades\DB;
+use League\CommonMark\Node\Query\AndExpr;
 
 class BuscadorController extends Controller
 {
 
 
 
-    public function index () {
+    public function index()
+    {
         $buscador = Buscador::latest()->paginate(5000);
         $estatuses = Estatus::orderBy('nombre', 'asc')->get();
         return View("admin.buscador.index", compact("buscador", 'estatuses'));
@@ -40,19 +42,30 @@ class BuscadorController extends Controller
         $bv = $request->get('buscar');
 
 
-        if ($bv != null) {
-            $act = Actores::where('nombre', 'LIKE', '%' . $request->uin . '%')->get()->toArray();
-            $act_id = array_column($act, 'id');
 
+        $act = Actores::where('nombre', $request->uin)
+        ->orwhere('nombre', 'LIKE', '%' . $request->uin . '%')
+        ->get()
+        ->toArray();
 
+        $act_id = array_column($act, 'id');
 
-                $expedientes = Expedientes::whereIn('actor_id', $act_id)
-                ->when(!is_null($estatus), function ($query) use ($request) {
-                    $query->where('estatus_id', '=', $request->estatus);
-                })->whereBetween('created_at', [$from_date, $to_date])
-                ->get();
-
+        if (!is_null($from_date) and !is_null($to_date)) {
+            $b_fechas = true;
+        } elseif (is_null($from_date) or is_null($to_date)) {
+            $b_fechas = false;
         }
+
+
+
+        $expedientes = Expedientes::whereIntegerInRaw('actor_id', $act_id)
+        ->when($b_fechas, function ($query) use ($request) {
+            $query->whereBetween('created_at', [$request->get('from_date'), $request->get('to_date')]);
+        })
+        ->when(!is_null($estatus), function ($query) use ($request) {
+            $query->where('estatus_id', '=', $request->estatus);
+        })
+        ->get();
 
 
         //  $query = Locacion::where('nombre', 'LIKE', '%' . $uin . '%')->get();
@@ -63,8 +76,4 @@ class BuscadorController extends Controller
 
         // return response()->json($tipo_propiedad, 200);
     }
-
-
-
-
 }

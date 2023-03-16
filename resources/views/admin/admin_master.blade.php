@@ -48,42 +48,43 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/styles.css') }}">
     <link rel="stylesheet" id="color" href="{{ asset('backend/assets/BCSS/colors/dark-gray.css') }}">
 
-     <!-- ARCHIVES JS -->
-     <script src="{{ asset('backend/assets/BJS/jquery-3.5.1.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/rangeSlider.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/tether.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/moment.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/bootstrap.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/mmenu.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/mmenu.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/aos.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/aos2.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/slick.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/fitvids.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/jquery.waypoints.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/jquery.counterup.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/imagesloaded.pkgd.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/isotope.pkgd.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/smooth-scroll.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/lightcase.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/search.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/owl.carousel.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/jquery.magnific-popup.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/ajaxchimp.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/newsletter.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/jquery.form.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/jquery.validate.min.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/searched.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/forms-2.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/range.js') }}"></script>
-     <script src="{{ asset('backend/assets/BJS/color-switcher.js') }}"></script>
+    <!-- AdminLTE DT CSS files -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/BDT/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('backend/assets/BDT/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/BDT/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
-
-
-
-
-     <!-- MAIN JS -->
-     <script src="{{ asset('backend/assets/BJS/script.js') }}"></script>
+    <!-- ARCHIVES JS -->
+    <script src="{{ asset('backend/assets/BJS/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/rangeSlider.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/tether.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/moment.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/mmenu.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/mmenu.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/aos.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/aos2.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/slick.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/fitvids.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/smooth-scroll.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/lightcase.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/search.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/owl.carousel.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/newsletter.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/jquery.form.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/searched.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/forms-2.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/range.js') }}"></script>
+    <script src="{{ asset('backend/assets/BJS/color-switcher.js') }}"></script>
+    <!-- MAIN JS -->
+    <script src="{{ asset('backend/assets/BJS/script.js') }}"></script>
 
 
     <!-- Template Main CSS File -->
@@ -130,7 +131,21 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Template Main JS File -->
 
-        <!-- banpro js File -->
+    <!-- AdminLTE DT JS Files -->
+    <script src="{{ asset('backend/assets/BDT/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/BDT/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+    <!-- banpro js File -->
     <script>
         $('.slick-lancers').slick({
             infinite: false,
@@ -165,7 +180,6 @@
                 }
             }]
         });
-
     </script>
 
     <script>
@@ -174,7 +188,6 @@
             $(".explore__form-checkbox-list").toggleClass("filter-block");
 
         });
-
     </script>
 
     <script>
@@ -225,6 +238,26 @@
                 })
             })
         })
+    </script>
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
     </script>
 
 </body>
