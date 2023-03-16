@@ -12,9 +12,12 @@ use PDF;
 use App\Models\Buscador;
 use App\Models\Estatus;
 use App\Models\Expedientes;
+use Illuminate\Support\Facades\DB;
 
 class BuscadorController extends Controller
 {
+
+
 
     public function index () {
         $buscador = Buscador::latest()->paginate(5000);
@@ -29,6 +32,10 @@ class BuscadorController extends Controller
 
         $estatus = $request->get('estatus');
 
+        $from_date = $request->get('from_date');
+
+        $to_date = $request->get('to_date');
+
 
         $bv = $request->get('buscar');
 
@@ -42,9 +49,8 @@ class BuscadorController extends Controller
                 $expedientes = Expedientes::whereIn('actor_id', $act_id)
                 ->when(!is_null($estatus), function ($query) use ($request) {
                     $query->where('estatus_id', '=', $request->estatus);
-                })
+                })->whereBetween('created_at', [$from_date, $to_date])
                 ->get();
-
 
         }
 
@@ -57,6 +63,8 @@ class BuscadorController extends Controller
 
         // return response()->json($tipo_propiedad, 200);
     }
+
+
 
 
 }

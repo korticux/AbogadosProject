@@ -39,7 +39,7 @@
                                             <div class="col-6">
                                                 <label class="col-sm-8 col-form-label" style="width:100%; padding-left:200px;"><small>Desde</small></label>
                                                 <input type="date" value="" name="from_date" class="form-control"
-                                                    id="from_date" placeholder="Ingresar fecha1">
+                                                    id="from_date" placeholder="Ingresar fecha">
                                                 @error('from_date')
                                                     <span class="text-danger"> {{ $message }} </span>
                                                 @enderror
@@ -50,7 +50,7 @@
                                             <div class="col-6">
                                                 <label class="col-sm-6 col-form-label" style="width:100%; padding-left:200px;"><small>Hasta</small></label>
                                                 <input type="date" value="" name="to_date" class="form-control"
-                                                    id="to_date" placeholder="Ingresar to_date">
+                                                    id="to_date" placeholder="Ingresar ultima fecha">
                                                 @error('to_date')
                                                     <span class="text-danger"> {{ $message }} </span>
                                                 @enderror
