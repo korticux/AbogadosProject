@@ -74,6 +74,7 @@ class ExpedientesController extends Controller
             'fecha3' => '',
             'fecha4' => '',
             'fecha5' => '',
+            'fecha22' => '',
         ],
 
         [
@@ -96,6 +97,7 @@ class ExpedientesController extends Controller
             'fecha3.required' => 'La fecha del expediente es requerida',
             'fecha4.required' => 'La fecha del expediente es requerida',
             'fecha5.required' => 'La fecha del expediente es requerida',
+            'fecha22.required' => 'La fecha del expediente es requerida',
         ]);
 
         $new_expediente = Expedientes::create($data);
@@ -188,6 +190,7 @@ class ExpedientesController extends Controller
             'fecha3' => '',
             'fecha4' => '',
             'fecha5' => '',
+            'fecha22' => '',
 
         ], [
             'numero.required' => 'El numero del expediente es requerido',
@@ -209,6 +212,7 @@ class ExpedientesController extends Controller
             'fecha3.required' => 'La fecha del expediente es requerida',
             'fecha4.required' => 'La fecha del expediente es requerida',
             'fecha5.required' => 'La fecha del expediente es requerida',
+            'fecha22.required' => 'La fecha del expediente es requerida',
         ]);
 
 
@@ -243,6 +247,7 @@ class ExpedientesController extends Controller
             'fecha13' => $request->fecha13,
             'fecha14' => $request->fecha14,
             'fecha15' => $request->fecha15,
+            'fecha22' => $request->fecha22,
             'comentario1' => $request->comentario1,
             'comentario2' => $request->comentario2,
             'comentario3' => $request->comentario3,
@@ -296,7 +301,7 @@ class ExpedientesController extends Controller
     public function download($id)
     {
         $archivo =  ArchivosExpedientes::where('id','=',$id)->get();
-        
+
         return  response()->download(public_path("expedientes_documentos/" . $archivo[0]->nombre_archivos), null, [], null);
     }
 }

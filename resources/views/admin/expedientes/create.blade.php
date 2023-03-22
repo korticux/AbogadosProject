@@ -16,7 +16,17 @@
                         @error('numero')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="numero">Numero del expediente</label>
+                        <label for="numero">Numero Del Expediente</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="number" name="fecha22" class="form-control" id="floatingName"
+                            placeholder="Ingresar Numero De Folio">
+                        @error('fecha22')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                        <label for="fecha22">Numero De Folio </label>
                     </div>
                 </div>
                 <div class="col-md-6">
