@@ -14,6 +14,7 @@ use App\Models\Estatus;
 use App\Models\Expedientes;
 use Illuminate\Support\Facades\DB;
 use League\CommonMark\Node\Query\AndExpr;
+use App\Models\cobranza;
 
 class BuscadorController extends Controller
 {

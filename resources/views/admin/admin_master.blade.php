@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <!-- banpro CSS files -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/search-form.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/search-form.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/search.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/aos.css') }}">
@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/lightcase.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/BCSS/styles.css') }}">

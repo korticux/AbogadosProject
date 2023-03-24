@@ -25,6 +25,12 @@
                                 <th class="sorting sorting_asc text-center" tabindex="0" aria-controls="example1"
                                     rowspan="1" colspan="1" aria-sort="ascending"
                                     aria-label="Rendering engine: activate to sort column descending">
+                                    Núm. Exp.
+                                </th>
+
+                                <th class="sorting sorting_asc text-center" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">
                                     Nombre
                                 </th>
 
@@ -34,10 +40,20 @@
                                     Región
                                 </th>
 
+                                <th class="sorting sorting_asc text-center" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending">
+                                    Tramite
+                                </th>
+
 
                                 <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                     colspan="1" aria-label="Browser: activate to sort column ascending">
                                     Estatus</th>
+
+                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
+                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                    Monto Pendiente</th>
 
                                 <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                     colspan="1" aria-label="Browser: activate to sort column ascending">
@@ -53,15 +69,55 @@
                         <tbody>
 
                             @foreach ($expedientes as $expediente)
+                                @php
+                                    if (empty($expediente->region->numero)) {
+                                        $rn = '';
+                                    } elseif ($expediente->region->numero != null) {
+                                        $rn = $expediente->region->numero;
+                                    }
+
+                                @endphp
+
+                                @php
+
+                                    $abonado = DB::table('cobranzas')
+                                        ->where('actor_id', '=', $expediente->actor->id)
+                                        ->get();
+                                    $conteo = count($abonado);
+                                    if ($conteo >= 1) {
+                                        $abon = $abonado[0]->monto_percibido;
+                                        $pendiente = $expediente->actor->honorario - $abonado[0]->monto_percibido;
+                                    } elseif ($conteo == 0) {
+                                        $abon = '0';
+                                        $pendiente = '0';
+                                    } else {
+                                        $abon = '0';
+                                        $pendiente = '0';
+                                    }
+                                @endphp
+
+
                                 <tr class="odd">
+
+                                    <td class='dtr-control sorting_1 text-center'>
+                                        {{ $expediente->numero . ' / ' . $expediente->ano . ' - ' . $rn . ' - ' . $expediente->sala . ' - ' . $expediente->ponencia }}
+                                    </td>
+
                                     <td class='dtr-control sorting_1 text-center'>
                                         {{ $expediente->actor->nombre ?? 'N/A' }}</td>
 
                                     <td class="dtr-control sorting_1 text-center" tabindex="0">
                                         {{ $expediente->region->nombre ?? 'N/A' }}</td>
 
+                                    <td class='dtr-control sorting_1 text-center'>
+                                        {{ $expediente->tramite->nombre ?? 'N/A' }}</td>
+
                                     <td class="dtr-control sorting_1 text-center" tabindex="0">
                                         {{ $expediente->estatus->nombre ?? 'N/A' }}</td>
+
+                                    <td class="dtr-control sorting_1 text-center" tabindex="0">
+                                        {{ number_format($pendiente, 2) ?? 'N/A' }}</td>
+
 
 
                                     @for ($i = 14; $i > 0; $i--)
@@ -198,8 +254,9 @@
 
                                 <td class="dtr-control sorting_1 text-center" tabindex="0">
                                     <a class="btn  btn-sm btn-outline-dark"
-                                    href="{{ route('expedientes.edit', $expediente->id) }}"><i
-                                        class="bi bi-pencil-fill"></i></a></td>
+                                        href="{{ route('expedientes.edit', $expediente->id) }}"><i
+                                            class="bi bi-pencil-fill"></i></a>
+                                </td>
 
                             </tr>
                         @endforeach
