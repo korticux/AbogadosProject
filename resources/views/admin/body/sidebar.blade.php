@@ -14,11 +14,20 @@ $route = Route::current()->getName();
         <li class="nav-heading">Acciones</li>
 
         <li class="nav-item">
+            <a class="nav-link {{ $route == 'buscador.index' ? '' : 'collapsed' }}" href="{{ route('buscador.index') }}">
+                <i class="bi bi-search"></i>
+                <span>Buscador</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link {{ $route == 'peticiones.index' ? '' : 'collapsed' }}" href="{{ route('peticiones.index') }}">
                 <i class="bi bi-inbox"></i>
                 <span>Peticiones</span>
             </a>
-        </li><!-- End Blank Page Nav -->
+        </li>
+
+
 
         <li class="nav-item">
             <a class="nav-link {{ $route == 'estados.index' ? '' : 'collapsed' }}"
@@ -142,12 +151,6 @@ $route = Route::current()->getName();
             </a>
         </li><!-- End Blank Page Nav -->
 
-        <li class="nav-item">
-            <a class="nav-link {{ $route == 'buscador.index' ? '' : 'collapsed' }}" href="{{ route('buscador.index') }}">
-                <i class="bi bi-clipboard"></i>
-                <span>Buscador</span>
-            </a>
-        </li><!-- End Blank Page Nav -->
 
 
     </ul>
