@@ -16,6 +16,38 @@ $total_expedientes = DB::table('expedientes')->count();
 $total_festivos = DB::table('festivos')->count();
 $total_municipios = DB::table('municipios')->count();
 $total_notificaciones = DB::table('notificaciones')->count();
+
+// Actores por Sonora y Monterrey
+use App\Models\Actores;
+$total_actores_sonora = Actores::where('estado_id', 26)->count();
+$total_actores_monterrey = Actores::where('estado_id', 19)->count();
+
+// Expedientes por estatus baja y peticion a favor
+use App\Models\Expedientes;
+$total_estatus_baja = Expedientes::where('estatus_id', 19)->count();
+$total_estatus_favor = Expedientes::where('estatus_id', 23)->count();
+
+
+// Expedientes por vencer amparo
+$fecha_inicio = date('Y-m-d');
+$fecha_vencimiento = date('Y-m-d', strtotime('+9 day', strtotime($fecha_inicio)));
+$fecha_limite = date('Y-m-d', strtotime('+14 day', strtotime($fecha_inicio)));
+
+$total_estatus_amparo_favor = Expedientes::whereBetween('fecha14', [$fecha_vencimiento, $fecha_limite])->get()->count();
+
+use App\Models\Cobranza;
+// Actores donde la cobranza esta completa
+
+$actores_cobranza_completa = Cobranza::where('monto_percibido', '!=', 'total')->get('actor_id')->count();
+
+
+// Actores donde la cobranza esta incompleta
+// $actores_cobranza_incompleta = Cobranza::where('monto_percibido', '!=', 'total')->get()->count();
+
+$actores_cobranza_incompleta = Cobranza::where('monto_percibido', '=', 'total')->get('actor_id')->count();
+
+
+
 @endphp
 @extends('admin.admin_master')
 
@@ -25,7 +57,144 @@ $total_notificaciones = DB::table('notificaciones')->count();
         <!-- Left side columns -->
         <div class="col-md-12">
             <div class="row">
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
 
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes De Sonora</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-brightness-high-fill"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_actores_sonora }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes De Monterrey</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-battery-charging"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_actores_monterrey }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes De Baja</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-caret-down"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_estatus_baja }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes Sentencia A Favor</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-check"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_estatus_favor }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes  Amparados Por Vencer</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-caret-right"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_estatus_amparo_favor }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes Con Cobranza Incompleta</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cash-stack"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $actores_cobranza_incompleta }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Clientes Con Cobranza Completada</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cash-coin"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $actores_cobranza_completa }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+{{--
                 <!-- Sales Card -->
                 <div class="col-xxl-4 col-md-3">
                     <div class="card info-card sales-card">
@@ -326,7 +495,7 @@ $total_notificaciones = DB::table('notificaciones')->count();
                             </div>
                         </div>
                     </div>
-                </div> <!-- End Sales Card -->
+                </div> <!-- End Sales Card --> --}}
 
 
             </div>
