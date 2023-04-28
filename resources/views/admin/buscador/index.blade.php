@@ -60,16 +60,22 @@
 
 
                                             </div>
+                                            <br>
+                                            <div class="col-xl-2 col-lg-2 col-md-8">
+                                                <button class="btn btn-primary" type='submit' value="busk" name="buscar"
+                                                    href="{{ route('busqueda') }}"> <i class="bi bi-search"></i> Buscar</button>
+                                            </div>
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
                 <!--/ End Search Form -->
-                <div class="col-xl-3 col-lg-2 col-md-4">
-                    <button class="btn" type='submit' value="busk" name="buscar"
-                        href="{{ route('busqueda') }}">Buscar</button>
-                </div>
+
 
 @endsection
 
