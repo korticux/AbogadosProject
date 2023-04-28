@@ -21,12 +21,12 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input type="number" name="fecha22" class="form-control" id="floatingName"
+                        <input type="number" name="folio_expediente" class="form-control" id="floatingName"
                             placeholder="Ingresar Numero De Folio">
-                        @error('fecha22')
+                        @error('folio_expediente')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                        <label for="fecha22">Numero De Folio </label>
+                        <label for="folio_expediente">Numero De Folio </label>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -181,9 +181,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha3" class="form-control" id="floatingName"
-                            placeholder="Ingresar fecha3">
-                        @error('fecha3')
+                        <input type="date" name="fecha4" class="form-control" id="floatingName"
+                            placeholder="Ingresar fecha4">
+                        @error('fecha4')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                         <label for="nombre">Demanda Contestada:</label>
@@ -191,9 +191,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha4" class="form-control" id="floatingName"
-                            placeholder="Ingresar fecha4">
-                        @error('fecha4')
+                        <input type="date" name="fecha7" class="form-control" id="floatingName"
+                            placeholder="Ingresar fecha7">
+                        @error('fecha7')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                         <label for="nombre">Fecha de Ampliación Admitida en Boletín:</label>
@@ -201,9 +201,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="date" name="fecha5" class="form-control" id="floatingName"
-                            placeholder="Ingresar fecha5">
-                        @error('fecha5')
+                        <input type="date" name="fecha8" class="form-control" id="floatingName"
+                            placeholder="Ingresar fecha8">
+                        @error('fecha8')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                         <label for="nombre">Fecha Sentencia:</label>

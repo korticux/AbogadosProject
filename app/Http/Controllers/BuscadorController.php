@@ -23,9 +23,9 @@ class BuscadorController extends Controller
 
     public function index()
     {
-        $buscador = Buscador::latest()->paginate(5000);
+
         $estatuses = Estatus::orderBy('nombre', 'asc')->get();
-        return View("admin.buscador.index", compact("buscador", 'estatuses'));
+        return View("admin.buscador.index", compact('estatuses'));
     }
 
     public function busqueda(Request $request)
