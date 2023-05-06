@@ -21,6 +21,7 @@ $total_notificaciones = DB::table('notificaciones')->count();
 use App\Models\Actores;
 $total_actores_sonora = Actores::where('estado_id', 26)->count();
 $total_actores_monterrey = Actores::where('estado_id', 19)->count();
+$total_actores_monterrey_y_sonora = $total_actores_sonora + $total_actores_monterrey;
 
 // Expedientes por estatus baja y peticion a favor
 use App\Models\Expedientes;
@@ -99,6 +100,25 @@ $actores_cobranza_incompleta = Cobranza::where('monto_percibido', '=', 'total')-
                     <div class="card info-card sales-card">
 
                         <div class="card-body">
+                            <h5 class="card-title">Clientes De Sonora Y Monterrey</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-capslock-fill"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>{{ $total_actores_monterrey_y_sonora }}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card">
+
+                        <div class="card-body">
                             <h5 class="card-title">Clientes De Baja</h5>
 
                             <div class="d-flex align-items-center">
@@ -159,7 +179,7 @@ $actores_cobranza_incompleta = Cobranza::where('monto_percibido', '=', 'total')-
                     <div class="card info-card sales-card">
 
                         <div class="card-body">
-                            <h5 class="card-title">Clientes Con Cobranza Incompleta</h5>
+                            <h5 class="card-title">Clientes Con Pago Incompleto</h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -178,7 +198,7 @@ $actores_cobranza_incompleta = Cobranza::where('monto_percibido', '=', 'total')-
                     <div class="card info-card sales-card">
 
                         <div class="card-body">
-                            <h5 class="card-title">Clientes Con Cobranza Completada</h5>
+                            <h5 class="card-title">Clientes Con Pago Completado </h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

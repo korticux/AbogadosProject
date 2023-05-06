@@ -136,12 +136,12 @@ $route = Route::current()->getName();
             </a>
         </li><!-- End Blank Page Nav -->
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ $route == 'situaciones.index' ? '' : 'collapsed' }}" href="{{ route('situaciones.index') }}">
                 <i class="bi bi-brush"></i>
                 <span>Situaciones</span>
             </a>
-        </li><!-- End Blank Page Nav -->
+        </li><!-- End Blank Page Nav --> --}}
 
 
         <li class="nav-item">
